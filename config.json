@@ -1,0 +1,6 @@
+{
+    "localhost": {
+        "/api": "localhost:8901/api",
+        "*": "localhost:4200"
+    }
+}
