@@ -1,3 +1,25 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<div class="flakes-frame">
+  <div class="flakes-navigation">
+    <ul>
+      {{#link-to 'genera' tagName='li' href=false}}
+      {{#link-to 'genera'}}Genera{{/link-to}}
+      {{/link-to}}
+      {{#link-to 'about' tagName='li' href=false}}
+      {{#link-to 'about'}}About{{/link-to}}
+      {{/link-to}}
+    </ul>
 
-{{outlet}}
+    <p class="foot">
+      {{#if session.isAuthenticated}}
+        <a {{ action 'invalidateSession' }}>Logout</a>
+      {{else}}
+        {{#link-to 'login'}}Login{{/link-to}}
+      {{/if}}
+    </p>
+  </div>
+  <div class="flakes-content">
+    <div class="view-wrap">
+      {{outlet}}
+    </div>
+  </div>
+</div>
