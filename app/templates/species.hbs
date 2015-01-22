@@ -1,10 +1,16 @@
-<p class="flakes-message information">This is here for debugging, this page will be deleted.</p>
-
 <div class="grid-1">
   {{#each}}
   <div class="span-1">
     <fieldset class="read-only-information">
-      <legend>{{genusName}}</legend>
+      <legend>{{speciesName}}</legend>
+      <dl>
+        <dt>Genus</dt>
+        <dd>{{genus.genusName}}</dd>
+      </dl>
+      <dl>
+        <dt>Species</dt>
+        <dd>{{speciesName}}</dd>
+      </dl>
       <dl>
         <dt>Created</dt>
         <dd>{{createdAt}}</dd>

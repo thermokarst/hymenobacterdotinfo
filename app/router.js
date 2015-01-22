@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('login');
   this.route('about');
   this.resource('genera');
+  this.resource('species');
 });
 
 export default Router;
