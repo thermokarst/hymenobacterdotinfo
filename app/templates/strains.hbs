@@ -1,0 +1,53 @@
+<div class="grid-1">
+  {{#each}}
+  <div class="span-1">
+    <fieldset class="read-only-information">
+      <legend>{{strainName}}</legend>
+      <dl>
+        <dt>Id</dt>
+        <dd>{{id}}</dd>
+      </dl>
+      <dl>
+        <dt>Species</dt>
+        <dd>{{species.speciesName}}</dd>
+      </dl>
+      <dl>
+        <dt>Strain</dt>
+        <dd>{{strainName}}</dd>
+      </dl>
+      <dl>
+        <dt>Type</dt>
+        <dd>{{strainType}}</dd>
+      </dl>
+      <dl>
+        <dt>Etymology</dt>
+        <dd>{{etymology}}</dd>
+      </dl>
+      <dl>
+        <dt>Accession Banks</dt>
+        <dd>{{accessionBanks}}</dd>
+      </dl>
+      <dl>
+        <dt>Genbank EMBL DDB</dt>
+        <dd>{{genbankEmblDdb}}</dd>
+      </dl>
+      <dl>
+        <dt>Isolated From</dt>
+        <dd>{{isolatedFrom}}</dd>
+      </dl>
+      <dl>
+        <dt>Created</dt>
+        <dd>{{createdAt}}</dd>
+      </dl>
+      <dl>
+        <dt>Updated</dt>
+        <dd>{{updatedAt}}</dd>
+      </dl>
+      <dl>
+        <dt>Deleted</dt>
+        <dd>{{deletedAt}}</dd>
+      </dl>
+    </fieldset>
+  </div>
+  {{/each}}
+</div>

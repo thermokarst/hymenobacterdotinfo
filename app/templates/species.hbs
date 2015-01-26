@@ -4,12 +4,24 @@
     <fieldset class="read-only-information">
       <legend>{{speciesName}}</legend>
       <dl>
+        <dt>Id</dt>
+        <dd>{{id}}</dd>
+      </dl>
+      <dl>
         <dt>Genus</dt>
         <dd>{{genus.genusName}}</dd>
       </dl>
       <dl>
         <dt>Species</dt>
         <dd>{{speciesName}}</dd>
+      </dl>
+      <dl>
+        <dt>Strains</dt>
+        <dd>
+          {{#each strains}}
+            {{strainName}}
+          {{/each}}
+          </dd>
       </dl>
       <dl>
         <dt>Created</dt>

@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('about');
   this.resource('genera');
   this.resource('species');
+  this.resource('strains');
 });
 
 export default Router;
