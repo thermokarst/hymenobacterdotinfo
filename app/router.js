@@ -11,6 +11,7 @@ Router.map(function() {
   this.resource('genera');
   this.resource('species');
   this.resource('strains');
+  this.resource('measurements');
 });
 
 export default Router;

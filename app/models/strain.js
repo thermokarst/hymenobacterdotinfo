@@ -8,6 +8,7 @@ export default DS.Model.extend({
   genbankEmblDdb: DS.attr(),
   isolatedFrom: DS.attr(),
   species: DS.belongsTo('species', {async: true}),
+  measurements: DS.hasMany('measurement', {async: true}),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   deletedAt: DS.attr('date')
