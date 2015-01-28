@@ -26,8 +26,10 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV['simple-auth'] = {
-      authorizer: 'authorizers:custom'
+      authorizer: 'authorizers:custom',
+      crossOriginWhitelist: ['http://127.0.0.1:8901']
     }
+    ENV.apiURL = 'http://127.0.0.1:8901';
   }
 
   if (environment === 'test') {
