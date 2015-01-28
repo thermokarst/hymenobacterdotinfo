@@ -27,7 +27,7 @@ export default Base.extend({
         Ember.run(function() {
           resolve({ token: response.token });
         });
-      }, function(xhr, status, error) {
+      }, function(xhr) {
         var response = JSON.parse(xhr.responseText);
         Ember.run(function() {
           reject(response.error);
@@ -36,7 +36,7 @@ export default Base.extend({
     });
   },
 
-  invalidate: function(data) {
+  invalidate: function() {
     var _this = this;
     return new Ember.RSVP.Promise(function(resolve) {
       Ember.$.ajax({ url: _this.tokenEndpoint, type: 'DELETE' }).always(function() {
