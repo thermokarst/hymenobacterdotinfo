@@ -30,6 +30,15 @@ module.exports = function(environment) {
       crossOriginWhitelist: ['http://127.0.0.1:8901']
     }
     ENV.apiURL = 'http://127.0.0.1:8901';
+    ENV.contentSecurityPolicy = {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self'",
+      'connect-src': "'self' http://127.0.0.1:8901",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'"
+    }
   }
 
   if (environment === 'test') {
