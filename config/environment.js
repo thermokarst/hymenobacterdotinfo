@@ -54,7 +54,20 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV['simple-auth'] = {
+      authorizer: 'authorizers:custom',
+      crossOriginWhitelist: ['https://bactdb.herokuapp.com']
+    }
+    ENV.apiURL = 'https://bactdb.herokuapp.com';
+    ENV.contentSecurityPolicy = {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self'",
+      'connect-src': "'self' https://bactdb.herokuapp.com",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'"
+    }
   }
 
   return ENV;
