@@ -11,7 +11,11 @@ Router.map(function() {
   this.resource('genera');
   this.resource('species');
   this.resource('strains');
+  this.resource('strain', { path: '/strain/:strain_id' }, function() {
+    this.resource('measurements');
+  });
   this.resource('measurements');
+  this.resource('measurement', { path: '/measurement/:measurement_id' });
 });
 
 export default Router;
