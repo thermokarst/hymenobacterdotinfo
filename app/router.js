@@ -14,7 +14,6 @@ Router.map(function() {
   this.resource('strain', { path: '/strain/:strain_id' }, function() {
     this.resource('measurements');
   });
-  this.resource('measurements');
   this.resource('measurement', { path: '/measurement/:measurement_id' });
 });
 
