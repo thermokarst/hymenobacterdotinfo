@@ -10,6 +10,7 @@ export default DS.Model.extend({
   notes: DS.attr(),
   testMethodId: DS.attr(),
   strain: DS.belongsTo('strain', {async: true}),
+  characteristic: DS.belongsTo('characteristic', {async: true}),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date')
 });
