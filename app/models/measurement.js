@@ -1,7 +1,6 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  characteristicId: DS.attr(),
   textMeasurementTypeId: DS.attr(),
   txtValue: DS.attr(),
   numValue: DS.attr(),
