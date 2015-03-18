@@ -1,20 +1,9 @@
   <div class="flakes-navigation">
-    <a href="index.html" class="logo">
+    {{#link-to 'index' class='logo'}}
       <img src="img/logo.png" width="120">
-    </a>
+    {{/link-to}}
     <ul>
-      {{#link-to 'genera' tagName='li' href=false}}
-        {{#link-to 'genera'}}Genera{{/link-to}}
-      {{/link-to}}
-      {{#link-to 'species' tagName='li' href=false}}
-        {{#link-to 'species'}}Species{{/link-to}}
-      {{/link-to}}
-      {{#link-to 'strains' tagName='li' href=false}}
-        {{#link-to 'strains'}}Strains{{/link-to}}
-      {{/link-to}}
-      {{#link-to 'measurements' tagName='li' href=false}}
-        {{#link-to 'measurements'}}Measurements{{/link-to}}
-      {{/link-to}}
+      <li>Strains</li>
       {{#link-to 'about' tagName='li' href=false}}
         {{#link-to 'about'}}About{{/link-to}}
       {{/link-to}}
@@ -28,7 +17,6 @@
       {{/if}}
     </p>
   </div>
-
 
   <div class="flakes-content">
     <div class="flakes-mobile-top-bar">
