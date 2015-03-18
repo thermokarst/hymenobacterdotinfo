@@ -1,0 +1,19 @@
+<h2>Strains</h2>
+<h3>Total strains: {{model.length}}</h3>
+
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Measurements</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each strain in model}}
+      <tr>
+        <td>{{link-to strain.strainName 'strains.show' strain}}</td>
+        <td></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

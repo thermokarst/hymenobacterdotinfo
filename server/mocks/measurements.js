@@ -177,5 +177,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/measurements', measurementsRouter);
+  app.use('/api/hymenobacter/measurements', measurementsRouter);
 };
