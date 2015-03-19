@@ -12,7 +12,7 @@
     {{#each strain in model}}
       <tr>
         <td>{{link-to strain.strainName 'measurements' strain}}</td>
-        <td></td>
+        <td>{{strain.totalMeasurements}}</td>
       </tr>
     {{/each}}
   </tbody>

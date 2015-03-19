@@ -2,29 +2,41 @@
   <div class="span-1">
     <fieldset class="flakes-information-box">
       <legend>{{model.strainName}}</legend>
+      {{! ROW 1 }}
       <div class="grid-4">
-        <dl class="span-1">
+        <dl class="span-2">
+          <dt>Species</dt>
+          <dd>{{model.speciesName}}</dd>
+        </dl>
+        <dl class="span-2">
           <dt>Type</dt>
           <dd>{{model.strainType}}</dd>
         </dl>
-        <dl class="span-1">
-          <dt>Etymology</dt>
-          <dd>{{model.etymology}}</dd>
-        </dl>
-        <dl class="span-1">
+      </div>
+      {{! ROW 2 }}
+      <div class="grid-4">
+        <dl class="span-2">
           <dt>Accession Banks</dt>
           <dd>{{model.accessionBanks}}</dd>
         </dl>
-        <dl class="span-1">
+        <dl class="span-2">
           <dt>Genbank</dt>
           <dd>{{model.genbankEmblDdb}}</dd>
         </dl>
       </div>
+      {{! ROW 3 }}
       <div class="grid-4">
-        <dl class="span-1">
+        <dl class="span-2">
+          <dt>Etymology</dt>
+          <dd>{{model.etymology}}</dd>
+        </dl>
+        <dl class="span-2">
           <dt>Isolated From</dt>
           <dd>{{model.isolatedFrom}}</dd>
         </dl>
+      </div>
+      {{! ROW 4 }}
+      <div class="grid-4">
         <dl class="span-1">
           <dt>Record Created</dt>
           <dd>{{null-time model.createdAt 'LL'}}</dd>

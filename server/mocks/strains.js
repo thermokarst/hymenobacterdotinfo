@@ -5,7 +5,7 @@ module.exports = function(app) {
   var STRAINS = [
     {
       id: 1,
-      species: 1,
+      speciesName: "Species One",
       strainName: "Strain One",
       strainType: "Test Type",
       etymology: "Test Etymology",
@@ -16,10 +16,11 @@ module.exports = function(app) {
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
       deletedAt: null,
+      totalMeasurements: 5,
     },
     {
       id: 2,
-      species: 2,
+      speciesName: "Species Two",
       strainName: "Strain Two",
       strainType: "Test Type",
       etymology: "Test Etymology",
@@ -30,10 +31,11 @@ module.exports = function(app) {
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
       deletedAt: null,
+      totalMeasurements: 5,
     },
     {
       id: 3,
-      species: 3,
+      speciesName: "Species Three",
       strainName: "Strain Three",
       strainType: "Test Type",
       etymology: "Test Etymology",
@@ -44,10 +46,11 @@ module.exports = function(app) {
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
       deletedAt: null,
+      totalMeasurements: 0,
     },
     {
       id: 4,
-      species: 4,
+      speciesName: "Species Four",
       strainName: "Strain Four",
       strainType: "Test Type",
       etymology: "Test Etymology",
@@ -58,6 +61,7 @@ module.exports = function(app) {
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
       deletedAt: null,
+      totalMeasurements: 0,
     }
   ];
 
