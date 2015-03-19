@@ -105,7 +105,7 @@ module.exports = function(app) {
       id: 8,
       strain: 2,
       characteristic: 'Characteristic 3',
-      textMeasurementType: 'Meas. Type 1',
+      textMeasurementType: null,
       txtValue: "text value",
       numValue: null,
       confidenceInterval: null,
@@ -157,16 +157,16 @@ module.exports = function(app) {
 
   measurementsRouter.get('/:id', function(req, res) {
     var measurements = MEASUREMENTS.filter(function(m) {
-      return req.params.id.indexOf(m.id.toString()) > -1;
+      return m.id == req.params.id;
     });
     res.send({
-      'measurement': measurements[0]
+      'measurement': measurements
     });
   });
 
   measurementsRouter.put('/:id', function(req, res) {
     var measurements = MEASUREMENTS.filter(function(m) {
-      return req.params.id.indexOf(m.id.toString()) > -1;
+      return m.id == req.params.id;
     });
     res.send({
       'measurement': measurements[0]

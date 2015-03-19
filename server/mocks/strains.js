@@ -73,7 +73,7 @@ module.exports = function(app) {
 
   strainsRouter.get('/:id', function(req, res) {
     var strains = STRAINS.filter(function(s) {
-      return req.params.id.indexOf(s.id.toString()) > -1;
+      return s.id == req.params.id;
     });
     res.send({
       'strain': strains[0]
@@ -82,7 +82,7 @@ module.exports = function(app) {
 
   strainsRouter.put('/:id', function(req, res) {
     var strains = STRAINS.filter(function(s) {
-      return req.params.id.indexOf(s.id.toString()) > -1;
+      return s.id == req.params.id;
     });
     res.send({
       'strain': strains[0]
