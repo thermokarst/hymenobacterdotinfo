@@ -23,15 +23,15 @@
       <div class="grid-4">
         <dl class="span-1">
           <dt>Created</dt>
-          <dd>{{model.createdAt}}</dd>
+          <dd>{{null-time model.createdAt 'LL'}}</dd>
         </dl>
         <dl class="span-1">
           <dt>Updated</dt>
-          <dd>{{model.updatedAt}}</dd>
+          <dd>{{null-time model.updatedAt 'LL'}}</dd>
         </dl>
         <dl class="span-1">
           <dt>Deleted</dt>
-          <dd>{{model.deletedAt}}</dd>
+          <dd>{{null-time model.deletedAt 'LL'}}</dd>
         </dl>
         <dl class="span-1"></dl>
       </div>

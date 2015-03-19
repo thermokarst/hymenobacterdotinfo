@@ -19,5 +19,7 @@ app.import('bower_components/gridforms/gridforms/gridforms.js');
 app.import('bower_components/flakes/js/base.js');
 // nprogress
 app.import('bower_components/nprogress/nprogress.js');
+// moment
+app.import('bower_components/moment/moment.js');
 
 module.exports = app.toTree();
