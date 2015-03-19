@@ -146,8 +146,16 @@ module.exports = function(app) {
   ]
 
   measurementsRouter.get('/', function(req, res) {
+    var measurements;
+    if (req.query.ids) {
+      measurements = MEASUREMENTS.filter(function(m) {
+        return req.query.ids.indexOf(m.id.toString()) > -1;
+      });
+    } else {
+      measurements = MEASUREMENTS;
+    }
     res.send({
-      'measurements': MEASUREMENTS
+      'measurements': measurements
     });
   });
 

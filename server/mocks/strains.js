@@ -66,8 +66,16 @@ module.exports = function(app) {
   ];
 
   strainsRouter.get('/', function(req, res) {
+    var strains;
+    if (req.query.ids) {
+      strains = STRAINS.filter(function(s) {
+        return req.query.ids.indexOf(s.id.toString()) > -1;
+      });
+    } else {
+      strains = STRAINS;
+    }
     res.send({
-      'strains': STRAINS
+      'strains': strains
     });
   });
 
