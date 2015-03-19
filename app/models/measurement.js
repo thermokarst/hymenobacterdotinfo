@@ -13,13 +13,24 @@ export default DS.Model.extend({
   testMethod: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
+  computedType: Ember.computed('textMeasurementType', 'txtValue', 'numValue', function() {
+    if (this.get('textMeasurementType') && !this.get('txtValue') && !this.get('numValue')) {
+      return 'Fixed-text';
+    } else if (!this.get('textMeasurementType') && this.get('txtValue') && !this.get('numValue')) {
+      return 'Free-text';
+    } else if (!this.get('textMeasurementType') && !this.get('txtValue') && this.get('numValue')) {
+      return 'Numerical';
+    } else {
+      return "error";
+    }
+  }),
   computedValue: Ember.computed('textMeasurementType', 'txtValue', 'numValue', function() {
     var val;
-    if (this.get('textMeasurementType')) {
+    if (this.get('computedType') == 'Fixed-text') {
       val = this.get('textMeasurementType');
-    } else if (this.get('txtValue')) {
+    } else if (this.get('computedType') == 'Free-text') {
       val = this.get('txtValue');
-    } else if (this.get('numValue')) {
+    } else if (this.get('computedType') == 'Numerical') {
       val = this.get('numValue');
       if (this.get('confidenceInterval')) {
         val = val + ' &pm; ' + this.get('confidenceInterval');
