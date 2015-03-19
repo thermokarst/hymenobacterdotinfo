@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  measurements: DS.hasMany('measurements', { async: true }),
   strainName: DS.attr('string'),
   strainType: DS.attr('string'),
   etymology: DS.attr('string'),

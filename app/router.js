@@ -9,7 +9,9 @@ Router.map(function() {
   this.route('login');
   this.route('about');
   this.resource('strains', function() {
-    this.route('show', { path: ':strain_id' });
+    this.route('show', { path: ':strain_id' }, function() {
+      this.resource('measurements', function() {});
+    });
   });
 });
 

@@ -1,0 +1,28 @@
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th>Characteristic</th>
+      <th>Text Meas. Type</th>
+      <th>Text Value</th>
+      <th>Num. Value</th>
+      <th>Confidence Int.</th>
+      <th>Unit</th>
+      <th>Notes</th>
+      <th>Test Method</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each measurement in model}}
+      <tr>
+        <td>{{measurement.characteristic}}</td>
+        <td>{{measurement.textMeasurementType}}</td>
+        <td>{{measurement.txtValue}}</td>
+        <td>{{measurement.numValue}}</td>
+        <td>{{measurement.confidenceInterval}}</td>
+        <td>{{measurement.unitType}}</td>
+        <td>{{measurement.notes}}</td>
+        <td>{{measurement.testMethod}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
