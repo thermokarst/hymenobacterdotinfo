@@ -1,15 +1,15 @@
 <table class="flakes-table">
   <thead>
     <tr>
-      <th>Characteristic</th>
-      <th>Measurement Type</th>
-      <th>Measurement</th>
-      <th>Notes</th>
-      <th>Test Method</th>
+      <th {{action "setSortBy" "characteristicName"}}>Characteristic</th>
+      <th {{action "setSortBy" "computedType"}}>Measurement Type</th>
+      <th {{action "setSortBy" "computedValue"}}>Measurement</th>
+      <th {{action "setSortBy" "notes"}}>Notes</th>
+      <th {{action "setSortBy" "testMethod"}}>Test Method</th>
     </tr>
   </thead>
   <tbody>
-    {{#each model as |measurement|}}
+    {{#each controller as |measurement|}}
       {{measurements/measurement-row measurement=measurement}}
     {{/each}}
   </tbody>

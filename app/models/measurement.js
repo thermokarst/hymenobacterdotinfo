@@ -26,11 +26,11 @@ export default DS.Model.extend({
   }),
   computedValue: Ember.computed('textMeasurementType', 'txtValue', 'numValue', function() {
     var val;
-    if (this.get('computedType') == 'Fixed-text') {
+    if (this.get('computedType') === 'Fixed-text') {
       val = this.get('textMeasurementType');
-    } else if (this.get('computedType') == 'Free-text') {
+    } else if (this.get('computedType') === 'Free-text') {
       val = this.get('txtValue');
-    } else if (this.get('computedType') == 'Numerical') {
+    } else if (this.get('computedType') === 'Numerical') {
       val = this.get('numValue');
       if (this.get('confidenceInterval')) {
         val = val + ' &pm; ' + this.get('confidenceInterval');

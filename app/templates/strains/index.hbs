@@ -1,15 +1,15 @@
-<h2>Strains</h2>
-<h3>Total strains: {{model.length}}</h3>
+<h2>Hymenobacter Strains</h2>
+<h3>Total strains: {{controller.length}}</h3>
 
 <table class="flakes-table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Measurements</th>
+      <th {{action "setSortBy" "strainName"}}>Name</th>
+      <th {{action "setSortBy" "totalMeasurements"}}>Measurements</th>
     </tr>
   </thead>
   <tbody>
-    {{#each strain in model}}
+    {{#each strain in controller}}
       <tr>
         <td>{{link-to strain.strainName 'measurements' strain}}</td>
         <td>{{strain.totalMeasurements}}</td>

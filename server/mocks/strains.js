@@ -6,7 +6,7 @@ module.exports = function(app) {
     {
       id: 1,
       speciesName: "Species One",
-      strainName: "Strain One",
+      strainName: "Strain 1",
       strainType: "Test Type",
       etymology: "Test Etymology",
       accessionBanks: "Test Accession",
@@ -21,7 +21,7 @@ module.exports = function(app) {
     {
       id: 2,
       speciesName: "Species Two",
-      strainName: "Strain Two",
+      strainName: "Strain 2",
       strainType: "Test Type",
       etymology: "Test Etymology",
       accessionBanks: "Test Accession",
@@ -36,7 +36,7 @@ module.exports = function(app) {
     {
       id: 3,
       speciesName: "Species Three",
-      strainName: "Strain Three",
+      strainName: "Strain 3",
       strainType: "Test Type",
       etymology: "Test Etymology",
       accessionBanks: "Test Accession",
@@ -51,7 +51,7 @@ module.exports = function(app) {
     {
       id: 4,
       speciesName: "Species Four",
-      strainName: "Strain Four",
+      strainName: "Strain 4",
       strainType: "Test Type",
       etymology: "Test Etymology",
       accessionBanks: "Test Accession",
