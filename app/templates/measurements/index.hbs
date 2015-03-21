@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#each controller as |measurement|}}
+    {{#each measurement in controller}}
       {{measurements/measurement-row measurement=measurement}}
     {{/each}}
   </tbody>

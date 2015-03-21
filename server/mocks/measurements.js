@@ -6,7 +6,7 @@ module.exports = function(app) {
     {
       id: 1,
       strain: 1,
-      characteristic: 'Characteristic 1',
+      characteristic: 'α-fucosidase (API ZYM)',
       textMeasurementType: 'Meas. Type 1',
       txtValue: null,
       numValue: null,
@@ -20,7 +20,7 @@ module.exports = function(app) {
     {
       id: 2,
       strain: 1,
-      characteristic: 'Characteristic 2',
+      characteristic: 'α-glucosidase',
       textMeasurementType: 'Meas. Type 1',
       txtValue: null,
       numValue: null,
@@ -34,7 +34,7 @@ module.exports = function(app) {
     {
       id: 3,
       strain: 1,
-      characteristic: 'Characteristic 3',
+      characteristic: 'Chloramphenicol',
       textMeasurementType: null,
       txtValue: "text value",
       numValue: null,
@@ -48,7 +48,7 @@ module.exports = function(app) {
     {
       id: 4,
       strain: 1,
-      characteristic: 'Characteristic 4',
+      characteristic: 'Bacitracin',
       textMeasurementType: null,
       txtValue: null,
       numValue: 123.4,
@@ -62,7 +62,7 @@ module.exports = function(app) {
     {
       id: 5,
       strain: 1,
-      characteristic: 'Characteristic 4',
+      characteristic: 'Indole',
       textMeasurementType: null,
       txtValue: null,
       numValue: 567.8,
