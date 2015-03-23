@@ -68,8 +68,21 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV['simple-auth'] = {
-      authorizer: 'authorizers:custom',
+      authorizer: 'simple-auth-authorizer:token',
       crossOriginWhitelist: ['https://bactdb.herokuapp.com']
+    }
+    ENV['simple-auth-token'] = {
+      serverTokenEndpoint: 'https://bactdb.herokuapp.com/api/authenticate',
+      identificationField: 'username',
+      passwordField: 'password',
+      tokenPropertyName: 'token',
+      authorizationPrefix: 'Bearer ',
+      authorizationHeaderName: 'Authorization',
+      refreshAccessTokens: true,
+      serverTokenRefreshEndpoint: 'https://bactdb.herokuapp.com/api/authenticate',
+      tokenExpireName: 'exp',
+      refreshLeeway: 300,
+      timeFactor: 1
     }
     ENV.apiURL = 'https://bactdb.herokuapp.com';
     ENV.contentSecurityPolicy = {
