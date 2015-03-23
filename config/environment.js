@@ -22,12 +22,25 @@ module.exports = function(environment) {
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    ENV.APP.LOG_TRANSITIONS = true;
-    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    // ENV.APP.LOG_TRANSITIONS = true;
+    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV['simple-auth'] = {
-      authorizer: 'authorizers:custom',
+      authorizer: 'simple-auth-authorizer:token',
       crossOriginWhitelist: ['http://127.0.0.1:4200']
+    }
+    ENV['simple-auth-token'] = {
+      serverTokenEndpoint: '/api/authenticate',
+      identificationField: 'username',
+      passwordField: 'password',
+      tokenPropertyName: 'token',
+      authorizationPrefix: 'Bearer ',
+      authorizationHeaderName: 'Authorization',
+      refreshAccessTokens: true,
+      serverTokenRefreshEndpoint: '/api/authenticate',
+      tokenExpireName: 'exp',
+      refreshLeeway: 300,
+      timeFactor: 1
     }
     ENV.apiURL = 'http://127.0.0.1:4200';
     ENV.contentSecurityPolicy = {
