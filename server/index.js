@@ -32,6 +32,10 @@ module.exports = function(app) {
   app.use(morgan('dev'));
   app.use(allowCrossDomain);
 
+  // Parse json
+  var bodyParser = require('body-parser');
+  app.use(bodyParser.json());
+
   mocks.forEach(function(route) { route(app); });
   proxies.forEach(function(route) { route(app); });
 
