@@ -13,6 +13,7 @@ Router.map(function() {
       this.resource('measurements', function() {});
     });
   });
+  this.resource('characteristics', function() {});
 });
 
 export default Router;
