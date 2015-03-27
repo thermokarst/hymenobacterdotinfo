@@ -55,15 +55,37 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
-    // Testem prefers this...
-    ENV.baseURL = '/';
-    ENV.locationType = 'none';
+    ENV['simple-auth'] = {
+      authorizer: 'simple-auth-authorizer:token',
+      crossOriginWhitelist: ['https://bactdb-test.herokuapp.com']
+    }
+    ENV['simple-auth-token'] = {
+      serverTokenEndpoint: 'https://bactdb-test.herokuapp.com/api/authenticate',
+      identificationField: 'username',
+      passwordField: 'password',
+      tokenPropertyName: 'token',
+      authorizationPrefix: 'Bearer ',
+      authorizationHeaderName: 'Authorization',
+      refreshAccessTokens: true,
+      serverTokenRefreshEndpoint: 'https://bactdb-test.herokuapp.com/api/authenticate',
+      tokenExpireName: 'exp',
+      refreshLeeway: 300,
+      timeFactor: 1
+    }
+    ENV.apiURL = 'https://bactdb-test.herokuapp.com';
+    ENV.contentSecurityPolicy = {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self'",
+      'connect-src': "'self' https://bactdb-test.herokuapp.com",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'"
+    }
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
-
-    ENV.APP.rootElement = '#ember-testing';
   }
 
   if (environment === 'production') {
