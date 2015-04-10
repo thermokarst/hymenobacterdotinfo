@@ -31,7 +31,7 @@ module.exports = function(environment) {
     }
     ENV['simple-auth-token'] = {
       serverTokenEndpoint: '/api/authenticate',
-      identificationField: 'username',
+      identificationField: 'email',
       passwordField: 'password',
       tokenPropertyName: 'token',
       authorizationPrefix: 'Bearer ',
@@ -61,7 +61,7 @@ module.exports = function(environment) {
     }
     ENV['simple-auth-token'] = {
       serverTokenEndpoint: 'https://bactdb-test.herokuapp.com/api/authenticate',
-      identificationField: 'username',
+      identificationField: 'email',
       passwordField: 'password',
       tokenPropertyName: 'token',
       authorizationPrefix: 'Bearer ',
@@ -95,7 +95,7 @@ module.exports = function(environment) {
     }
     ENV['simple-auth-token'] = {
       serverTokenEndpoint: 'https://bactdb.herokuapp.com/api/authenticate',
-      identificationField: 'username',
+      identificationField: 'email',
       passwordField: 'password',
       tokenPropertyName: 'token',
       authorizationPrefix: 'Bearer ',

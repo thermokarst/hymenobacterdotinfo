@@ -8,15 +8,15 @@ module.exports = function(app) {
     var ms = 3000 + new Date().getTime();
     while (new Date() < ms){}
 
-    if (req.body.username === 'test' && req.body.password === 'test') {
+    if (req.body.email === 'test' && req.body.password === 'test') {
       var token = jwt.sign({
         'name': 'Test User',
-        'role': 'admin'
+        'role': 'A'
       }, 'secret',
       {
         expiresInMinutes: 60,
         issuer: 'bactdb',
-        subject: 'Test User',
+        subject: 'test',
       });
       res.send({
         'token': token
