@@ -2,25 +2,29 @@
     {{#link-to 'index' class='logo'}}
       <img src="img/logo.png" width="120">
     {{/link-to}}
-    <ul>
-      {{#link-to 'strains' tagName='li' href=false}}
-        {{#link-to 'strains'}}Strains{{/link-to}}
-      {{/link-to}}
-      {{#link-to 'characteristics' tagName='li' href=false}}
-        {{#link-to 'characteristics'}}Characteristics{{/link-to}}
-      {{/link-to}}
-      {{#link-to 'about' tagName='li' href=false}}
-        {{#link-to 'about'}}About{{/link-to}}
-      {{/link-to}}
-    </ul>
-
-    <p class="foot">
-      {{#if session.isAuthenticated}}
+    {{#if session.isAuthenticated}}
+      <ul>
+        {{#link-to 'strains' tagName='li' href=false}}
+          {{#link-to 'strains'}}Strains{{/link-to}}
+        {{/link-to}}
+        {{#link-to 'characteristics' tagName='li' href=false}}
+          {{#link-to 'characteristics'}}Characteristics{{/link-to}}
+        {{/link-to}}
+        {{#link-to 'about' tagName='li' href=false}}
+          {{#link-to 'about'}}About{{/link-to}}
+        {{/link-to}}
+      </ul>
+      <p class="foot">
+        {{session.currentUser.name}}<br>
         <a {{ action 'invalidateSession' }}>Logout</a>
-      {{else}}
-        {{#link-to 'login'}}Login{{/link-to}}
-      {{/if}}
-    </p>
+      </p>
+    {{else}}
+      <p class="foot">
+        {{#link-to 'login' Login}}Login{{/link-to}}
+        <br>
+        Sign Up
+      </p>
+    {{/if}}
   </div>
 
   <div class="flakes-content">
