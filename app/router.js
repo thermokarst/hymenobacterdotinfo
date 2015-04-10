@@ -14,6 +14,7 @@ Router.map(function() {
     });
   });
   this.resource('characteristics', function() {});
+  this.resource('users', function() {});
 });
 
 export default Router;
