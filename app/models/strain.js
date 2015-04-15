@@ -5,7 +5,7 @@ export default DS.Model.extend({
   measurements: DS.hasMany('measurements', { async: true }),
   speciesName: DS.attr('string'),
   strainName: DS.attr('string'),
-  strainType: DS.attr('string'),
+  typeStrain: DS.attr('boolean'),
   etymology: DS.attr('string'),
   accessionBanks: DS.attr('string'),
   genbankEmblDdb: DS.attr('string'),

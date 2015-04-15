@@ -9,8 +9,8 @@
           <dd><em>{{model.speciesName}}</em></dd>
         </dl>
         <dl class="span-2">
-          <dt>Type</dt>
-          <dd>{{model.strainType}}</dd>
+          <dt>Type Strain?</dt>
+          <dd>{{if model.typeStrain 'Yes' 'No'}}</dd>
         </dl>
       </div>
       {{! ROW 2 }}
