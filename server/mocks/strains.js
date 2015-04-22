@@ -16,6 +16,7 @@ module.exports = function(app) {
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
       deletedAt: null,
+      author: 1,
       totalMeasurements: 5,
     },
     {
@@ -31,6 +32,7 @@ module.exports = function(app) {
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
       deletedAt: null,
+      author: 3,
       totalMeasurements: 5,
     },
     {
@@ -46,6 +48,7 @@ module.exports = function(app) {
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
       deletedAt: null,
+      author: 1,
       totalMeasurements: 0,
     },
     {
@@ -61,6 +64,7 @@ module.exports = function(app) {
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
       deletedAt: null,
+      author: 3,
       totalMeasurements: 0,
     }
   ];

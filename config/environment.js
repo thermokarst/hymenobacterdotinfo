@@ -42,6 +42,11 @@ module.exports = function(environment) {
       refreshLeeway: 300,
       timeFactor: 1
     }
+    ENV['ember-can'] = {
+      inject: {
+        session: 'simple-auth-session:main'
+      }
+    }
     ENV.apiURL = 'http://127.0.0.1:4200';
     ENV.contentSecurityPolicy = {
       'default-src': "'none'",
@@ -71,6 +76,11 @@ module.exports = function(environment) {
       tokenExpireName: 'exp',
       refreshLeeway: 300,
       timeFactor: 1
+    }
+    ENV['ember-can'] = {
+      inject: {
+        session: 'simple-auth-session:main'
+      }
     }
     ENV.apiURL = 'https://bactdb-test.herokuapp.com';
     ENV.contentSecurityPolicy = {
@@ -105,6 +115,11 @@ module.exports = function(environment) {
       tokenExpireName: 'exp',
       refreshLeeway: 300,
       timeFactor: 1
+    }
+    ENV['ember-can'] = {
+      inject: {
+        session: 'simple-auth-session:main'
+      }
     }
     ENV.apiURL = 'https://bactdb.herokuapp.com';
     ENV.contentSecurityPolicy = {

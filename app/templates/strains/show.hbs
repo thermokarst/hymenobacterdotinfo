@@ -51,9 +51,19 @@
         </dl>
         <dl class="span-1"></dl>
       </div>
+      {{#if (can "edit strain" model)}}
+        {{! ROW 5 }}
+        <div class="grid-4">
+          <div class="span-1">
+            {{! Does nothing ATM }}
+            <a class="button-gray smaller">Edit Strain</a>
+          </div>
+        </div>
+      {{/if}}
     </fieldset>
   </div>
 </div>
+
 <div class="measurements-container">
   {{outlet}}
 </div>
