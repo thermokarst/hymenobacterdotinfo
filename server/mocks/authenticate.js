@@ -52,11 +52,10 @@ module.exports = function(app) {
       {
         expiresInMinutes: 60,
         issuer: 'bactdb',
-        subject: 'test',
+        subject: user.id,
       });
       res.send({
-        'token': token,
-        'user_id': user.id,
+        'token': token
       });
     } else {
       res.status(401).send({'error':'Invalid username or password'});
