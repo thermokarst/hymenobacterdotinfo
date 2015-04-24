@@ -9,6 +9,7 @@ export default DS.Model.extend({
   accessionBanks: DS.attr('string'),
   genbankEmblDdb: DS.attr('string'),
   isolatedFrom: DS.attr('string'),
+  notes: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   deletedAt: DS.attr('date'),
