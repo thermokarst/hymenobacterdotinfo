@@ -6,7 +6,6 @@ export default DS.Model.extend({
   speciesName: DS.attr('string'),
   strainName: DS.attr('string'),
   typeStrain: DS.attr('boolean'),
-  etymology: DS.attr('string'),
   accessionBanks: DS.attr('string'),
   genbankEmblDdb: DS.attr('string'),
   isolatedFrom: DS.attr('string'),
