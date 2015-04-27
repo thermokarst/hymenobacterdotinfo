@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.is-editing {
+  background-color: #FFFCE2;
+}
+
 /* BEGIN https://github.com/tobiasahlin/SpinKit */
 .spinner {
   width: 40px;

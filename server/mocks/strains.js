@@ -100,9 +100,17 @@ module.exports = function(app) {
     var strains = STRAINS.filter(function(s) {
       return s.id == req.params.id;
     });
-    res.send({
-      'strain': strains[0]
-    });
+    if (strains.length === 0) {
+      res.status(422).send({
+        'errors':{
+          "strainName": ["error1"],
+          "typeStrain": ["error2", "error3"],
+          "isolatedFrom": ["error4"]
+        }
+      }).end();
+    } else {
+      res.status(204).end();
+    }
   });
 
   strainsRouter.delete('/:id', function(req, res) {
