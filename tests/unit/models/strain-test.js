@@ -5,7 +5,7 @@ import {
 
 moduleForModel('strain', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:measurement']
 });
 
 test('it exists', function(assert) {

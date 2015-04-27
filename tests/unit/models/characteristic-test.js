@@ -5,7 +5,7 @@ import {
 
 moduleForModel('characteristic', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:measurement', 'model:strain']
 });
 
 test('it exists', function(assert) {
