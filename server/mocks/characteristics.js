@@ -11,7 +11,10 @@ module.exports = function(app) {
       measurements: [1],
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
-      deletedAt: null
+      deletedAt: null,
+      createdBy: 1,
+      updatedBy: 1,
+      deletedBy: null
     },
     {
       id: 2,
@@ -21,7 +24,10 @@ module.exports = function(app) {
       measurements: [2],
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
-      deletedAt: null
+      deletedAt: null,
+      createdBy: 1,
+      updatedBy: 1,
+      deletedBy: null
     },
     {
       id: 3,
@@ -31,7 +37,10 @@ module.exports = function(app) {
       measurements: [3],
       createdAt: "0001-01-01T00:00:00Z",
       updatedAt: "0001-01-01T00:00:00Z",
-      deletedAt: null
+      deletedAt: null,
+      createdBy: 1,
+      updatedBy: 1,
+      deletedBy: null
     }
   ]
 

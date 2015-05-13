@@ -13,6 +13,8 @@ export default DS.Model.extend({
   testMethod: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
+  createdBy: DS.attr('number'),
+  updatedBy: DS.attr('number'),
   computedType: Ember.computed('textMeasurementType', 'txtValue', 'numValue', function() {
     if (this.get('textMeasurementType') && !this.get('txtValue') && !this.get('numValue')) {
       return 'Fixed-text';

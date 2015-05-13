@@ -13,7 +13,9 @@ export default DS.Model.extend({
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   deletedAt: DS.attr('date'),
-  author: DS.attr('number'),
+  createdBy: DS.attr('number'),
+  updatedBy: DS.attr('number'),
+  deletedBy: DS.attr('number'),
   totalMeasurements: DS.attr('number'),
   fullName: Ember.computed('speciesName', 'strainName', function() {
     return this.get('speciesName') + ' (' + this.get('strainName') + ')';

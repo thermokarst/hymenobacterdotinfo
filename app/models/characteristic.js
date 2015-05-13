@@ -7,5 +7,8 @@ export default DS.Model.extend({
   measurements: DS.hasMany('measurements'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  deletedAt: DS.attr('date')
+  deletedAt: DS.attr('date'),
+  createdBy: DS.attr('number'),
+  updatedBy: DS.attr('number'),
+  deletedBy: DS.attr('number')
 });

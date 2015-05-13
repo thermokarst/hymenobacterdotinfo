@@ -11,7 +11,7 @@ export default Ability.extend({
   canEdit: function() {
     let role = this.get('session.currentUser.role');
     let id = this.get('session.currentUser.id');
-    let author = this.get('model.author');
+    let author = this.get('model.createdBy');
     return (role === 'W' && (+id === author)) || (role === 'A');
-  }.property('session.currentUser.role', 'session.currentUser.id', 'model.author')
+  }.property('session.currentUser.role', 'session.currentUser.id', 'model.createdBy')
 });

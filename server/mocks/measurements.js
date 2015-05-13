@@ -15,7 +15,9 @@ module.exports = function(app) {
       notes: null,
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     },
     {
       id: 2,
@@ -29,7 +31,9 @@ module.exports = function(app) {
       notes: null,
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     },
     {
       id: 3,
@@ -43,7 +47,9 @@ module.exports = function(app) {
       notes: "some notes",
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     },
     {
       id: 4,
@@ -57,7 +63,9 @@ module.exports = function(app) {
       notes: null,
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     },
     {
       id: 5,
@@ -71,7 +79,9 @@ module.exports = function(app) {
       notes: null,
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     },
     {
       id: 6,
@@ -85,7 +95,9 @@ module.exports = function(app) {
       notes: null,
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     },
     {
       id: 7,
@@ -99,7 +111,9 @@ module.exports = function(app) {
       notes: null,
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     },
     {
       id: 8,
@@ -113,7 +127,9 @@ module.exports = function(app) {
       notes: "some notes",
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     },
     {
       id: 9,
@@ -127,7 +143,9 @@ module.exports = function(app) {
       notes: null,
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     },
     {
       id: 10,
@@ -141,7 +159,9 @@ module.exports = function(app) {
       notes: null,
       testMethod: null,
       createdAt: "0001-01-01T00:00:00Z",
-      updatedAt: "0001-01-01T00:00:00Z"
+      updatedAt: "0001-01-01T00:00:00Z",
+      createdBy: 1,
+      updatedBy: 1
     }
   ]
 
