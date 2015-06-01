@@ -3,7 +3,9 @@
 
 {{#if (can "add strain")}}
   {{! Does nothing ATM }}
-  <a class="button-gray smaller">Add Strain</a>
+  {{#link-to 'strains.new' class="button-gray smaller"}}
+    Add Strain
+  {{/link-to}}
 {{/if}}
 
 <table class="flakes-table">
