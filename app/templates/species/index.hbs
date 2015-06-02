@@ -1,0 +1,30 @@
+<h2>{{genus-name}} Species</h2>
+<h3>Total species: {{controller.length}}</h3>
+
+{{#if (can "add species")}}
+  {{! Does nothing ATM }}
+  {{#link-to 'species.new' class="button-gray smaller"}}
+    Add Species
+  {{/link-to}}
+{{/if}}
+
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th {{action "setSortBy" "speciesName"}}>Name</th>
+      <th {{action "setSortBy" "totalStrains"}}>Strains</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each species in controller}}
+      <tr>
+        <td>
+          {{#link-to 'species.show' species}}
+            {{species.speciesName}}
+          {{/link-to}}
+        </td>
+        <td>{{species.totalStrains}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

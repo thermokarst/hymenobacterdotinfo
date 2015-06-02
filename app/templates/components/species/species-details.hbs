@@ -1,0 +1,76 @@
+<div class="span-1">
+  <fieldset {{bind-attr class=":flakes-information-box isEditing"}}>
+    <legend>
+      Species
+        {{#if isEditing}}
+          {{input value=species.speciesName}}
+        {{else}}
+          {{species.speciesName}}
+        {{/if}}
+        {{display-errors a=species.errors.speciesName}}
+    </legend>
+
+    {{! ROW 1 }}
+    <div class="grid-4">
+      <dl class="span-4">
+        <dt>Type Species?</dt>
+        <dd>
+          {{#if isEditing}}
+            {{input type="checkbox" checked=species.typeSpecies}}
+          {{/if}}
+          {{if species.typeSpecies 'Yes' 'No'}}
+          {{display-errors a=species.errors.typeSpecies}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 2 }}
+    <div class="grid-4">
+      <dl class="span-4">
+        <dt>Etymology</dt>
+        <dd>
+          {{#if isEditing}}
+            {{textarea value=species.etymology cols="70" rows="3"}}
+          {{else}}
+            {{species.etymology}}
+          {{/if}}
+          {{display-errors a=species.errors.etymology}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 3 }}
+    <div class="grid-4">
+      <dl class="span-1">
+        <dt>Record Created</dt>
+        <dd>{{null-time species.createdAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Record Updated</dt>
+        <dd>{{null-time species.updatedAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Record Deleted</dt>
+        <dd>{{null-time species.deletedAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1"></dl>
+    </div>
+
+    {{! ROW 4 }}
+    {{#if (can "edit species" strain)}}
+      <div class="grid-4">
+        <div class="span-1">
+          {{! Does nothing ATM }}
+          <a {{bind-attr class=":smaller isEditing:button-red:button-gray"}} {{action 'editSpecies'}}>
+            {{#if isEditing}}Cancel{{else}}Edit{{/if}}
+          </a>
+          {{#if isEditing}}
+            <a class="button-green smaller" {{action 'saveSpecies'}}>
+              Save
+            </a>
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+  </fieldset>
+</div>

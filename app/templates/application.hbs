@@ -4,6 +4,9 @@
     {{/link-to}}
     {{#if session.isAuthenticated}}
       <ul>
+        {{#link-to 'species' tagName='li' href=false}}
+          {{#link-to 'species'}}Species{{/link-to}}
+        {{/link-to}}
         {{#link-to 'strains' tagName='li' href=false}}
           {{#link-to 'strains'}}Strains{{/link-to}}
         {{/link-to}}
