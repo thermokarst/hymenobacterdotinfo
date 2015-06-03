@@ -15,7 +15,8 @@
       <dl class="span-2">
         <dt>Strains</dt>
         <dd>
-          {{#each strain in species.strains}}
+          {{#each species.strains as |strain index|}}
+            {{if index ","}}
             {{#link-to 'strains.show' strain.id}}
               {{strain.strainName}}
             {{/link-to}}

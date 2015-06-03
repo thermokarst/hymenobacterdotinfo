@@ -24,7 +24,8 @@
           {{/link-to}}
         </td>
         <td>
-          {{#each strain in species.strains}}
+          {{#each species.strains as |strain index|}}
+            {{if index ","}}
             {{#link-to 'strains.show' strain.id}}
               {{strain.strainName}}
             {{/link-to}}
