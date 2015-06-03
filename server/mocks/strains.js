@@ -23,7 +23,7 @@ module.exports = function(app) {
     },
     {
       id: 2,
-      species: 2,
+      species: 1,
       strainName: "XYZ",
       typeStrain: false,
       accessionNumbers: "Test Accession",
@@ -41,7 +41,7 @@ module.exports = function(app) {
     },
     {
       id: 3,
-      species: 3,
+      species: 2,
       strainName: "QRS",
       typeStrain: true,
       accessionNumbers: "Test Accession",
@@ -59,7 +59,7 @@ module.exports = function(app) {
     },
     {
       id: 4,
-      species: 4,
+      species: 3,
       strainName: "LMN",
       typeStrain: true,
       accessionNumbers: "Test Accession",

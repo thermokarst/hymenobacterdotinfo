@@ -24,7 +24,9 @@
               selection=strain.species
             }}
           {{else}}
-            <em>{{strain.species.speciesName}}</em>
+            {{#link-to 'species.show' strain.species}}
+              <em>{{strain.species.speciesName}}</em>
+            {{/link-to}}
           {{/if}}
         </dd>
       </dl>

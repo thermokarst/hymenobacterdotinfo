@@ -23,7 +23,13 @@
             {{species.speciesName}}
           {{/link-to}}
         </td>
-        <td>{{species.totalStrains}}</td>
+        <td>
+          {{#each strain in species.strains}}
+            {{#link-to 'strains.show' strain.id}}
+              {{strain.strainName}}
+            {{/link-to}}
+          {{/each}}
+        </td>
       </tr>
     {{/each}}
   </tbody>

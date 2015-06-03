@@ -2,7 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    return this.store.createRecord('strain');
+    return Ember.RSVP.hash({
+      strain: this.store.createRecord('strain'),
+      species: this.store.findAll('species')
+    });
   },
   actions: {
     cancelStrain: function() {

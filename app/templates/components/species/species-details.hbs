@@ -12,7 +12,22 @@
 
     {{! ROW 1 }}
     <div class="grid-4">
-      <dl class="span-4">
+      <dl class="span-2">
+        <dt>Strains</dt>
+        <dd>
+          {{#each strain in species.strains}}
+            {{#link-to 'strains.show' strain.id}}
+              {{strain.strainName}}
+            {{/link-to}}
+          {{/each}}
+          {{#if (can "edit species" species)}}
+            {{#link-to 'strains.new' class="button-gray smaller"}}
+              Add Strain
+            {{/link-to}}
+          {{/if}}
+        </dd>
+      </dl>
+      <dl class="span-2">
         <dt>Type Species?</dt>
         <dd>
           {{#if isEditing}}
@@ -57,7 +72,7 @@
     </div>
 
     {{! ROW 4 }}
-    {{#if (can "edit species" strain)}}
+    {{#if (can "edit species" species)}}
       <div class="grid-4">
         <div class="span-1">
           {{! Does nothing ATM }}
