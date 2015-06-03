@@ -7,9 +7,7 @@ export default Ember.Route.extend({
       species: this.store.findAll('species')
     });
   },
-  actions: {
-    cancelStrain: function() {
-      this.transitionTo('strains.index');
-    }
-  }
+  setupController: function(controller, models) {
+    controller.setProperties(models);
+  },
 });
