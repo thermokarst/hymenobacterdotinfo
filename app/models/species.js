@@ -5,7 +5,7 @@ export default DS.Model.extend({
   typeSpecies: DS.attr('boolean'),
   etymology: DS.attr('string'),
   genusName: DS.attr('string'),
-  strains: DS.hasMany('strain'),
+  strains: DS.hasMany('strain', { async: true }),
   totalStrains: DS.attr('number'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),

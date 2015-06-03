@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default DS.Model.extend({
   measurements: DS.hasMany('measurements', { async: true }),
-  speciesName: DS.attr('string'),
+  species: DS.belongsTo('species', { async: true }),
   strainName: DS.attr('string'),
   typeStrain: DS.attr('boolean'),
   accessionNumbers: DS.attr('string'),

@@ -5,7 +5,7 @@ module.exports = function(app) {
   var STRAINS = [
     {
       id: 1,
-      speciesName: "Species One",
+      species: 1,
       strainName: "ABC",
       typeStrain: true,
       accessionNumbers: "Test Accession",
@@ -23,7 +23,7 @@ module.exports = function(app) {
     },
     {
       id: 2,
-      speciesName: "Species Two",
+      species: 2,
       strainName: "XYZ",
       typeStrain: false,
       accessionNumbers: "Test Accession",
@@ -41,7 +41,7 @@ module.exports = function(app) {
     },
     {
       id: 3,
-      speciesName: "Species Three",
+      species: 3,
       strainName: "QRS",
       typeStrain: true,
       accessionNumbers: "Test Accession",
@@ -59,7 +59,7 @@ module.exports = function(app) {
     },
     {
       id: 4,
-      speciesName: "Species Four",
+      species: 4,
       strainName: "LMN",
       typeStrain: true,
       accessionNumbers: "Test Accession",

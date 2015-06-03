@@ -14,7 +14,19 @@
     <div class="grid-4">
       <dl class="span-2">
         <dt>Species</dt>
-        <dd><em>{{strain.speciesName}}</em></dd>
+        <dd>
+          {{#if isEditing}}
+            {{
+              view "select"
+              content=species
+              optionValuePath="content.id"
+              optionLabelPath="content.speciesName"
+              selection=strain.species
+            }}
+          {{else}}
+            <em>{{strain.species.speciesName}}</em>
+          {{/if}}
+        </dd>
       </dl>
       <dl class="span-2">
         <dt>Type Strain?</dt>

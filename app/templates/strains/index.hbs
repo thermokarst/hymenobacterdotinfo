@@ -19,7 +19,7 @@
     {{#each strain in controller}}
       <tr>
         <td>
-          {{#link-to 'measurements' strain}}
+          {{#link-to 'measurements' strain.id}}
             {{scientific-name strain=strain}}
           {{/link-to}}
         </td>
