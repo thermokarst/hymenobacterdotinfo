@@ -22,10 +22,14 @@
             {{/link-to}}
           {{/each}}
           {{#if (can "edit species" species)}}
-            <br>
-            {{#link-to 'strains.new' class="button-gray smaller"}}
-              Add Strain
-            {{/link-to}}
+            {{#if species.isNew}}
+              PENDING SAVE
+            {{else}}
+              <br>
+              {{#link-to 'strains.new' class="button-gray smaller"}}
+                Add Strain
+              {{/link-to}}
+            {{/if}}
           {{/if}}
         </dd>
       </dl>
@@ -78,11 +82,11 @@
       <div class="grid-4">
         <div class="span-1">
           {{! Does nothing ATM }}
-          <a {{bind-attr class=":smaller isEditing:button-red:button-gray"}} {{action 'editSpecies'}}>
+          <a {{bind-attr class=":smaller isEditing:button-red:button-gray"}} {{action 'cancel'}}>
             {{#if isEditing}}Cancel{{else}}Edit{{/if}}
           </a>
           {{#if isEditing}}
-            <a class="button-green smaller" {{action 'saveSpecies'}}>
+            <a class="button-green smaller" {{action 'save'}}>
               Save
             </a>
           {{/if}}

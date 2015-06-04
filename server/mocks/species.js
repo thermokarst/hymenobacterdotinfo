@@ -80,7 +80,8 @@ module.exports = function(app) {
   });
 
   speciesRouter.post('/', function(req, res) {
-    res.status(201).end();
+    req.body.species.id = Math.max.apply(Math, SPECIES.map(function(o){return o.id;})) + 1;
+    res.status(201).send(req.body);
   });
 
   speciesRouter.get('/:id', function(req, res) {
@@ -93,11 +94,7 @@ module.exports = function(app) {
   });
 
   speciesRouter.put('/:id', function(req, res) {
-    res.send({
-      'species': {
-        id: req.params.id
-      }
-    });
+    res.send(req.body);
   });
 
   speciesRouter.delete('/:id', function(req, res) {

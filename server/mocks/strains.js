@@ -92,7 +92,8 @@ module.exports = function(app) {
   });
 
   strainsRouter.post('/', function(req, res) {
-    res.status(201).end();
+    req.body.strain.id = Math.max.apply(Math, STRAINS.map(function(o){return o.id;})) + 1;
+    res.status(201).send(req.body);
   });
 
   strainsRouter.get('/:id', function(req, res) {
