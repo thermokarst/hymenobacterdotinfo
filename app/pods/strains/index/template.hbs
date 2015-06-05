@@ -1,11 +1,6 @@
 <h2>{{genus-name}} Strains</h2>
 <h3>Total strains: {{model.length}}</h3>
 
-{{#if (can "add strain")}}
-  {{! Does nothing ATM }}
-  {{#link-to 'strains.new' class="button-gray smaller"}}
-    Add Strain
-  {{/link-to}}
-{{/if}}
+{{add-button label="Add Strain" link="strains.new"}}
 
 {{sortable-table content=model tableAttrs=tableAttrs row=row}}

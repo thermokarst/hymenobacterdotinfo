@@ -1,11 +1,6 @@
 <h2>{{genus-name}} Species</h2>
 <h3>Total species: {{controller.length}}</h3>
 
-{{#if (can "add species")}}
-  {{! Does nothing ATM }}
-  {{#link-to 'species.new' class="button-gray smaller"}}
-    Add Species
-  {{/link-to}}
-{{/if}}
+{{add-button label="Add Species" link="species.new"}}
 
 {{sortable-table content=model tableAttrs=tableAttrs row=row}}
