@@ -1,0 +1,11 @@
+<td>
+  {{#link-to 'strains.show' data.strain.id}}
+    {{scientific-name strain=data.strain}}
+  {{/link-to}}
+</td>
+<td>
+  {{data.characteristic.characteristicName}}
+</td>
+<td>
+  {{{data.computedValue}}}
+</td>

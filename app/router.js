@@ -20,6 +20,7 @@ Router.map(function() {
     this.route('show', { path: ':strain_id' });
   });
 
+  this.route('measurements');
 });
 
 export default Router;

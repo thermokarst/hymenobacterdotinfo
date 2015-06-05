@@ -6,7 +6,7 @@ module.exports = function(app) {
     {
       id: 1,
       strain: 1,
-      characteristic: 'α-fucosidase (API ZYM)',
+      characteristic: 1,
       textMeasurementType: 'Meas. Type 1',
       txtValue: null,
       numValue: null,
@@ -22,7 +22,7 @@ module.exports = function(app) {
     {
       id: 2,
       strain: 1,
-      characteristic: 'α-glucosidase',
+      characteristic: 2,
       textMeasurementType: 'Meas. Type 1',
       txtValue: null,
       numValue: null,
@@ -38,7 +38,7 @@ module.exports = function(app) {
     {
       id: 3,
       strain: 1,
-      characteristic: 'Chloramphenicol',
+      characteristic: 3,
       textMeasurementType: null,
       txtValue: "text value",
       numValue: null,
@@ -54,7 +54,7 @@ module.exports = function(app) {
     {
       id: 4,
       strain: 1,
-      characteristic: 'Bacitracin',
+      characteristic: 4,
       textMeasurementType: null,
       txtValue: null,
       numValue: 123.4,
@@ -70,7 +70,7 @@ module.exports = function(app) {
     {
       id: 5,
       strain: 1,
-      characteristic: 'Indole',
+      characteristic: 5,
       textMeasurementType: null,
       txtValue: null,
       numValue: 567.8,
@@ -86,7 +86,7 @@ module.exports = function(app) {
     {
       id: 6,
       strain: 2,
-      characteristic: 'Characteristic 1',
+      characteristic: 1,
       textMeasurementType: 'Meas. Type 1',
       txtValue: null,
       numValue: null,
@@ -102,7 +102,7 @@ module.exports = function(app) {
     {
       id: 7,
       strain: 2,
-      characteristic: 'Characteristic 2',
+      characteristic: 2,
       textMeasurementType: 'Meas. Type 1',
       txtValue: null,
       numValue: null,
@@ -118,7 +118,7 @@ module.exports = function(app) {
     {
       id: 8,
       strain: 2,
-      characteristic: 'Characteristic 3',
+      characteristic: 3,
       textMeasurementType: null,
       txtValue: "text value",
       numValue: null,
@@ -134,7 +134,7 @@ module.exports = function(app) {
     {
       id: 9,
       strain: 2,
-      characteristic: 'Characteristic 4',
+      characteristic: 4,
       textMeasurementType: null,
       txtValue: null,
       numValue: 123.4,
@@ -150,7 +150,7 @@ module.exports = function(app) {
     {
       id: 10,
       strain: 2,
-      characteristic: 'Characteristic 4',
+      characteristic: 5,
       textMeasurementType: null,
       txtValue: null,
       numValue: 567.8,

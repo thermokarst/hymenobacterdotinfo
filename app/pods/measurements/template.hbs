@@ -1,0 +1,11 @@
+<h2>{{genus-name}} Measurements</h2>
+<h3>Total measurements: {{model.length}}</h3>
+
+{{
+  view "select"
+  content=model.species
+  optionValuePath="content.id"
+  optionLabelPath="content.speciesName"
+}}
+
+{{sortable-table content=model.measurements tableAttrs=tableAttrs row=row}}

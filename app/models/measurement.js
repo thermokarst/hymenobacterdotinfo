@@ -2,8 +2,8 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-  strain: DS.belongsTo('strain'),
-  characteristic: DS.attr('string'),
+  strain: DS.belongsTo('strain', { async: true }),
+  characteristic: DS.belongsTo('characteristic', { async: true }),
   textMeasurementType: DS.attr('string'),
   txtValue: DS.attr('string'),
   numValue: DS.attr('number'),
