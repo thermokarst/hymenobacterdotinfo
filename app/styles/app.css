@@ -2,7 +2,7 @@
   padding: 2em 0em 0em 0em;
 }
 
-.flakes-table thead tr {
+.flakes-table thead tr th span {
   cursor: pointer;
 }
 

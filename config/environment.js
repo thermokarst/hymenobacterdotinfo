@@ -17,6 +17,7 @@ module.exports = function(environment) {
       // when it is created
     },
     genus: 'hymenobacter',
+    podModulePrefix: 'hymenobacterdotinfo/pods',
   };
 
   if (environment === 'development') {

@@ -8,18 +8,18 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.route('about');
-  this.resource('species', function() {
+  this.route('characteristics');
+  this.route('users');
+
+  this.route('species', function() {
+    this.route('new');
     this.route('show', { path: ':species_id' });
-    this.route('new');
   });
-  this.resource('strains', function() {
+  this.route('strains', function() {
     this.route('new');
-    this.route('show', { path: ':strain_id' }, function() {
-      this.resource('measurements', function() {});
-    });
+    this.route('show', { path: ':strain_id' });
   });
-  this.resource('characteristics', function() {});
-  this.resource('users', function() {});
+
 });
 
 export default Router;
