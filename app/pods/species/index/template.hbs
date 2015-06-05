@@ -8,30 +8,4 @@
   {{/link-to}}
 {{/if}}
 
-<table class="flakes-table">
-  <thead>
-    <tr>
-      <th {{action "setSortBy" "speciesName"}}>Name</th>
-      <th {{action "setSortBy" "totalStrains"}}>Strains</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each species in controller}}
-      <tr>
-        <td>
-          {{#link-to 'species.show' species}}
-            {{species.speciesName}}
-          {{/link-to}}
-        </td>
-        <td>
-          {{#each species.strains as |strain index|}}
-            {{if index ","}}
-            {{#link-to 'strains.show' strain.id}}
-              {{strain.strainName}}
-            {{/link-to}}
-          {{/each}}
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{sortable-table content=model tableAttrs=tableAttrs row=row}}

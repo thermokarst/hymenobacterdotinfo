@@ -1,19 +1,4 @@
 <h2>{{genus-name}} Characteristics</h2>
-<h3>Total characteristics: {{controller.length}}</h3>
+<h3>Total characteristics: {{model.length}}</h3>
 
-<table class="flakes-table">
-  <thead>
-    <tr>
-      <th {{action "setSortBy" "characteristicName"}}>Name</th>
-      <th {{action "setSortBy" "characteristicType"}}>Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each characteristic in controller}}
-      <tr>
-        <td>{{characteristic.characteristicName}}</td>
-        <td>{{characteristic.characteristicType}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{sortable-table content=model tableAttrs=tableAttrs row=row}}

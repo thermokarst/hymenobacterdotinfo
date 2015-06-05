@@ -1,0 +1,13 @@
+<td>
+  {{#link-to 'species.show' data}}
+    {{data.speciesName}}
+  {{/link-to}}
+</td>
+<td>
+  {{#each data.strains as |strain index|}}
+    {{if index ","}}
+    {{#link-to 'strains.show' strain.id}}
+      {{strain.strainName}}
+    {{/link-to}}
+  {{/each}}
+</td>

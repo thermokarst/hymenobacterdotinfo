@@ -1,5 +1,5 @@
 <h2>{{genus-name}} Strains</h2>
-<h3>Total strains: {{controller.length}}</h3>
+<h3>Total strains: {{model.length}}</h3>
 
 {{#if (can "add strain")}}
   {{! Does nothing ATM }}
@@ -8,23 +8,4 @@
   {{/link-to}}
 {{/if}}
 
-<table class="flakes-table">
-  <thead>
-    <tr>
-      <th {{action "setSortBy" "fullName"}}>Name</th>
-      <th {{action "setSortBy" "totalMeasurements"}}>Total Measurements</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each strain in controller}}
-      <tr>
-        <td>
-          {{#link-to 'strains.show' strain.id}}
-            {{scientific-name strain=strain}}
-          {{/link-to}}
-        </td>
-        <td>{{strain.totalMeasurements}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{sortable-table content=model tableAttrs=tableAttrs row=row}}
