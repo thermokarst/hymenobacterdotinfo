@@ -2,8 +2,7 @@
   "predef": [
     "document",
     "window",
-    "-Promise",
-    "/* global nprogress */"
+    "-Promise"
   ],
   "browser": true,
   "boss": true,
