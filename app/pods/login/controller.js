@@ -1,20 +1,18 @@
 import Ember from 'ember';
-import LoginControllerMixin from 'simple-auth/mixins/login-controller-mixin';
 
-export default Ember.Controller.extend(LoginControllerMixin, {
-  authenticator: 'simple-auth-authenticator:jwt',
-  loading: false,
+export default Ember.Controller.extend({
   actions: {
     authenticate: function() {
       this.set('errorMessage', null);
-      var _this = this;
+      let credentials = this.getProperties('identification', 'password');
+      let authenticator = 'simple-auth-authenticator:token';
+
       this.set('loading', true);
-      this._super().then(function() {
-        _this.set('loading', false);
-      }, function(error) {
-        _this.set('loading', false);
-        var message = error.error;
-        _this.set('errorMessage', message);
+      this.get('session').authenticate(authenticator, credentials).then(()=>{
+        this.set('loading', false);
+      }, (error)=> {
+        this.set('loading', false);
+        this.set('errorMessage', error.error);
       });
     }
   }

@@ -27,6 +27,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV['simple-auth'] = {
+      session: 'session:custom',
       authorizer: 'simple-auth-authorizer:token',
       crossOriginWhitelist: ['http://127.0.0.1:4200']
     }
@@ -57,6 +58,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     ENV['simple-auth'] = {
+      session: 'session:custom',
       authorizer: 'simple-auth-authorizer:token',
       crossOriginWhitelist: ['https://bactdb-test.herokuapp.com']
     }
@@ -91,6 +93,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV['simple-auth'] = {
+      session: 'session:custom',
       authorizer: 'simple-auth-authorizer:token',
       crossOriginWhitelist: ['https://bactdb.herokuapp.com']
     }
