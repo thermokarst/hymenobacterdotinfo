@@ -1,7 +1,9 @@
 <td>
-  {{#link-to 'species.show' data}}
-    {{data.speciesName}}
-  {{/link-to}}
+  <em>
+    {{#link-to 'species.show' data}}
+      {{data.speciesName}}
+    {{/link-to}}
+  </em>
 </td>
 <td>
   {{#each data.strains as |strain index|}}
