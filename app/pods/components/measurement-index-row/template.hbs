@@ -1,11 +1,9 @@
 <td>
-  {{#link-to 'strains.show' data.strain.id}}
-    {{scientific-name strain=data.strain}}
-  {{/link-to}}
+  {{scientific-name strain=data.strain}}
 </td>
 <td>
   {{data.characteristic.characteristicName}}
 </td>
 <td>
-  {{{data.computedValue}}}
+  {{{data.value}}}
 </td>

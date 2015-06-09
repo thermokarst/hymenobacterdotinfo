@@ -17,7 +17,7 @@ export default DS.Model.extend({
   updatedBy: DS.attr('number'),
   deletedBy: DS.attr('number'),
   totalMeasurements: DS.attr('number'),
-  fullName: Ember.computed('speciesName', 'strainName', function() {
-    return this.get('speciesName') + ' (' + this.get('strainName') + ')';
+  fullName: Ember.computed('species.speciesName', 'strainName', function() {
+    return this.get('species.speciesName') + ' (strain ' + this.get('strainName') + ')';
   })
 });

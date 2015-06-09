@@ -1,0 +1,29 @@
+<div class="grid-12 gutter-50">
+  <div class="span-12">
+    {{search-button isLoading=isLoading action='search'}}
+  </div>
+</div>
+<div class="grid-12 gutter-50">
+  <div class="span-12">
+    <h3>Total matching measurements: {{measurements.length}}</h3>
+  </div>
+</div>
+
+{{#if isLoading}}
+  {{loading-panel}}
+{{else}}
+  <table class="flakes-table">
+    <thead>
+      <tr>
+        <th>Strain</th>
+        <th>Characteristic</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each measurements as |measurement|}}
+        {{measurement-index-row data=measurement}}
+      {{/each}}
+    </tbody>
+  </table>
+{{/if}}
