@@ -1,5 +1,5 @@
 <div class="span-1">
-  <fieldset {{bind-attr class=":flakes-information-box isEditing"}}>
+  <fieldset class="flakes-information-box {{if isEditing 'is-editing'}}">
     <legend>
       Species
         {{#if isEditing}}
@@ -74,7 +74,7 @@
     {{#if canEdit}}
       <div class="grid-4">
         <div class="span-1">
-          <a {{bind-attr class=":smaller isEditing:button-red:button-gray"}} {{action 'cancel'}}>
+          <a class="smaller {{if isEditing 'button-red' 'button-gray'}}" {{action 'cancel'}}>
             {{#if isEditing}}Cancel{{else}}Edit{{/if}}
           </a>
           {{#if isEditing}}
