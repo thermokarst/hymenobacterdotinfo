@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend(Ember.SortableMixin, {
   tagName: 'table',
   classNames: ['flakes-table'],
+  sortProperties: [],
 
   actions: {
     sortBy: function(property, ascending) {

@@ -3,4 +3,10 @@
 
 {{add-button label="Add Species" link="species.new"}}
 
-{{sortable-table content=model tableAttrs=tableAttrs row=row}}
+{{
+  sortable-table
+  content=model
+  tableAttrs=tableAttrs
+  row=row
+  sortProperties=sort
+}}

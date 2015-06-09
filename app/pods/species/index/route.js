@@ -13,5 +13,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     controller.set('model', model);
     controller.set('tableAttrs', tableAttrs);
     controller.set('row', 'species-index-row');
+    controller.set('sort', ['speciesName']);
   },
 });
