@@ -5,7 +5,7 @@
         {{#if isEditing}}
           {{input value=strain.strainName}}
         {{else}}
-          {{strain.strainName}}
+          <em>{{strain.strainName}}</em>
         {{/if}}
         {{display-errors a=strain.errors.strainName}}
     </legend>

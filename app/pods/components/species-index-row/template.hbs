@@ -9,7 +9,7 @@
   {{#each data.strains as |strain index|}}
     {{if index ","}}
     {{#link-to 'strains.show' strain.id}}
-      {{strain.strainName}}
+      {{strain-name strain=strain}}
     {{/link-to}}
   {{/each}}
 </td>

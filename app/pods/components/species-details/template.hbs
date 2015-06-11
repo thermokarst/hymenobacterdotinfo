@@ -5,7 +5,7 @@
         {{#if isEditing}}
           {{input value=species.speciesName}}
         {{else}}
-          {{species.speciesName}}
+          <em>{{species.speciesName}}</em>
         {{/if}}
         {{display-errors a=species.errors.speciesName}}
     </legend>
@@ -18,7 +18,7 @@
           {{#each species.strains as |strain index|}}
             {{if index ","}}
             {{#link-to 'strains.show' strain.id}}
-              {{strain.strainName}}
+              {{strain-name strain=strain}}
             {{/link-to}}
           {{/each}}
           {{#unless species.isNew}}
