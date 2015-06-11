@@ -61,7 +61,7 @@
           {{#if isEditing}}
             {{input value=strain.genbank}}
           {{else}}
-            {{strain.genbank}}
+            {{genbank-url genbank=strain.genbank}}
           {{/if}}
           {{display-errors a=strain.errors.genbank}}
         </dd>
