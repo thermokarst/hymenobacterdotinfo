@@ -1,10 +1,13 @@
 import DS from 'ember-data';
 import Ember from 'ember';
-import config from '../../config/environment';
 
 export default DS.RESTAdapter.extend({
-  namespace: 'api/' + config.genus,
-  host: config.apiURL,
+  namespace: function() {
+    return 'api/' + this.get('globals.genus');
+  }.property(),
+  host: function() {
+    return this.get('globals.apiURL');
+  }.property(),
   coalesceFindRequests: true,
   ajaxError: function(jqXHR) {
     // http://stackoverflow.com/a/24027443
