@@ -16,26 +16,26 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     models.strains = models.strains.sortBy('fullName');
     let strains = models.strains.map((strain)=>{
       return Ember.Object.create({
-        val: strain.get('id'),
-        lab: strain.get('fullName'),
+        id: strain.get('id'),
+        text: strain.get('fullName'),
       });
     });
     strains.unshiftObjects(Ember.Object.create({
-      val: 'all',
-      lab: 'All Strains',
+      id: 'all',
+      text: 'All Strains',
     }));
     controller.set('strains', strains);
 
     models.characteristics = models.characteristics.sortBy('characteristicName');
     let characteristics = models.characteristics.map((characteristic)=>{
       return Ember.Object.create({
-        val: characteristic.get('id'),
-        lab: characteristic.get('characteristicName'),
+        id: characteristic.get('id'),
+        text: characteristic.get('characteristicName'),
       });
     });
     characteristics.unshiftObjects(Ember.Object.create({
-      val: 'all',
-      lab: 'All Characteristics',
+      id: 'all',
+      text: 'All Characteristics',
     }));
     controller.set('characteristics', characteristics);
   },

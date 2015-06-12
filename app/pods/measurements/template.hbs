@@ -5,11 +5,12 @@
   </div>
   <div class="span-8">
     {{
-      view "select"
+      select-2
+      multiple=true
       content=strains
-      optionValuePath="content.val"
-      optionLabelPath="content.lab"
-      value=selectedStrain
+      value=selectedStrains
+      optionValuePath="id"
+      placeholder="Choose a strain"
     }}
   </div>
 </div>
@@ -19,11 +20,12 @@
   </div>
   <div class="span-8">
     {{
-      view "select"
+      select-2
+      multiple=true
       content=characteristics
-      optionValuePath="content.val"
-      optionLabelPath="content.lab"
       value=selectedCharacteristic
+      optionValuePath="id"
+      placeholder="Choose a characteristic"
     }}
   </div>
 </div>
