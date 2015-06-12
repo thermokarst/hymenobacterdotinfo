@@ -24,6 +24,6 @@ export default DS.Model.extend({
     return `${this.get('species.speciesName')} (strain ${this.get('strainName')})`;
   }.property('species', 'strainName').readOnly(),
   fullNameMU: function() {
-    return `<em>${this.get('species')}</em> ${this.get('strainNameMU')}`;
+    return `<em>${this.get('species.speciesName')}</em> ${this.get('strainNameMU')}`;
   }.property('species', 'strainNameMU').readOnly(),
 });
