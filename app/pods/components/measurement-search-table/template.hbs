@@ -10,6 +10,7 @@
 </div>
 
 {{#if isLoading}}
+  {{!-- This doesn't work yet --}}
   {{loading-panel}}
 {{else}}
   <table class="flakes-table">
@@ -22,7 +23,11 @@
     </thead>
     <tbody>
       {{#each measurements as |measurement|}}
-        {{measurement-index-row data=measurement}}
+        <tr>
+          <td>{{{measurement.strain.fullNameMU}}}</td>
+          <td>{{measurement.characteristic.characteristicName}}</td>
+          <td>{{{measurement.value}}}</td>
+        </tr>
       {{/each}}
     </tbody>
   </table>
