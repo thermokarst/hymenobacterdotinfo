@@ -4,39 +4,28 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function() {
     return Ember.RSVP.hash({
-      species: this.store.findAll('species'),
+      species: this.store.findAll('species'), // need this bc async
       strains: this.store.findAll('strain'),
       characteristics: this.store.findAll('characteristic'),
     });
   },
   setupController: function(controller, models) {
-    controller.set('measurements', []);
-
     // Set up search parameters
-    models.strains = models.strains.sortBy('fullName');
-    let strains = models.strains.map((strain)=>{
-      return Ember.Object.create({
-        id: strain.get('id'),
-        text: strain.get('fullName'),
-      });
-    });
-    strains.unshiftObjects(Ember.Object.create({
-      id: 'all',
-      text: 'All Strains',
-    }));
-    controller.set('strains', strains);
+    let selects = [
+      { model: 'strains', id: 'id', text: 'fullName' },
+      { model: 'characteristics', id: 'id', text: 'characteristicName' },
+    ];
 
-    models.characteristics = models.characteristics.sortBy('characteristicName');
-    let characteristics = models.characteristics.map((characteristic)=>{
-      return Ember.Object.create({
-        id: characteristic.get('id'),
-        text: characteristic.get('characteristicName'),
+    selects.forEach((item, index, enumerable) => {
+      models[item.model] = models[item.model].sortBy(item.text);
+      let temp = models[item.model].map((data) => {
+        return Ember.Object.create({
+          id: data.get(item.id),
+          text: data.get(item.text),
+        });
       });
+      controller.set(item.model, temp);
     });
-    characteristics.unshiftObjects(Ember.Object.create({
-      id: 'all',
-      text: 'All Characteristics',
-    }));
-    controller.set('characteristics', characteristics);
+
   },
 });
