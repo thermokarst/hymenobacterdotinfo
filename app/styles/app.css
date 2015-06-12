@@ -2,6 +2,10 @@
   padding: 2em 0em 0em 0em;
 }
 
+.select2-container {
+  width: 100%;
+}
+
 .flakes-table thead tr th span {
   cursor: pointer;
 }

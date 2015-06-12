@@ -1,31 +1,61 @@
 <h2>{{genus-name}} Measurements</h2>
-<div class="grid-12 gutter-50">
-  <div class="span-4">
-    Strains
-  </div>
-  <div class="span-8">
-    {{
-      view "select"
-      content=strains
-      optionValuePath="content.val"
-      optionLabelPath="content.lab"
-      value=selectedStrain
-    }}
-  </div>
-</div>
-<div class="grid-12 gutter-50">
-  <div class="span-4">
-    Characteristics
-  </div>
-  <div class="span-8">
-    {{
-      view "select"
-      content=characteristics
-      optionValuePath="content.val"
-      optionLabelPath="content.lab"
-      value=selectedCharacteristic
-    }}
+<div class="grid-1 gutter-50">
+  <div class="span-1">
+    <fieldset>
+      <form>
+        <ul>
+          <li>
+            <label>Species</label>
+            {{
+              select-2
+              multiple=true
+              content=strains
+              value=selectedStrains
+              optionValuePath="id"
+              placeholder="All strains"
+            }}
+          </li>
+          <li>
+            <label>Characteristics</label>
+            {{
+              select-2
+              multiple=true
+              content=characteristics
+              value=selectedCharacteristics
+              optionValuePath="id"
+              placeholder="Choose a characteristic"
+            }}
+          </li>
+          <li>
+            {{search-button isLoading=isLoading action='search'}}
+          </li>
+        </ul>
+      </form>
+    </fieldset>
   </div>
 </div>
 
-{{measurement-search-table}}
+<div class="grid-12 gutter-50">
+  <div class="span-12">
+    <h3>Total matching measurements: {{measurements.length}}</h3>
+  </div>
+</div>
+
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th>Strain</th>
+      <th>Characteristic</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each measurements as |measurement|}}
+      <tr>
+        <td>{{{measurement.strain.fullNameMU}}}</td>
+        <td>{{measurement.characteristic.characteristicName}}</td>
+        <td>{{{measurement.value}}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -41,7 +41,7 @@ module.exports = function(environment) {
       'font-src': "'self'",
       'connect-src': "'self' http://127.0.0.1:4200",
       'img-src': "'self'",
-      'style-src': "'self'",
+      'style-src': "'self' 'unsafe-inline'",
       'media-src': "'self'"
     }
   }

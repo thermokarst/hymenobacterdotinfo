@@ -18,7 +18,7 @@
           {{#each species.strains as |strain index|}}
             {{if index ","}}
             {{#link-to 'strains.show' strain.id}}
-              {{strain-name strain=strain}}
+              {{{strain.strainNameMU}}}
             {{/link-to}}
           {{/each}}
           {{#unless species.isNew}}

@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.Model.extend({
   measurements: DS.hasMany('measurements', { async: true }),
@@ -17,7 +16,14 @@ export default DS.Model.extend({
   updatedBy: DS.attr('number'),
   deletedBy: DS.attr('number'),
   totalMeasurements: DS.attr('number'),
-  fullName: Ember.computed('species.speciesName', 'strainName', function() {
-    return this.get('species.speciesName') + ' (strain ' + this.get('strainName') + ')';
-  })
+  strainNameMU: function() {
+    let type = this.get('typeStrain') ? '<sup>T</sup>' : '';
+    return `${this.get('strainName')}${type}`;
+  }.property('strainName', 'typeStrain').readOnly(),
+  fullName: function() {
+    return `${this.get('species.speciesName')} (strain ${this.get('strainName')})`;
+  }.property('species', 'strainName').readOnly(),
+  fullNameMU: function() {
+    return `<em>${this.get('species.speciesName')}</em> ${this.get('strainNameMU')}`;
+  }.property('species', 'strainNameMU').readOnly(),
 });
