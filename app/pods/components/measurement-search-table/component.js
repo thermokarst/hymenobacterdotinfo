@@ -12,7 +12,6 @@ export default Ember.Component.extend({
           this.set('measurements', measurements);
         });
         this.set('isLoading', false);
-        console.log(this.get('isLoading'));
         return false;
       }
       let search = {};
