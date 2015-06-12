@@ -16,13 +16,14 @@ export default DS.Model.extend({
   updatedBy: DS.attr('number'),
   deletedBy: DS.attr('number'),
   totalMeasurements: DS.attr('number'),
+  strainNameMU: function() {
+    let type = this.get('typeStrain') ? '<sup>T</sup>' : '';
+    return `${this.get('strainName')}${type}`;
+  }.property('strainName', 'typeStrain').readOnly(),
   fullName: function() {
     return `${this.get('species.speciesName')} (strain ${this.get('strainName')})`;
   }.property('species', 'strainName').readOnly(),
   fullNameMU: function() {
-    let species = `<em>${this.get('species.speciesName')}</em>`,
-      type = this.get('typeStrain') ? '<sup>T</sup>' : '',
-      strain = `(strain ${this.get('strainName')}${type})`;
-    return `${species} ${strain}`;
-  }.property('species', 'strainName').readOnly(),
+    return `<em>${this.get('species')}</em> ${this.get('strainNameMU')}`;
+  }.property('species', 'strainNameMU').readOnly(),
 });
