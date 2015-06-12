@@ -10,13 +10,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     });
   },
   setupController: function(controller, models) {
-    var tableAttrs = [
-      { name: 'Strain', attr: 'strain.strainName' },
-      { name: 'Characteristic', attr: 'characteristic.characteristicName' },
-      { name: 'Value', attr: 'computedValue'}
-    ];
-    controller.set('tableAttrs', tableAttrs);
-    controller.set('row', 'measurement-index-row');
     controller.set('measurements', []);
 
     // Set up search parameters
