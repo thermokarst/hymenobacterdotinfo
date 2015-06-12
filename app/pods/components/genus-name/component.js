@@ -4,5 +4,5 @@ export default Ember.Component.extend({
   tagName: 'em',
   genus: function() {
     return this.get('globals.genus').capitalize();
-  }.property(),
+  }.property().readOnly(),
 });
