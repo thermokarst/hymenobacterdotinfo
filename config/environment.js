@@ -8,68 +8,46 @@ module.exports = function(environment) {
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
+        // enable experimental features on an ember canary build
       }
     },
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      genus: 'hymenobacter',
     },
-    genus: 'hymenobacter',
     podModulePrefix: 'hymenobacterdotinfo/pods',
-  };
-
-  if (environment === 'development') {
-    ENV['simple-auth'] = {
+    'simple-auth': {
       session: 'session:custom',
       authorizer: 'simple-auth-authorizer:token',
-      crossOriginWhitelist: ['http://127.0.0.1:4200']
-    }
-    ENV['simple-auth-token'] = {
-      serverTokenEndpoint: '/api/authenticate',
+    },
+    'simple-auth-token': {
       identificationField: 'email',
       passwordField: 'password',
       tokenPropertyName: 'token',
       authorizationPrefix: 'Bearer ',
       authorizationHeaderName: 'Authorization',
-    }
-    ENV.apiURL = 'http://127.0.0.1:4200';
-    ENV.contentSecurityPolicy = {
+    },
+    contentSecurityPolicy: {
       'default-src': "'none'",
       'script-src': "'self'",
       'font-src': "'self'",
-      'connect-src': "'self' http://127.0.0.1:4200",
       'img-src': "'self'",
       'style-src': "'self' 'unsafe-inline'",
       'media-src': "'self'"
-    }
+    },
+  };
+
+  if (environment === 'development') {
+    ENV['simple-auth']['crossOriginWhitelist'] = ['http://127.0.0.1:4200'];
+    ENV['simple-auth-token']['serverTokenEndpoint'] = '/api/authenticate';
+    ENV.apiURL = 'http://127.0.0.1:4200';
+    ENV.contentSecurityPolicy['connect-src'] = "'self' http://127.0.0.1:4200";
   }
 
   if (environment === 'test') {
-    ENV['simple-auth'] = {
-      session: 'session:custom',
-      authorizer: 'simple-auth-authorizer:token',
-      crossOriginWhitelist: ['https://bactdb-test.herokuapp.com']
-    }
-    ENV['simple-auth-token'] = {
-      serverTokenEndpoint: 'https://bactdb-test.herokuapp.com/api/authenticate',
-      identificationField: 'email',
-      passwordField: 'password',
-      tokenPropertyName: 'token',
-      authorizationPrefix: 'Bearer ',
-      authorizationHeaderName: 'Authorization',
-    }
+    ENV['simple-auth']['crossOriginWhitelist'] = ['https://bactdb-test.herokuapp.com'];
+    ENV['simple-auth-token']['serverTokenEndpoint'] = 'https://bactdb-test.herokuapp.com/api/authenticate';
     ENV.apiURL = 'https://bactdb-test.herokuapp.com';
-    ENV.contentSecurityPolicy = {
-      'default-src': "'none'",
-      'script-src': "'self'",
-      'font-src': "'self'",
-      'connect-src': "'self' https://bactdb-test.herokuapp.com",
-      'img-src': "'self'",
-      'style-src': "'self'",
-      'media-src': "'self'"
-    }
+    ENV.contentSecurityPolicy['connect-src'] = "'self' https://bactdb-test.herokuapp.com";
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
@@ -77,29 +55,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV['simple-auth'] = {
-      session: 'session:custom',
-      authorizer: 'simple-auth-authorizer:token',
-      crossOriginWhitelist: ['https://bactdb.herokuapp.com']
-    }
-    ENV['simple-auth-token'] = {
-      serverTokenEndpoint: 'https://bactdb.herokuapp.com/api/authenticate',
-      identificationField: 'email',
-      passwordField: 'password',
-      tokenPropertyName: 'token',
-      authorizationPrefix: 'Bearer ',
-      authorizationHeaderName: 'Authorization',
-    }
+    ENV['simple-auth']['crossOriginWhitelist'] = ['https://bactdb.herokuapp.com'];
+    ENV['simple-auth-token']['serverTokenEndpoint'] = 'https://bactdb.herokuapp.com/api/authenticate';
     ENV.apiURL = 'https://bactdb.herokuapp.com';
-    ENV.contentSecurityPolicy = {
-      'default-src': "'none'",
-      'script-src': "'self'",
-      'font-src': "'self'",
-      'connect-src': "'self' https://bactdb.herokuapp.com",
-      'img-src': "'self'",
-      'style-src': "'self'",
-      'media-src': "'self'"
-    }
+    ENV.contentSecurityPolicy['connect-src'] = "'self' https://bactdb.herokuapp.com";
   }
 
   return ENV;

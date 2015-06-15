@@ -2,7 +2,7 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 var globals = Ember.Object.extend({
-  genus: config.genus,
+  genus: config.APP.genus,
   apiURL: config.apiURL,
 });
 

@@ -6,8 +6,5 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     invalidateSession: function() {
       this.get('session').invalidate();
     },
-    loading: function() {
-      return true;
-    },
   }
 });

@@ -1,28 +1,28 @@
   <div class="flakes-navigation">
     {{#link-to 'index' class='logo'}}
-      {{site-name}}
+      {{globals.genus}}.info
     {{/link-to}}
     {{#if session.isAuthenticated}}
       <ul>
         {{#link-to 'species' tagName='li' href=false}}
-          {{#link-to 'species'}}Species{{/link-to}}
+          {{link-to 'Species' 'species'}}
         {{/link-to}}
         {{#link-to 'strains' tagName='li' href=false}}
-          {{#link-to 'strains'}}Strains{{/link-to}}
+          {{link-to 'Strains' 'strains'}}
         {{/link-to}}
         {{#link-to 'characteristics' tagName='li' href=false}}
-          {{#link-to 'characteristics'}}Characteristics{{/link-to}}
+          {{link-to 'Characteristics' 'characteristics'}}
         {{/link-to}}
         {{#link-to 'measurements' tagName='li' href=false}}
-          {{#link-to 'measurements'}}Measurements{{/link-to}}
+          {{link-to 'Measurements' 'measurements'}}
         {{/link-to}}
         {{#link-to 'about' tagName='li' href=false}}
-          {{#link-to 'about'}}About{{/link-to}}
+          {{link-to 'About' 'about'}}
         {{/link-to}}
       </ul>
       <p class="foot">
         {{session.currentUser.name}}<br>
-        <a {{ action 'invalidateSession' }}>Logout</a>
+        <a {{action 'invalidateSession'}}>Logout</a>
       </p>
     {{else}}
       <p class="foot">
@@ -36,7 +36,7 @@
   <div class="flakes-content">
     <div class="flakes-mobile-top-bar">
       <a href="" class="logo-wrap">
-        {{site-name}}
+        {{globals.genus}}.info
       </a>
       <a href="" class="navigation-expand-target">
         <img src="img/navigation-expand-target.png" height="26px">
