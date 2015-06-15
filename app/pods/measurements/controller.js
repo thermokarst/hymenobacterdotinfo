@@ -3,11 +3,10 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     search: function() {
-      let search = {
+      this.store.find('measurement', {
         strain: this.get('selectedStrains'),
         characteristic: this.get('selectedCharacteristics'),
-      };
-      this.store.find('measurement', search).then((measurements)=>{
+      }).then((measurements)=>{
         this.set('measurements', measurements);
       });
     }

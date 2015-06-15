@@ -16,7 +16,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       { model: 'characteristics', id: 'id', text: 'characteristicName' },
     ];
 
-    selects.forEach((item, index, enumerable) => {
+    selects.forEach((item /*, index, enumerable*/) => {
       models[item.model] = models[item.model].sortBy(item.text);
       let temp = models[item.model].map((data) => {
         return Ember.Object.create({
