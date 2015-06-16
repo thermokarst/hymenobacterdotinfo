@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   measurements     : DS.hasMany('measurements', { async: true }),
@@ -27,6 +28,6 @@ export default DS.Model.extend({
   }.property('species', 'strainName').readOnly(),
 
   fullNameMU: function() {
-    return `<em>${this.get('species.speciesName')}</em> ${this.get('strainNameMU')}`;
+    return Ember.String.htmlSafe(`<em>${this.get('species.speciesName')}</em> ${this.get('strainNameMU')}`);
   }.property('species', 'strainNameMU').readOnly(),
 });

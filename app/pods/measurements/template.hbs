@@ -41,21 +41,14 @@
   </div>
 </div>
 
-<table class="flakes-table">
-  <thead>
-    <tr>
-      <th>Strain</th>
-      <th>Characteristic</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each measurements as |measurement|}}
-      <tr>
-        <td>{{{measurement.strain.fullNameMU}}}</td>
-        <td>{{measurement.characteristic.characteristicName}}</td>
-        <td>{{{measurement.value}}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{#if measurementsEmpty}}
+  <span>No results</span>
+{{else}}
+  {{
+    ember-table
+    columns=tableColumns
+    content=tableContent
+    columnMode='fluid'
+    hasFooter=false
+  }}
+{{/if}}
