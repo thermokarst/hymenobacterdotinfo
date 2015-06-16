@@ -2,7 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   characteristicName: DS.attr('string'),
-  characteristicType: DS.attr('string'),
+  characteristicType: DS.belongsTo('characteristicType', { async: true }),
   strains           : DS.hasMany('strain', { async: true }),
   measurements      : DS.hasMany('measurements', { async: true }),
   createdAt         : DS.attr('date'),

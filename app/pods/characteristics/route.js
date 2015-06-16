@@ -3,14 +3,17 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function() {
-    return this.store.findAll('characteristic');
+    return Ember.RSVP.hash({
+      characteristicTypes: this.store.findAll('characteristic-type'),
+      characteristics: this.store.findAll('characteristic'),
+    });
   },
-  setupController: function(controller, model) {
+  setupController: function(controller, models) {
     var tableAttrs = [
       { name: 'Name', attr: 'characteristicName' },
-      { name: 'Type', attr: 'characteristicType' }
+      { name: 'Type', attr: 'characteristicType.characteristicTypeName' }
     ];
-    controller.set('model', model);
+    controller.set('model', models.characteristics);
     controller.set('tableAttrs', tableAttrs);
     controller.set('row', 'characteristic-index-row');
     controller.set('sort', ['characteristicName']);

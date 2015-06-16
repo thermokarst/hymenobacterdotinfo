@@ -6,7 +6,7 @@ module.exports = function(app) {
     {
       id: 1,
       characteristicName: 'α-fucosidase (API ZYM)',
-      characteristicType: 'Type 1',
+      characteristicType: 1,
       strains: [1,2],
       measurements: [1,6],
       createdAt: "0001-01-01T00:00:00Z",
@@ -19,7 +19,7 @@ module.exports = function(app) {
     {
       id: 2,
       characteristicName: 'α-glucosidase',
-      characteristicType: 'Type 2',
+      characteristicType: 2,
       strains: [1,2],
       measurements: [2,7],
       createdAt: "0001-01-01T00:00:00Z",
@@ -32,7 +32,7 @@ module.exports = function(app) {
     {
       id: 3,
       characteristicName: 'Chloramphenicol',
-      characteristicType: 'Type 3',
+      characteristicType: 3,
       strains: [1,2],
       measurements: [3,8],
       createdAt: "0001-01-01T00:00:00Z",
@@ -45,7 +45,7 @@ module.exports = function(app) {
     {
       id: 4,
       characteristicName: 'Bacitracin',
-      characteristicType: 'Type 1',
+      characteristicType: 1,
       strains: [1,2],
       measurements: [4,9],
       createdAt: "0001-01-01T00:00:00Z",
@@ -58,7 +58,7 @@ module.exports = function(app) {
     {
       id: 5,
       characteristicName: 'Indole',
-      characteristicType: 'Type 2',
+      characteristicType: 2,
       strains: [1,2],
       measurements: [5,10],
       createdAt: "0001-01-01T00:00:00Z",
