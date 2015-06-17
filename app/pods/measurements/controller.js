@@ -38,10 +38,10 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    search: function() {
+    search: function(selectedStrains, selectedCharacteristics) {
       this.store.find('measurement', {
-        strain: this.get('selectedStrains'),
-        characteristic: this.get('selectedCharacteristics'),
+        strain: selectedStrains,
+        characteristic: selectedCharacteristics,
       }).then((measurements)=>{
         this.set('measurements', measurements);
       });

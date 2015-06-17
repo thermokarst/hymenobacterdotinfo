@@ -1,0 +1,33 @@
+<div class="span-1">
+  <fieldset>
+    <form>
+      <ul>
+        <li>
+          <label>Strains</label>
+          {{
+            select-2
+            multiple=true
+            content=species
+            value=selectedStrains
+            optionValuePath="id"
+            placeholder="All strains"
+          }}
+        </li>
+        <li>
+          <label>Characteristics</label>
+          {{
+            select-2
+            multiple=true
+            content=characteristicTypes
+            value=selectedCharacteristics
+            optionValuePath="id"
+            placeholder="All characteristics"
+          }}
+        </li>
+        <li>
+          {{search-button isLoading=isLoading action='search'}}
+        </li>
+      </ul>
+    </form>
+  </fieldset>
+</div>
