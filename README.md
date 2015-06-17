@@ -1,4 +1,4 @@
-# hymenobacterdotinfo
+# clostridiumdotinfo
 
 Detailed information to come --- for now see the ember-cli boilerplate below.
 

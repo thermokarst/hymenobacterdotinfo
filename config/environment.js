@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'hymenobacterdotinfo',
+    modulePrefix: 'clostridiumdotinfo',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -12,9 +12,9 @@ module.exports = function(environment) {
       }
     },
     APP: {
-      genus: 'hymenobacter',
+      genus: 'clostridium',
     },
-    podModulePrefix: 'hymenobacterdotinfo/pods',
+    podModulePrefix: 'clostridiumdotinfo/pods',
     'simple-auth': {
       session: 'session:custom',
       authorizer: 'simple-auth-authorizer:token',

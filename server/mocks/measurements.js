@@ -205,5 +205,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/hymenobacter/measurements', measurementsRouter);
+  app.use('/api/clostridium/measurements', measurementsRouter);
 };

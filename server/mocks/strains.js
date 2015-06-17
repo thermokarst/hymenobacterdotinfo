@@ -126,5 +126,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/hymenobacter/strains', strainsRouter);
+  app.use('/api/clostridium/strains', strainsRouter);
 };

@@ -109,5 +109,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/hymenobacter/characteristics', characteristicsRouter);
+  app.use('/api/clostridium/characteristics', characteristicsRouter);
 };

@@ -5,7 +5,7 @@ module.exports = function(app) {
   var SPECIES = [
     {
       id: 1,
-      genusName: "Hymenobacter",
+      genusName: "Clostridium",
       speciesName: "One",
       typeSpecies: true,
       etymology: "Test Etymology",
@@ -20,7 +20,7 @@ module.exports = function(app) {
     },
     {
       id: 2,
-      genusName: "Hymenobacter",
+      genusName: "Clostridium",
       speciesName: "Two",
       typeSpecies: true,
       etymology: "Test Etymology",
@@ -35,7 +35,7 @@ module.exports = function(app) {
     },
     {
       id: 3,
-      genusName: "Hymenobacter",
+      genusName: "Clostridium",
       speciesName: "Three",
       typeSpecies: true,
       etymology: "Test Etymology",
@@ -50,7 +50,7 @@ module.exports = function(app) {
     },
     {
       id: 4,
-      genusName: "Hymenobacter",
+      genusName: "Clostridium",
       speciesName: "Four",
       typeSpecies: true,
       etymology: "Test Etymology",
@@ -101,5 +101,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/hymenobacter/species', speciesRouter);
+  app.use('/api/clostridium/species', speciesRouter);
 };

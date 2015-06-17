@@ -1,7 +1,7 @@
 {
-  "name": "hymenobacterdotinfo",
+  "name": "clostridiumdotinfo",
   "version": "0.0.0",
-  "description": "Small description for hymenobacterdotinfo goes here",
+  "description": "Small description for clostridiumdotinfo goes here",
   "private": true,
   "directories": {
     "doc": "doc",
