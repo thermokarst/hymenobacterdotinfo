@@ -1,0 +1,32 @@
+<h2>{{genus-name}} - Compare Strains</h2>
+
+{{measurement-search-panel search='search'}}
+
+{{#if dataEmpty}}
+  <div class="flakes-message information">
+    Please select one or more strains and one or more characteristics.
+  </div>
+{{else}}
+<div>
+  <table class="flakes-table">
+    <thead>
+      <tr>
+        <th>Characteristic</th>
+        {{#each strains as |strain|}}
+          <th>{{strain.fullNameMU}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each data as |row|}}
+        <tr>
+          <td>{{row.characteristic}}</td>
+          {{#each strains as |strain|}}
+            <td>{{get-property row strain.id}}</td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{/if}}

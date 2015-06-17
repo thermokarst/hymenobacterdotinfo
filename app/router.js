@@ -10,6 +10,8 @@ Router.map(function() {
   this.route('about');
   this.route('characteristics');
   this.route('users');
+  this.route('measurements');
+  this.route('compare');
 
   this.route('species', function() {
     this.route('new');
@@ -19,8 +21,6 @@ Router.map(function() {
     this.route('new');
     this.route('show', { path: ':strain_id' });
   });
-
-  this.route('measurements');
 });
 
 export default Router;
