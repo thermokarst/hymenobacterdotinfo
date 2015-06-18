@@ -1,6 +1,11 @@
 <h2>{{genus-name}} - Compare Strains</h2>
 
-{{measurement-search-panel search='search'}}
+{{
+  measurement-search-panel
+  search='search'
+  strainLabel='Select one or more strains'
+  charLabel='Select one or more characteristics'
+}}
 
 {{#if dataEmpty}}
   <div class="flakes-message information">
