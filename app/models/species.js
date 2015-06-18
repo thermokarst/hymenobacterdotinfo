@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import config from '../config/environment';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   speciesName : DS.attr('string'),
@@ -14,4 +15,8 @@ export default DS.Model.extend({
   createdBy   : DS.attr('number'),
   updatedBy   : DS.attr('number'),
   deletedBy   : DS.attr('number'),
+
+  speciesNameMU: function() {
+    return Ember.String.htmlSafe(`<em>${this.get('speciesName')}</em>`);
+  }.property('speciesName').readOnly(),
 });

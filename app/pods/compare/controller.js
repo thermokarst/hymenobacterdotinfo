@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
       selectedStrains.forEach((strain) => {
         let s = this.store.getById('strain', strain);
         strains.pushObject(s);
-      })
+      });
       this.set('strains', strains);
 
       this.store.find('measurement', {
