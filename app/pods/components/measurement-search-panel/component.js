@@ -11,9 +11,10 @@ export default Ember.Component.extend({
       characteristics: this.store.findAll('characteristic'),
     }).then((models) => {
       // Set up search parameters
+      // Clean up sort order
       let selects = [
-        { model: 'species', id: 'id', text: 'speciesName',
-          children: 'strains', cid: 'id', ctext: 'fullName' },
+        { model: 'species', id: 'id', text: 'speciesNameMU',
+          children: 'strains', cid: 'id', ctext: 'strainNameMU' },
         { model: 'characteristicTypes', id: 'id', text: 'characteristicTypeName',
           children: 'characteristics', cid: 'id', ctext: 'characteristicName' },
       ];
@@ -25,7 +26,8 @@ export default Ember.Component.extend({
         models[item.model] = models[item.model].sortBy(item.text);
         let temp = models[item.model].map((data) => {
           let temp_children = [];
-          data.get(item.children).forEach((child) => {
+          let sorted_children = data.get(item.children).sortBy(item.ctext);
+          sorted_children.forEach((child) => {
             temp_children.push({id: child.get(item.cid), text: child.get(item.ctext)});
           });
           return {

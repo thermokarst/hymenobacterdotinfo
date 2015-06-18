@@ -7,12 +7,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
   setupController: function(controller, model) {
     var tableAttrs = [
-      { name: 'Name', attr: 'fullName' },
+      { name: 'Name', attr: 'fullNameMU' },
       { name: 'Total Measurements', attr: 'totalMeasurements' }
     ];
     controller.set('model', model);
     controller.set('tableAttrs', tableAttrs);
     controller.set('row', 'strain-index-row');
-    controller.set('sort', ['fullName']);
+    controller.set('sort', ['fullNameMU']);
   },
 });
