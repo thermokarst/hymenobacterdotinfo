@@ -20,6 +20,7 @@ module.exports = function(app) {
       deletedBy: null,
       totalMeasurements: 5,
       notes: "Test notes",
+      sortOrder: 1,
     },
     {
       id: 2,
@@ -38,6 +39,7 @@ module.exports = function(app) {
       deletedBy: null,
       totalMeasurements: 5,
       notes: "Test notes",
+      sortOrder: 2,
     },
     {
       id: 3,
@@ -56,6 +58,7 @@ module.exports = function(app) {
       deletedBy: null,
       totalMeasurements: 0,
       notes: "Test notes",
+      sortOrder: 3,
     },
     {
       id: 4,
@@ -74,6 +77,7 @@ module.exports = function(app) {
       deletedBy: null,
       totalMeasurements: 0,
       notes: "Test notes",
+      sortOrder: 4.
     }
   ];
 

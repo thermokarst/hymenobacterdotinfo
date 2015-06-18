@@ -13,6 +13,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     controller.set('model', model);
     controller.set('tableAttrs', tableAttrs);
     controller.set('row', 'strain-index-row');
-    controller.set('sort', ['fullNameMU']);
+    controller.set('sort', ['sortOrder']);
   },
 });

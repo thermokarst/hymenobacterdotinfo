@@ -16,6 +16,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     controller.set('model', models.characteristics);
     controller.set('tableAttrs', tableAttrs);
     controller.set('row', 'characteristic-index-row');
-    controller.set('sort', ['characteristicName']);
+    controller.set('sort', ['characteristicType.characteristicTypeName', 'sortOrder']);
   },
 });

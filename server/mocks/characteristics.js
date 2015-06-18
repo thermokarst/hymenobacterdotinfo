@@ -14,7 +14,8 @@ module.exports = function(app) {
       deletedAt: null,
       createdBy: 1,
       updatedBy: 1,
-      deletedBy: null
+      deletedBy: null,
+      sortOrder: 1,
     },
     {
       id: 2,
@@ -27,7 +28,8 @@ module.exports = function(app) {
       deletedAt: null,
       createdBy: 1,
       updatedBy: 1,
-      deletedBy: null
+      deletedBy: null,
+      sortOrder: 2,
     },
     {
       id: 3,
@@ -40,7 +42,8 @@ module.exports = function(app) {
       deletedAt: null,
       createdBy: 1,
       updatedBy: 1,
-      deletedBy: null
+      deletedBy: null,
+      sortOrder: 3,
     },
     {
       id: 4,
@@ -53,7 +56,8 @@ module.exports = function(app) {
       deletedAt: null,
       createdBy: 1,
       updatedBy: 1,
-      deletedBy: null
+      deletedBy: null,
+      sortOrder: 4,
     },
     {
       id: 5,
@@ -66,7 +70,8 @@ module.exports = function(app) {
       deletedAt: null,
       createdBy: 1,
       updatedBy: 1,
-      deletedBy: null
+      deletedBy: null,
+      sortOrder: 5,
     }
   ]
 

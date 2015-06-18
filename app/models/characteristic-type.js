@@ -8,5 +8,6 @@ export default DS.Model.extend({
   deletedAt: DS.attr('date'),
   createdBy: DS.attr('number'),
   updatedBy: DS.attr('number'),
-  deletedBy: DS.attr('number')
+  deletedBy: DS.attr('number'),
+  sortOrder: DS.attr('number'),
 });
