@@ -5,7 +5,7 @@
         {{#if isEditing}}
           {{input value=strain.strainName}}
         {{else}}
-          <em>{{strain.strainName}}</em>
+          {{strain.strainNameMU}}
         {{/if}}
         {{display-errors a=strain.errors.strainName}}
     </legend>
@@ -43,7 +43,7 @@
     </div>
 
     {{! ROW 2 }}
-    <div class="grid-4">
+    <div class="grid-6">
       <dl class="span-2">
         <dt>Accession Numbers</dt>
         <dd>
@@ -64,6 +64,17 @@
             {{genbank-url genbank=strain.genbank}}
           {{/if}}
           {{display-errors a=strain.errors.genbank}}
+        </dd>
+      </dl>
+      <dl class="span-2">
+        <dt>Whole Genome Sequence</dt>
+        <dd>
+          {{#if isEditing}}
+            {{input value=strain.wholeGenomeSequence}}
+          {{else}}
+            {{strain.wholeGenomeSequence}}
+          {{/if}}
+          {{display-errors a=strain.errors.wholeGenomeSequence}}
         </dd>
       </dl>
     </div>
