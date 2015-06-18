@@ -11,17 +11,16 @@
     </legend>
 
     {{! ROW 1 }}
-    <div class="grid-4">
+    <div class="grid-4 gutter-50">
       <dl class="span-2">
         <dt>Species</dt>
         <dd>
           {{#if isEditing}}
             {{
-              view "select"
+              select-2
               content=species
-              optionValuePath="content.id"
-              optionLabelPath="content.speciesName"
-              selection=strain.species
+              optionLabelPath="speciesName"
+              value=strain.species
             }}
           {{else}}
             {{#link-to 'species.show' strain.species}}
