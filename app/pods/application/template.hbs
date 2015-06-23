@@ -1,7 +1,5 @@
   <div class="flakes-navigation">
-    {{#link-to 'index' class='logo'}}
-      {{globals.genus}}.info
-    {{/link-to}}
+    {{site-logo}}
     {{#if session.isAuthenticated}}
       <ul>
         {{#link-to 'compare' tagName='li' href=false}}
@@ -38,9 +36,7 @@
 
   <div class="flakes-content">
     <div class="flakes-mobile-top-bar">
-      <a href="" class="logo-wrap">
-        {{globals.genus}}.info
-      </a>
+      {{site-logo}}
       <a href="" class="navigation-expand-target">
         <img src="img/navigation-expand-target.png" height="26px">
       </a>
