@@ -35,7 +35,7 @@ module.exports = function(app) {
 
   authenticateRouter.post('/', function(req, res) {
     // wait for a bit to simulate cold boot of heroku api
-    var ms = 3000 + new Date().getTime();
+    var ms = 1000 + new Date().getTime();
     while (new Date() < ms){}
 
     if ((req.body.email === 'testA' || req.body.email === 'testR' || req.body.email === 'testW'  )

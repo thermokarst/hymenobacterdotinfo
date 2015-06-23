@@ -9,7 +9,6 @@ Router.map(function() {
   this.route('login');
   this.route('about');
   this.route('characteristics');
-  this.route('users');
   this.route('measurements');
   this.route('compare');
 
@@ -20,6 +19,9 @@ Router.map(function() {
   this.route('strains', function() {
     this.route('new');
     this.route('show', { path: ':strain_id' });
+  });
+  this.route('users', function() {
+    this.route('new');
   });
 });
 

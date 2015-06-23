@@ -29,9 +29,9 @@
       </p>
     {{else}}
       <p class="foot">
-        {{#link-to 'login' Login}}Login{{/link-to}}
+        {{link-to 'Login' 'login'}}
         <br>
-        Sign Up
+        {{link-to 'Sign Up' 'users.new'}}
       </p>
     {{/if}}
   </div>
