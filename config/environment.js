@@ -34,6 +34,11 @@ module.exports = function(environment) {
       'style-src': "'self' 'unsafe-inline'",
       'media-src': "'self'"
     },
+    flashMessageDefaults: {
+      sticky: true,
+      type: 'error',
+      types: ['error', 'warning', 'success', 'information', 'tip', 'message'],
+    },
   };
 
   if (environment === 'development') {

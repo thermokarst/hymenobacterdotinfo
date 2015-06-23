@@ -2,10 +2,7 @@
   <p>You are already logged in!</p>
 {{else}}
   {{#if loading}}
-    <div class="spinner">
-      <div class="double-bounce1"></div>
-      <div class="double-bounce2"></div>
-    </div>
+    {{loading-panel}}
   {{else}}
     <form {{action "authenticate" on="submit"}}>
       <h2>Log In</h2>
@@ -13,8 +10,5 @@
         {{input value=password type="password" placeholder="Password"}}
         {{input class="button-gray" type="submit" value="Log In"}}
     </form>
-  {{/if}}
-  {{#if errorMessage}}
-    <div class="flakes-message error">{{errorMessage}}</div>
   {{/if}}
 {{/if}}
