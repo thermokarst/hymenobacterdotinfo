@@ -6,5 +6,11 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     invalidateSession: function() {
       this.get('session').invalidate();
     },
+
+    didTransition: function() {
+      this.get('flashMessages').clearMessages();
+      return true;
+    },
+
   }
 });

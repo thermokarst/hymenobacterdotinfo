@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
       let authenticator = 'simple-auth-authenticator:token';
 
       this.set('loading', true);
+      // Manually clean up because there might not be a transition
       this.get('flashMessages').clearMessages();
       this.get('session').authenticate(authenticator, credentials).then(()=>{
         this.set('loading', false);

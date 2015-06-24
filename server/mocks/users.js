@@ -47,7 +47,16 @@ module.exports = function(app) {
   });
 
   usersRouter.post('/', function(req, res) {
-    res.status(201).end();
+    // req.body.user.id = Math.max.apply(Math, USERS.map(function(o){return o.id;})) + 1;
+    // res.status(201).send(req.body);
+    // NOTE - use the following for testing errors
+    res.status(422).send({
+      'errors':{
+        "name": ["Must provide a value"],
+        "email": ["Must provide a value"],
+        "password": ["Must provide a value"],
+      }
+    }).end();
   });
 
   usersRouter.get('/:id', function(req, res) {
