@@ -16,8 +16,8 @@ module.exports = function(environment) {
     },
     podModulePrefix: 'hymenobacterdotinfo/pods',
     'simple-auth': {
-      session: 'session:custom',
       authorizer: 'simple-auth-authorizer:token',
+      store: 'simple-auth-session-store:local-storage',
     },
     'simple-auth-token': {
       identificationField: 'email',
