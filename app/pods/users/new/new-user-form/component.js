@@ -6,7 +6,14 @@ export default Ember.Component.extend({
 
   actions: {
     save: function() {
-      var user = this.get('user');
+      let user = this.get('user');
+
+      // All validation is server-side, except for password verification matching
+      if (user.get('password') !== this.get('passwordConfirm')) {
+        this.get('flashMessages').clearMessages();
+        this.get('flashMessages').error("Password fields don't match");
+        return;
+      }
 
       if (user.get('isDirty')) {
         user.save().then(() => {
