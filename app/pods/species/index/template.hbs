@@ -1,12 +1,34 @@
 <h2>{{genus-name}} Species</h2>
-<h3>Total species: {{model.length}}</h3>
+<h3>Total species: {{species.length}}</h3>
 
 {{add-button label="Add Species" link="species.new"}}
 
-{{
-  sortable-table
-  content=model
-  tableAttrs=tableAttrs
-  row=row
-  sortProperties=sort
-}}
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Strains</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedSpecies as |row|}}
+      <tr>
+        <td>
+          <em>
+            {{#link-to 'species.show' row}}
+              {{row.speciesName}}
+            {{/link-to}}
+          </em>
+        </td>
+        <td>
+          {{#each row.strains as |strain index|}}
+            {{if index ","}}
+            {{#link-to 'strains.show' strain.id}}
+              {{{strain.strainNameMU}}}
+            {{/link-to}}
+          {{/each}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
