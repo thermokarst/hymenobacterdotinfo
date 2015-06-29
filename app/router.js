@@ -21,7 +21,11 @@ Router.map(function() {
     this.route('show', { path: ':strain_id' });
   });
   this.route('users', function() {
-    this.route('new');
+    this.route('new', function() {
+      this.route('fail');
+      this.route('success');
+      this.route('verify', { path: ':nonce' });
+    });
   });
 });
 
