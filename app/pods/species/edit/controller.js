@@ -12,18 +12,17 @@ export default Ember.Controller.extend({
           this.get('flashMessages').error(err.responseJSON.error);
         });
       } else {
-        this.transitionToRoute('species.index');
+        this.transitionToRoute('species.show', species.get('id'));
       }
     },
 
     cancel: function() {
       let species = this.get('model');
 
-      if (species.get('isNew')) {
-        species.deleteRecord();
-      }
+      species.get('errors').clear();
+      species.rollback();
 
-      this.transitionToRoute('species.index');
+      this.transitionToRoute('species.show', species.get('id'));
     },
 
   },

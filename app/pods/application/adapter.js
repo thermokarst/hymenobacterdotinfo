@@ -5,10 +5,13 @@ export default DS.RESTAdapter.extend({
   namespace: function() {
     return 'api/' + this.get('globals.genus');
   }.property(),
+
   host: function() {
     return this.get('globals.apiURL');
   }.property(),
+
   coalesceFindRequests: true,
+
   ajaxError: function(jqXHR) {
     // http://stackoverflow.com/a/24027443
     var error = this._super(jqXHR);
@@ -25,5 +28,5 @@ export default DS.RESTAdapter.extend({
     } else {
       return error;
     }
-  }
+  },
 });
