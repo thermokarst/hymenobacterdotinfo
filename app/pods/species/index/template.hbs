@@ -11,17 +11,18 @@
     </tr>
   </thead>
   <tbody>
-    {{#each sortedSpecies as |row|}}
+    {{#each sortedSpecies as |species|}}
       <tr>
         <td>
           <em>
-            {{#link-to 'species.show' row}}
-              {{row.speciesName}}
+            {{!-- use species.id to call show model hook --}}
+            {{#link-to 'species.show' species.id}}
+              {{species.speciesName}}
             {{/link-to}}
           </em>
         </td>
         <td>
-          {{#each row.strains as |strain index|}}
+          {{#each species.strains as |strain index|}}
             {{if index ","}}
             {{#link-to 'strains.show' strain.id}}
               {{{strain.strainNameMU}}}

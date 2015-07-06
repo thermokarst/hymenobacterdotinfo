@@ -5,10 +5,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function() {
     return Ember.RSVP.hash({
       species: this.store.findAll('species'),
+      strains: this.store.findAll('strain'),
     });
   },
 
-  setupController: function(controller, model) {
-    controller.setProperties(model);
+  setupController: function(controller, models) {
+    controller.setProperties(models);
   },
 });

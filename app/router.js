@@ -15,6 +15,7 @@ Router.map(function() {
   this.route('species', function() {
     this.route('new');
     this.route('show', { path: ':species_id' });
+    this.route('edit', { path: ':species_id/edit' });
   });
   this.route('strains', function() {
     this.route('new');

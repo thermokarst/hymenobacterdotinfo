@@ -1,0 +1,37 @@
+<form class="grid-form">
+  <fieldset>
+    <legend><em>{{species.speciesName}}</em></legend>
+    <div data-row-span="2">
+      <div data-field-span="1">
+        <label>Species Name</label>
+        {{input value=species.speciesName}}
+      </div>
+      <div data-field-span="1">
+        <label>Type Species?</label>
+        {{input type="checkbox" checked=species.typeSpecies}} {{if species.typeSpecies 'Yes' 'No'}}
+      </div>
+    </div>
+    <div data-row-span="2">
+      <div data-field-span="2">
+        <label>Strains</label>
+        {{#each species.strains as |strain index|}}
+          {{if index ","}}
+          {{#link-to 'strains.show' strain.id}}
+            {{{strain.strainNameMU}}}
+          {{/link-to}}
+        {{/each}}
+        {{add-button label="Add Strain" link="strains.new"}}
+      </div>
+    </div>
+    <div data-row-span="2">
+      <div data-field-span="2">
+        <label>Etymology</label>
+        {{textarea value=species.etymology cols="70" rows="5"}}
+      </div>
+    </div>
+  </fieldset>
+</form>
+<br>
+<a class="button-green smaller" {{action 'save'}}>
+  Save
+</a>
