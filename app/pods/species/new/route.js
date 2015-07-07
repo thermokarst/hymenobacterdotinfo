@@ -3,13 +3,7 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function() {
-    return Ember.RSVP.hash({
-      species: this.store.createRecord('species'),
-    });
-  },
-
-  setupController: function(controller, model) {
-    controller.setProperties(model);
+    return this.store.createRecord('species');
   },
 
 });

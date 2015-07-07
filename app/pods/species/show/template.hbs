@@ -2,7 +2,7 @@
   <div class="span-1">
     <fieldset class="flakes-information-box {{if isEditing 'is-editing'}}">
       <legend>
-        Species <em>{{species.speciesName}}</em>
+        Species <em>{{model.speciesName}}</em>
       </legend>
 
       {{! ROW 1 }}
@@ -10,7 +10,7 @@
         <dl class="span-2">
           <dt>Strains</dt>
           <dd>
-            {{#each species.strains as |strain index|}}
+            {{#each model.strains as |strain index|}}
               {{if index ","}}
               {{#link-to 'strains.show' strain.id}}
                 {{{strain.strainNameMU}}}
@@ -21,7 +21,7 @@
         <dl class="span-2">
           <dt>Type Species?</dt>
           <dd>
-            {{if species.typeSpecies 'Yes' 'No'}}
+            {{if model.typeSpecies 'Yes' 'No'}}
           </dd>
         </dl>
       </div>
@@ -31,7 +31,7 @@
         <dl class="span-4">
           <dt>Etymology</dt>
           <dd>
-            {{species.etymology}}
+            {{model.etymology}}
           </dd>
         </dl>
       </div>
@@ -40,15 +40,15 @@
       <div class="grid-4">
         <dl class="span-1">
           <dt>Record Created</dt>
-          <dd>{{null-time species.createdAt 'LL'}}</dd>
+          <dd>{{null-time model.createdAt 'LL'}}</dd>
         </dl>
         <dl class="span-1">
           <dt>Record Updated</dt>
-          <dd>{{null-time species.updatedAt 'LL'}}</dd>
+          <dd>{{null-time model.updatedAt 'LL'}}</dd>
         </dl>
         <dl class="span-1">
           <dt>Record Deleted</dt>
-          <dd>{{null-time species.deletedAt 'LL'}}</dd>
+          <dd>{{null-time model.deletedAt 'LL'}}</dd>
         </dl>
         <dl class="span-1"></dl>
       </div>
