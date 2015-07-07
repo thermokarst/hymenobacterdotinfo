@@ -25,11 +25,6 @@ export default DS.RESTAdapter.extend({
         });
       }
       return new DS.InvalidError(errors);
-    } else if (jqXHR && jqXHR.status === 500) {
-      var response = Ember.$.parseJSON(jqXHR.responseText);
-      if (response.error !== undefined) {
-        return new DS.InvalidError(response.error);
-      }
     } else {
       return error;
     }
