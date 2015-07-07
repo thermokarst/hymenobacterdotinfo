@@ -1,3 +1,8 @@
+.overflow-div {
+  white-space: nowrap;
+  overflow: auto;
+}
+
 .measurements-container {
   padding: 2em 0em 0em 0em;
 }
