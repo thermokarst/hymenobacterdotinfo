@@ -55,3 +55,9 @@
     </fieldset>
   </div>
 </div>
+{{#if userCanEdit}}
+  <br>
+  {{#link-to 'species.edit' model class="button-gray smaller"}}
+    Edit
+  {{/link-to}}
+{{/if}}
