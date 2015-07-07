@@ -8,14 +8,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       characteristics: this.store.findAll('characteristic'),
     });
   },
+
   setupController: function(controller, models) {
-    var tableAttrs = [
-      { name: 'Name', attr: 'characteristicName' },
-      { name: 'Type', attr: 'characteristicType.characteristicTypeName' }
-    ];
-    controller.set('model', models.characteristics);
-    controller.set('tableAttrs', tableAttrs);
-    controller.set('row', 'characteristic-index-row');
-    controller.set('sort', ['characteristicName']);
+    controller.setProperties(models);
   },
 });

@@ -1,0 +1,30 @@
+<div class="span-1">
+  <fieldset>
+    <legend>New User Signup</legend>
+    <form>
+      <ul>
+        <li>
+          <label>Name</label>
+          {{input value=user.name}}
+        </li>
+        <li>
+          <label>Email</label>
+          {{input value=user.email}}
+        </li>
+        <li>
+          <label>Password</label>
+          {{input type="password" value=user.password}}
+        </li>
+        <li>
+          <label>Password (confirm)</label>
+          {{input type="password" value=passwordConfirm}}
+        </li>
+        <li>
+          <a class="button-green smaller" {{action 'save'}}>
+            Submit
+          </a>
+        </li>
+      </ul>
+    </form>
+  </fieldset>
+</div>

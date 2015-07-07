@@ -9,17 +9,24 @@ Router.map(function() {
   this.route('login');
   this.route('about');
   this.route('characteristics');
-  this.route('users');
   this.route('measurements');
   this.route('compare');
 
   this.route('species', function() {
     this.route('new');
     this.route('show', { path: ':species_id' });
+    this.route('edit', { path: ':species_id/edit' });
   });
   this.route('strains', function() {
     this.route('new');
     this.route('show', { path: ':strain_id' });
+  });
+  this.route('users', function() {
+    this.route('new', function() {
+      this.route('fail');
+      this.route('success');
+      this.route('verify', { path: ':nonce' });
+    });
   });
 });
 

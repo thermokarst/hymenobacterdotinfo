@@ -5,23 +5,22 @@
         {{#if isEditing}}
           {{input value=strain.strainName}}
         {{else}}
-          <em>{{strain.strainName}}</em>
+          {{strain.strainNameMU}}
         {{/if}}
         {{display-errors a=strain.errors.strainName}}
     </legend>
 
     {{! ROW 1 }}
-    <div class="grid-4">
+    <div class="grid-4 gutter-50">
       <dl class="span-2">
         <dt>Species</dt>
         <dd>
           {{#if isEditing}}
             {{
-              view "select"
+              select-2
               content=species
-              optionValuePath="content.id"
-              optionLabelPath="content.speciesName"
-              selection=strain.species
+              optionLabelPath="speciesName"
+              value=strain.species
             }}
           {{else}}
             {{#link-to 'species.show' strain.species}}
@@ -43,7 +42,7 @@
     </div>
 
     {{! ROW 2 }}
-    <div class="grid-4">
+    <div class="grid-6">
       <dl class="span-2">
         <dt>Accession Numbers</dt>
         <dd>
@@ -64,6 +63,17 @@
             {{genbank-url genbank=strain.genbank}}
           {{/if}}
           {{display-errors a=strain.errors.genbank}}
+        </dd>
+      </dl>
+      <dl class="span-2">
+        <dt>Whole Genome Sequence</dt>
+        <dd>
+          {{#if isEditing}}
+            {{input value=strain.wholeGenomeSequence}}
+          {{else}}
+            {{strain.wholeGenomeSequence}}
+          {{/if}}
+          {{display-errors a=strain.errors.wholeGenomeSequence}}
         </dd>
       </dl>
     </div>

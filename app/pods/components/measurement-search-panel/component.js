@@ -23,10 +23,10 @@ export default Ember.Component.extend({
         models[item.model] = models[item.model].filter((i) => {
           if (!Ember.isEmpty(i.get(item.children))) { return true; }
         });
-        models[item.model] = models[item.model].sortBy(item.text);
+        models[item.model] = models[item.model].sortBy('sortOrder');
         let temp = models[item.model].map((data) => {
           let temp_children = [];
-          let sorted_children = data.get(item.children).sortBy(item.ctext);
+          let sorted_children = data.get(item.children).sortBy('sortOrder');
           sorted_children.forEach((child) => {
             temp_children.push({id: child.get(item.cid), text: child.get(item.ctext)});
           });

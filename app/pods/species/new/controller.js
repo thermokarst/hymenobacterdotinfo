@@ -1,21 +1,30 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  isEditing: true,
   actions: {
     save: function() {
-      var species = this.get('model');
+      let species = this.get('model');
+
       if (species.get('isDirty')) {
-        species.save();
+        species.save().then((species) => {
+          this.transitionToRoute('species.show', species.get('id'));
+        }, (err) => {
+          this.get('flashMessages').error(err.responseJSON.error);
+        });
+      } else {
+        this.transitionToRoute('species.index');
       }
-      this.transitionToRoute('species.index');
     },
+
     cancel: function() {
-      var species = this.get('model');
+      let species = this.get('model');
+
       if (species.get('isNew')) {
         species.deleteRecord();
       }
+
       this.transitionToRoute('species.index');
-    }
-  }
+    },
+
+  },
 });
