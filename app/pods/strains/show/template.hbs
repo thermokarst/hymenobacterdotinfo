@@ -1,8 +1,90 @@
-{{
-  strain-details
-  strain=strain
-  species=species
-  isEditing=isEditing
-  save="save"
-  cancel="cancel"
-}}
+<div class="span-1">
+  <fieldset class="flakes-information-box {{if isEditing 'is-editing'}}">
+    <legend>
+      Strain {{model.strainNameMU}}
+    </legend>
+
+    {{! ROW 1 }}
+    <div class="grid-4 gutter-50">
+      <dl class="span-2">
+        <dt>Species</dt>
+        <dd>
+          {{#link-to 'species.show' model.species.id}}
+            <em>{{model.species.speciesNameMU}}</em>
+          {{/link-to}}
+        </dd>
+      </dl>
+      <dl class="span-2">
+        <dt>Type Strain?</dt>
+        <dd>
+          {{if model.typeStrain 'Yes' 'No'}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 2 }}
+    <div class="grid-6">
+      <dl class="span-2">
+        <dt>Accession Numbers</dt>
+        <dd>
+          {{model.accessionNumbers}}
+        </dd>
+      </dl>
+      <dl class="span-2">
+        <dt>Genbank</dt>
+        <dd>
+          {{genbank-url genbank=model.genbank}}
+        </dd>
+      </dl>
+      <dl class="span-2">
+        <dt>Whole Genome Sequence</dt>
+        <dd>
+          {{model.wholeGenomeSequence}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 3 }}
+    <div class="grid-4">
+      <dl class="span-4">
+        <dt>Isolated From</dt>
+        <dd>
+          {{model.isolatedFrom}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 4 }}
+    <div class="grid-4">
+      <dl class="span-4">
+        <dt>Notes</dt>
+        <dd>
+          {{model.notes}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 5 }}
+    <div class="grid-4">
+      <dl class="span-1">
+        <dt>Record Created</dt>
+        <dd>{{null-time model.createdAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Record Updated</dt>
+        <dd>{{null-time model.updatedAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Record Deleted</dt>
+        <dd>{{null-time model.deletedAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1"></dl>
+    </div>
+  </fieldset>
+</div>
+{{#if userCanEdit}}
+  <br>
+  {{#link-to 'species.edit' model class="button-gray smaller"}}
+    Edit
+  {{/link-to}}
+{{/if}}

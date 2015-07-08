@@ -1,7 +1,7 @@
 <h2>{{genus-name}} Strains</h2>
-<h3>Total strains: {{strains.length}}</h3>
+<h3>Total strains: {{model.length}}</h3>
 
-{{add-button label="Add Strain" link="strains.new"}}
+{{add-button label="Add Strain" link="strains.new" canAdd=metaData.canAdd}}
 
 <table class="flakes-table">
   <thead>

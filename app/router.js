@@ -17,10 +17,13 @@ Router.map(function() {
     this.route('show', { path: ':species_id' });
     this.route('edit', { path: ':species_id/edit' });
   });
+
   this.route('strains', function() {
     this.route('new');
     this.route('show', { path: ':strain_id' });
+    this.route('edit', { path: ':strain_id/edit' });
   });
+
   this.route('users', function() {
     this.route('new', function() {
       this.route('fail');

@@ -1,0 +1,61 @@
+<form class="grid-form">
+  <fieldset>
+    <legend><em>{{strain.strainName}}</em></legend>
+    <div data-row-span="2">
+      <div data-field-span="1">
+        <label>Strain Name</label>
+        {{input value=strain.strainName}}
+      </div>
+      <div data-field-span="1">
+        <label>Type Strain?</label>
+        {{input type="checkbox" checked=strain.typeStrain}} {{if strain.typeStrain 'Yes' 'No'}}
+      </div>
+    </div>
+    <div data-row-span="2">
+      <div data-field-span="2">
+        <label>Species</label>
+          {{
+            select-2
+            content=species
+            optionLabelPath="speciesName"
+            value=strain.species
+          }}
+      </div>
+    </div>
+    <div data-row-span="2">
+      <div data-field-span="2">
+        <label>Isolated From</label>
+        {{textarea value=strain.isolatedFrom cols="70" rows="5"}}
+      </div>
+    </div>
+    <div data-row-span="3">
+      <div data-field-span="1">
+        <label>Accession Numbers</label>
+        {{input value=strain.accessionNumbers}}
+      </div>
+      <div data-field-span="1">
+        <label>GenBank</label>
+        {{input value=strain.genbank}}
+      </div>
+      <div data-field-span="1">
+        <label>Whole Genome Sequence</label>
+        {{input value=strain.wholeGenomeSequence}}
+      </div>
+    </div>
+    <div data-row-span="2">
+      <div data-field-span="2">
+        <label>Notes</label>
+        {{textarea value=strain.notes cols="70" rows="5"}}
+      </div>
+    </div>
+  </fieldset>
+</form>
+<br>
+<a class="button-red smaller" {{action 'cancel'}}>
+  Cancel
+</a>
+{{#if strain.isDirty}}
+  <a class="button-green smaller" {{action 'save'}}>
+    Save
+  </a>
+{{/if}}

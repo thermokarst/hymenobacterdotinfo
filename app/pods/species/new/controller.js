@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
           this.get('flashMessages').error(err.responseJSON.error);
         });
       } else {
+        species.deleteRecord();
         this.transitionToRoute('species.index');
       }
     },

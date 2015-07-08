@@ -12,18 +12,18 @@ export default Ember.Controller.extend({
           this.get('flashMessages').error(err.responseJSON.error);
         });
       } else {
-        this.transitionToRoute('strains.index');
+        strain.deleteRecord();
+        this.transitionToRoute('strains.show', strain);
       }
     },
 
     cancel: function() {
       let strain = this.get('strain');
 
-      if (strain.get('isNew')) {
-        strain.deleteRecord();
-      }
+      strain.get('errors').clear();
+      strain.rollback();
 
-      this.transitionToRoute('strains.index');
+      this.transitionToRoute('strains.show', strain);
     },
 
   },
