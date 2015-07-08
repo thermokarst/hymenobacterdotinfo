@@ -32,11 +32,11 @@
   </fieldset>
 </form>
 <br>
+<a class="button-red smaller" {{action 'cancel'}}>
+  Cancel
+</a>
 {{#if species.isDirty}}
   <a class="button-green smaller" {{action 'save'}}>
     Save
   </a>
 {{/if}}
-<a class="button-red smaller" {{action 'cancel'}}>
-  Cancel
-</a>
