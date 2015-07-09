@@ -3,6 +3,7 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function(params) {
-    return this.store.find('strain', params.strain_id);
-  }
+    return this.store.findRecord('strain', params.strain_id, { reload: true });
+  },
+
 });

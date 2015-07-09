@@ -6,19 +6,22 @@
       </legend>
 
       {{! ROW 1 }}
-      <div class="grid-4">
-        <dl class="span-2">
+      <div class="grid-2 gutter-20">
+        <dl class="span-1">
           <dt>Strains</dt>
           <dd>
-            {{#each model.strains as |strain index|}}
-              {{if index ","}}
-              {{#link-to 'strains.show' strain.id}}
-                {{{strain.strainNameMU}}}
-              {{/link-to}}
-            {{/each}}
+            <ul>
+              {{#each model.strains as |strain index|}}
+                <li>
+                  {{#link-to 'strains.show' strain.id}}
+                    {{{strain.strainNameMU}}}
+                  {{/link-to}}
+                </li>
+              {{/each}}
+            </ul>
           </dd>
         </dl>
-        <dl class="span-2">
+        <dl class="span-1">
           <dt>Type Species?</dt>
           <dd>
             {{if model.typeSpecies 'Yes' 'No'}}
@@ -27,8 +30,8 @@
       </div>
 
       {{! ROW 2 }}
-      <div class="grid-4">
-        <dl class="span-4">
+      <div class="grid-1 gutter-20">
+        <dl class="span-1">
           <dt>Etymology</dt>
           <dd>
             {{model.etymology}}
@@ -37,7 +40,7 @@
       </div>
 
       {{! ROW 3 }}
-      <div class="grid-4">
+      <div class="grid-3 gutter-20">
         <dl class="span-1">
           <dt>Record Created</dt>
           <dd>{{null-time model.createdAt 'LL'}}</dd>
@@ -50,12 +53,11 @@
           <dt>Record Deleted</dt>
           <dd>{{null-time model.deletedAt 'LL'}}</dd>
         </dl>
-        <dl class="span-1"></dl>
       </div>
     </fieldset>
   </div>
 </div>
-{{#if userCanEdit}}
+{{#if model.canEdit}}
   <br>
   {{#link-to 'species.edit' model class="button-gray smaller"}}
     Edit

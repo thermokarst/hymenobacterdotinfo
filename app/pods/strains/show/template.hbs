@@ -5,8 +5,8 @@
     </legend>
 
     {{! ROW 1 }}
-    <div class="grid-4 gutter-50">
-      <dl class="span-2">
+    <div class="grid-2 gutter-20">
+      <dl class="span-1">
         <dt>Species</dt>
         <dd>
           {{#link-to 'species.show' model.species.id}}
@@ -14,7 +14,7 @@
           {{/link-to}}
         </dd>
       </dl>
-      <dl class="span-2">
+      <dl class="span-1">
         <dt>Type Strain?</dt>
         <dd>
           {{if model.typeStrain 'Yes' 'No'}}
@@ -23,20 +23,20 @@
     </div>
 
     {{! ROW 2 }}
-    <div class="grid-6">
-      <dl class="span-2">
+    <div class="grid-3 gutter-20">
+      <dl class="span-1">
         <dt>Accession Numbers</dt>
         <dd>
           {{model.accessionNumbers}}
         </dd>
       </dl>
-      <dl class="span-2">
+      <dl class="span-1">
         <dt>Genbank</dt>
         <dd>
           {{genbank-url genbank=model.genbank}}
         </dd>
       </dl>
-      <dl class="span-2">
+      <dl class="span-1">
         <dt>Whole Genome Sequence</dt>
         <dd>
           {{model.wholeGenomeSequence}}
@@ -45,8 +45,8 @@
     </div>
 
     {{! ROW 3 }}
-    <div class="grid-4">
-      <dl class="span-4">
+    <div class="grid-1 gutter-20">
+      <dl class="span-1">
         <dt>Isolated From</dt>
         <dd>
           {{model.isolatedFrom}}
@@ -55,8 +55,8 @@
     </div>
 
     {{! ROW 4 }}
-    <div class="grid-4">
-      <dl class="span-4">
+    <div class="grid-1 gutter-20">
+      <dl class="span-1">
         <dt>Notes</dt>
         <dd>
           {{model.notes}}
@@ -65,7 +65,7 @@
     </div>
 
     {{! ROW 5 }}
-    <div class="grid-4">
+    <div class="grid-3 gutter-20">
       <dl class="span-1">
         <dt>Record Created</dt>
         <dd>{{null-time model.createdAt 'LL'}}</dd>
@@ -78,11 +78,10 @@
         <dt>Record Deleted</dt>
         <dd>{{null-time model.deletedAt 'LL'}}</dd>
       </dl>
-      <dl class="span-1"></dl>
     </div>
   </fieldset>
 </div>
-{{#if userCanEdit}}
+{{#if model.canEdit}}
   <br>
   {{#link-to 'species.edit' model class="button-gray smaller"}}
     Edit

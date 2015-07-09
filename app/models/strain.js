@@ -19,6 +19,7 @@ export default DS.Model.extend({
   deletedBy          : DS.attr('number'),
   totalMeasurements  : DS.attr('number'),
   sortOrder          : DS.attr('number'),
+  canEdit            : DS.attr('boolean'),
 
   strainNameMU: function() {
     let type = this.get('typeStrain') ? '<sup>T</sup>' : '';

@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   sortedStrains: Ember.computed.sort('model', 'sortParams'),
 
   metaData: function() {
-    return this.store.metadataFor('strain');
+    return Ember.copy(this.store.metadataFor('strain'));
   }.property('model.isLoaded').readOnly(),
 
 });
