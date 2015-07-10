@@ -20,7 +20,7 @@
             {{{strain.strainNameMU}}}
           {{/link-to}}
         {{/each}}
-        {{add-button label="Add Strain" link="strains.new"}}
+        {{add-button label="Add Strain" link="protected.strains.new"}}
       </div>
     </div>
     <div data-row-span="2">
@@ -35,7 +35,7 @@
 <a class="button-red smaller" {{action 'cancel'}}>
   Cancel
 </a>
-{{#if species.isDirty}}
+{{#if species.hasDirtyAttributes}}
   <a class="button-green smaller" {{action 'save'}}>
     Save
   </a>
