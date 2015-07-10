@@ -18,12 +18,6 @@ export default Ember.Controller.extend({
     },
 
     cancel: function() {
-      let species = this.get('model');
-
-      if (species.get('isNew')) {
-        species.deleteRecord();
-      }
-
       this.transitionToRoute('species.index');
     },
 

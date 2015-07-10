@@ -17,12 +17,6 @@ export default Ember.Controller.extend({
     },
 
     cancel: function() {
-      let strain = this.get('strain');
-
-      if (strain.get('isNew')) {
-        strain.deleteRecord();
-      }
-
       this.transitionToRoute('strains.index');
     },
 
