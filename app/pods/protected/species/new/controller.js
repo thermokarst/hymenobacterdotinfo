@@ -7,18 +7,18 @@ export default Ember.Controller.extend({
 
       if (species.get('isDirty')) {
         species.save().then((species) => {
-          this.transitionToRoute('species.show', species.get('id'));
+          this.transitionToRoute('protected.species.show', species.get('id'));
         }, (err) => {
           this.get('flashMessages').error(err.responseJSON.error);
         });
       } else {
         species.deleteRecord();
-        this.transitionToRoute('species.index');
+        this.transitionToRoute('protected.species.index');
       }
     },
 
     cancel: function() {
-      this.transitionToRoute('species.index');
+      this.transitionToRoute('protected.species.index');
     },
 
   },

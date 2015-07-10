@@ -7,17 +7,17 @@ export default Ember.Controller.extend({
 
       if (strain.get('isDirty')) {
         strain.save().then((strain) => {
-          this.transitionToRoute('strains.show', strain);
+          this.transitionToRoute('protected.strains.show', strain);
         }, (err) => {
           this.get('flashMessages').error(err.responseJSON.error);
         });
       } else {
-        this.transitionToRoute('strains.index');
+        this.transitionToRoute('protected.strains.index');
       }
     },
 
     cancel: function() {
-      this.transitionToRoute('strains.index');
+      this.transitionToRoute('protected.strains.index');
     },
 
   },

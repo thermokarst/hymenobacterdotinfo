@@ -7,12 +7,12 @@ export default Ember.Controller.extend({
 
       if (species.get('isDirty')) {
         species.save().then((species) => {
-          this.transitionToRoute('species.show', species);
+          this.transitionToRoute('protected.species.show', species);
         }, (err) => {
           this.get('flashMessages').error(err.responseJSON.error);
         });
       } else {
-        this.transitionToRoute('species.show', species);
+        this.transitionToRoute('protected.species.show', species);
       }
     },
 
@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
       species.get('errors').clear();
       species.rollback();
 
-      this.transitionToRoute('species.show', species);
+      this.transitionToRoute('protected.species.show', species);
     },
 
   },

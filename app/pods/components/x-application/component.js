@@ -7,4 +7,11 @@ export default Ember.Component.extend({
     FlakesFrame.init();
   },
 
+  actions: {
+    invalidateSession: function() {
+      this.sendAction('invalidateSession');
+    },
+
+  },
+
 });
