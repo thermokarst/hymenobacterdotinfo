@@ -7,22 +7,6 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
-  this.route('about');
-  this.route('characteristics');
-  this.route('measurements');
-  this.route('compare');
-
-  this.route('species', function() {
-    this.route('new');
-    this.route('show', { path: ':species_id' });
-    this.route('edit', { path: ':species_id/edit' });
-  });
-
-  this.route('strains', function() {
-    this.route('new');
-    this.route('show', { path: ':strain_id' });
-    this.route('edit', { path: ':strain_id/edit' });
-  });
 
   this.route('users', function() {
     this.route('new', function() {
@@ -31,6 +15,27 @@ Router.map(function() {
       this.route('verify', { path: ':nonce' });
     });
   });
+
+  this.route('protected', { path: '/' }, function() {
+    this.route('about');
+    this.route('characteristics');
+    this.route('measurements');
+    this.route('compare');
+
+    this.route('species', function() {
+      this.route('new');
+      this.route('show', { path: ':species_id' });
+      this.route('edit', { path: ':species_id/edit' });
+    });
+
+    this.route('strains', function() {
+      this.route('new');
+      this.route('show', { path: ':strain_id' });
+      this.route('edit', { path: ':strain_id/edit' });
+    });
+
+  });
+
 });
 
 export default Router;

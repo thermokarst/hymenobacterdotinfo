@@ -19,7 +19,7 @@
         <th>Characteristic</th>
         {{#each strains as |strain|}}
           <th>
-            {{#link-to 'strains.show' strain.id classBinding="data.typeStrain:type-strain"}}
+            {{#link-to 'protected.strains.show' strain.id classBinding="data.typeStrain:type-strain"}}
               {{strain.fullNameMU}}
             {{/link-to}}
           </th>

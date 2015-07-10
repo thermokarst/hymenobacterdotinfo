@@ -13,7 +13,7 @@
             <ul>
               {{#each model.strains as |strain index|}}
                 <li>
-                  {{#link-to 'strains.show' strain.id}}
+                  {{#link-to 'protected.strains.show' strain.id}}
                     {{{strain.strainNameMU}}}
                   {{/link-to}}
                 </li>
@@ -59,7 +59,7 @@
 </div>
 {{#if model.canEdit}}
   <br>
-  {{#link-to 'species.edit' model class="button-gray smaller"}}
+  {{#link-to 'protected.species.edit' model class="button-gray smaller"}}
     Edit
   {{/link-to}}
 {{/if}}

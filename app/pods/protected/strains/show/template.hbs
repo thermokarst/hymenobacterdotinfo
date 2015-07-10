@@ -9,7 +9,7 @@
       <dl class="span-1">
         <dt>Species</dt>
         <dd>
-          {{#link-to 'species.show' model.species.id}}
+          {{#link-to 'protected.species.show' model.species.id}}
             <em>{{model.species.speciesNameMU}}</em>
           {{/link-to}}
         </dd>
@@ -83,7 +83,7 @@
 </div>
 {{#if model.canEdit}}
   <br>
-  {{#link-to 'species.edit' model class="button-gray smaller"}}
+  {{#link-to 'protected.species.edit' model class="button-gray smaller"}}
     Edit
   {{/link-to}}
 {{/if}}

@@ -3,23 +3,23 @@
     {{site-logo}}
     {{#if session.isAuthenticated}}
       <ul>
-        {{#link-to 'compare' tagName='li' href=false}}
-          {{link-to 'Compare' 'compare'}}
+        {{#link-to 'protected.compare' tagName='li' href=false}}
+          {{link-to 'Compare' 'protected.compare'}}
         {{/link-to}}
-        {{#link-to 'measurements' tagName='li' href=false}}
-          {{link-to 'Measurements' 'measurements'}}
+        {{#link-to 'protected.measurements' tagName='li' href=false}}
+          {{link-to 'Measurements' 'protected.measurements'}}
         {{/link-to}}
-        {{#link-to 'characteristics' tagName='li' href=false}}
-          {{link-to 'Characteristics' 'characteristics'}}
+        {{#link-to 'protected.characteristics' tagName='li' href=false}}
+          {{link-to 'Characteristics' 'protected.characteristics'}}
         {{/link-to}}
-        {{#link-to 'species' tagName='li' href=false}}
-          {{link-to 'Species' 'species'}}
+        {{#link-to 'protected.species' tagName='li' href=false}}
+          {{link-to 'Species' 'protected.species'}}
         {{/link-to}}
-        {{#link-to 'strains' tagName='li' href=false}}
-          {{link-to 'Strains' 'strains'}}
+        {{#link-to 'protected.strains' tagName='li' href=false}}
+          {{link-to 'Strains' 'protected.strains'}}
         {{/link-to}}
-        {{#link-to 'about' tagName='li' href=false}}
-          {{link-to 'About' 'about'}}
+        {{#link-to 'protected.about' tagName='li' href=false}}
+          {{link-to 'About' 'protected.about'}}
         {{/link-to}}
       </ul>
       <p class="foot">

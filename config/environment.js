@@ -19,6 +19,7 @@ module.exports = function(environment) {
       session: 'session:custom',
       authorizer: 'simple-auth-authorizer:token',
       store: 'simple-auth-session-store:local-storage',
+      routeAfterAuthentication: 'protected.index',
     },
     'simple-auth-token': {
       identificationField: 'email',
