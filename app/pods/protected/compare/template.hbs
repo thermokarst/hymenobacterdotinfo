@@ -1,41 +1,41 @@
 <h2>{{genus-name}} - Compare Strains</h2>
 
-{{
-  measurement-search-panel
-  search='search'
-  strainLabel='Select one or more strains'
-  charLabel='Select one or more characteristics'
-}}
-
-{{#if dataEmpty}}
-  <div class="flakes-message information">
-    Please select one or more strains and one or more characteristics.
-  </div>
-{{else}}
-<div class="overflow-div">
-  <table class="flakes-table">
-    <thead>
-      <tr>
-        <th>Characteristic</th>
-        {{#each strains as |strain|}}
-          <th>
-            {{#link-to 'protected.strains.show' strain.id classBinding="data.typeStrain:type-strain"}}
-              {{strain.fullNameMU}}
-            {{/link-to}}
-          </th>
-        {{/each}}
-      </tr>
-    </thead>
-    <tbody>
-      {{#each data as |row|}}
-        <tr>
-          <td>{{row.characteristic}}</td>
-          {{#each strains as |strain|}}
-            <td>{{get-property row strain.id}}</td>
-          {{/each}}
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+<div class="span-1">
+  <fieldset>
+    <form>
+      <ul>
+        <li>
+          <label>Strains</label>
+          {{
+            select-2
+            multiple=true
+            content=strains
+            value=selectedStrains
+            optionValuePath="id"
+            optionLabelPath="fullNameMU"
+            placeholder="Select one or more strains"
+          }}
+        </li>
+        <li>
+          <label>Characteristics</label>
+          {{
+            select-2
+            multiple=true
+            content=characteristics
+            value=selectedCharacteristics
+            optionValuePath="id"
+            optionLabelPath="characteristicName"
+            placeholder="Select one or more characteristics"
+          }}
+        </li>
+        <li>
+          <a class="action button-gray smaller right" {{action 'search'}}>
+            Search
+          </a>
+        </li>
+      </ul>
+    </form>
+  </fieldset>
 </div>
-{{/if}}
+
+{{outlet}}

@@ -20,7 +20,10 @@ Router.map(function() {
     this.route('about');
     this.route('characteristics');
     this.route('measurements');
-    this.route('compare');
+
+    this.route('compare', function() {
+      this.route('results');
+    });
 
     this.route('species', function() {
       this.route('new');
