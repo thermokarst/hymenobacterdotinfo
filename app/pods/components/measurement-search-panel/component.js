@@ -7,9 +7,10 @@ export default Ember.Component.extend({
     Ember.RSVP.hash({
       species: this.store.findAll('species'),
       strains: this.store.findAll('strain'),
-      characteristicTypes: this.store.findAll('characteristic-type'),
       characteristics: this.store.findAll('characteristic'),
     }).then((models) => {
+      models['characteristicTypes'] = models.characteristics.mapBy('characteristicTypeName').uniq();
+
       // Set up search parameters
       // Clean up sort order
       let selects = [
