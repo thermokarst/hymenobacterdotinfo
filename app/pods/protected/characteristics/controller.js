@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  sortParams: ['characteristicType.characteristicTypeName', 'sortOrder'],
+  sortParams: ['characteristicTypeName', 'sortOrder'],
   sortedCharacteristics: Ember.computed.sort('model', 'sortParams'),
 });
