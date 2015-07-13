@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import parseBase64 from '../../utils/parse-base64';
 
 export default Ember.Controller.extend({
   actions: {

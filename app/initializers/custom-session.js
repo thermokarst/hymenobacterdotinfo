@@ -1,5 +1,6 @@
 import Session from 'simple-auth/session';
 import parseBase64 from '../utils/parse-base64';
+import Ember from 'ember';
 
 var CustomSession = Session.extend({
   currentUser: function() {

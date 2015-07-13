@@ -14,7 +14,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
 
   actions: {
-    willTransition: function(transition) {
+    willTransition: function(/*transition*/) {
       let controller = this.get('controller');
       let species = controller.get('model');
 

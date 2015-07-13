@@ -21,7 +21,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
 
   actions: {
-    willTransition: function(transition) {
+    willTransition: function(/*transition*/) {
       let controller = this.get('controller');
       let strain = controller.get('strain');
 
