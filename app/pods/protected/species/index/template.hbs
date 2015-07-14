@@ -1,0 +1,34 @@
+<h2>{{genus-name}} Species</h2>
+<h3>Total species: {{model.length}}</h3>
+
+{{add-button label="Add Species" link="protected.species.new" canAdd=metaData.canAdd}}
+
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Strains</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedSpecies as |species|}}
+      <tr>
+        <td>
+          <em>
+            {{#link-to 'protected.species.show' species}}
+              {{species.speciesName}}
+            {{/link-to}}
+          </em>
+        </td>
+        <td>
+          {{#each species.strains as |strain index|}}
+            {{if index ","}}
+            {{#link-to 'protected.strains.show' strain.id}}
+              {{{strain.strainNameMU}}}
+            {{/link-to}}
+          {{/each}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

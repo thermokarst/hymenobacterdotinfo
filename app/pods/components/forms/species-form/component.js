@@ -5,6 +5,7 @@ export default Ember.Component.extend({
     save: function() {
       this.sendAction('save');
     },
+
     cancel: function() {
       this.sendAction('cancel');
     },

@@ -16,6 +16,7 @@ export default DS.Model.extend({
   updatedBy   : DS.attr('number'),
   deletedBy   : DS.attr('number'),
   sortOrder   : DS.attr('number'),
+  canEdit     : DS.attr('boolean'),
 
   speciesNameMU: function() {
     return Ember.String.htmlSafe(`<em>${this.get('speciesName')}</em>`);

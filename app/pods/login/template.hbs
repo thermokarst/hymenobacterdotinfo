@@ -1,6 +1,4 @@
-{{#if loggedIn}}
-  <p>You are already logged in!</p>
-{{else}}
+{{#x-application invalidateSession="invalidateSession"}}
   {{#if loading}}
     {{loading-panel}}
   {{else}}
@@ -11,4 +9,4 @@
         {{input class="button-gray" type="submit" value="Log In"}}
     </form>
   {{/if}}
-{{/if}}
+{{/x-application}}

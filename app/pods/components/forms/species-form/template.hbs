@@ -16,11 +16,11 @@
         <label>Strains</label>
         {{#each species.strains as |strain index|}}
           {{if index ","}}
-          {{#link-to 'strains.show' strain.id}}
+          {{#link-to 'protected.strains.show' strain.id}}
             {{{strain.strainNameMU}}}
           {{/link-to}}
         {{/each}}
-        {{add-button label="Add Strain" link="strains.new"}}
+        {{add-button label="Add Strain" link="protected.strains.new"}}
       </div>
     </div>
     <div data-row-span="2">
@@ -32,11 +32,11 @@
   </fieldset>
 </form>
 <br>
-{{#if species.isDirty}}
+<a class="button-red smaller" {{action 'cancel'}}>
+  Cancel
+</a>
+{{#if species.hasDirtyAttributes}}
   <a class="button-green smaller" {{action 'save'}}>
     Save
   </a>
 {{/if}}
-<a class="button-red smaller" {{action 'cancel'}}>
-  Cancel
-</a>

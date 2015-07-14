@@ -1,0 +1,41 @@
+<h2>{{genus-name}} - Compare Strains</h2>
+
+<div class="span-1">
+  <fieldset>
+    <form>
+      <ul>
+        <li>
+          <label>Strains</label>
+          {{
+            select-2
+            multiple=true
+            content=strains
+            value=selectedStrains
+            optionValuePath="id"
+            optionLabelPath="fullNameMU"
+            placeholder="Select one or more strains"
+          }}
+        </li>
+        <li>
+          <label>Characteristics</label>
+          {{
+            select-2
+            multiple=true
+            content=characteristics
+            value=selectedCharacteristics
+            optionValuePath="id"
+            optionLabelPath="characteristicName"
+            placeholder="Select one or more characteristics"
+          }}
+        </li>
+        <li>
+          <a class="action button-gray smaller right" {{action 'search'}}>
+            Search
+          </a>
+        </li>
+      </ul>
+    </form>
+  </fieldset>
+</div>
+
+{{outlet}}

@@ -1,0 +1,65 @@
+<div class="grid-1">
+  <div class="span-1">
+    <fieldset class="flakes-information-box {{if isEditing 'is-editing'}}">
+      <legend>
+        Species <em>{{model.speciesName}}</em>
+      </legend>
+
+      {{! ROW 1 }}
+      <div class="grid-2 gutter-20">
+        <dl class="span-1">
+          <dt>Strains</dt>
+          <dd>
+            <ul>
+              {{#each model.strains as |strain index|}}
+                <li>
+                  {{#link-to 'protected.strains.show' strain.id}}
+                    {{{strain.strainNameMU}}}
+                  {{/link-to}}
+                </li>
+              {{/each}}
+            </ul>
+          </dd>
+        </dl>
+        <dl class="span-1">
+          <dt>Type Species?</dt>
+          <dd>
+            {{if model.typeSpecies 'Yes' 'No'}}
+          </dd>
+        </dl>
+      </div>
+
+      {{! ROW 2 }}
+      <div class="grid-1 gutter-20">
+        <dl class="span-1">
+          <dt>Etymology</dt>
+          <dd>
+            {{model.etymology}}
+          </dd>
+        </dl>
+      </div>
+
+      {{! ROW 3 }}
+      <div class="grid-3 gutter-20">
+        <dl class="span-1">
+          <dt>Record Created</dt>
+          <dd>{{null-time model.createdAt 'LL'}}</dd>
+        </dl>
+        <dl class="span-1">
+          <dt>Record Updated</dt>
+          <dd>{{null-time model.updatedAt 'LL'}}</dd>
+        </dl>
+        <dl class="span-1">
+          <dt>Record Deleted</dt>
+          <dd>{{null-time model.deletedAt 'LL'}}</dd>
+        </dl>
+      </div>
+    </fieldset>
+  </div>
+</div>
+{{#if model.canEdit}}
+  <br>
+  {{#link-to 'protected.species.edit' model class="button-gray smaller"}}
+    Edit
+  {{/link-to}}
+{{/if}}

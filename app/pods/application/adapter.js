@@ -20,7 +20,7 @@ export default DS.RESTAdapter.extend({
         errors = {};
       if (response.errors !== undefined) {
         var jsonErrors = response.errors;
-        Ember.EnumerableUtils.forEach(Ember.keys(jsonErrors), function(key) {
+        Ember.EnumerableUtils.forEach(Object.keys(jsonErrors), function(key) {
           errors[Ember.String.camelize(key)] = jsonErrors[key];
         });
       }

@@ -16,8 +16,10 @@ module.exports = function(environment) {
     },
     podModulePrefix: 'clostridiumdotinfo/pods',
     'simple-auth': {
+      session: 'session:custom',
       authorizer: 'simple-auth-authorizer:token',
       store: 'simple-auth-session-store:local-storage',
+      routeAfterAuthentication: 'protected.index',
     },
     'simple-auth-token': {
       identificationField: 'email',

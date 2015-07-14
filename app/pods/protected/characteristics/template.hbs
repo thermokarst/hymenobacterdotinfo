@@ -1,0 +1,21 @@
+<h2>{{genus-name}} Characteristics</h2>
+<h3>Total characteristics: {{model.length}}</h3>
+
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Sort Order</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedCharacteristics as |row|}}
+      <tr>
+        <td>{{row.characteristicName}}</td>
+        <td>{{row.characteristicTypeName}}</td>
+        <td>{{row.sortOrder}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
