@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     let strain_ids = this.get('strain_ids').split(',');
     strain_ids.forEach((id) => {
       strains.push(this.store.peekRecord('strain', id));
-    })
+    });
     return strains;
   }.property('strain_ids'),
 
@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
     let characteristic_ids = this.get('characteristic_ids').split(',');
     characteristic_ids.forEach((id) => {
       characteristics.push(this.store.peekRecord('characteristic', id));
-    })
+    });
     return characteristics;
   }.property('characteristic_ids'),
 
@@ -45,6 +45,6 @@ export default Ember.Controller.extend({
       data.pushObject(row);
     });
     return data;
-  }.property('characteristics', 'strains'),
+  }.property('characteristics', 'strains').readOnly(),
 
 });
