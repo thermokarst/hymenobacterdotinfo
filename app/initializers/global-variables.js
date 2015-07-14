@@ -8,6 +8,7 @@ var globals = Ember.Object.extend({
 
 export function initialize(container, application) {
   application.register('service:globals', globals, {singleton: true});
+  application.inject('route', 'globals', 'service:globals');
   application.inject('controller', 'globals', 'service:globals');
   application.inject('component', 'globals', 'service:globals');
   application.inject('adapter', 'globals', 'service:globals');
