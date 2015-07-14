@@ -10,10 +10,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       });
     },
 
-    didTransition: function() {
-      this.get('flashMessages').clearMessages();
-      return true;
-    },
+  },
 
-  }
 });

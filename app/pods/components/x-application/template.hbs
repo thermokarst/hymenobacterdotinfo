@@ -44,7 +44,9 @@
 
   <div class="view-wrap">
     {{#each flashMessages.queue as |flash|}}
-      {{custom-flash-message flash=flash}}
+      {{#flash-message flash=flash as |component flash|}}
+        {{custom-flash-message flash=flash}}
+      {{/flash-message}}
     {{/each}}
     {{yield}}
   </div>

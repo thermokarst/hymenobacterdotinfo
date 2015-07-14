@@ -10,9 +10,7 @@ Router.map(function() {
 
   this.route('users', function() {
     this.route('new', function() {
-      this.route('fail');
-      this.route('success');
-      this.route('verify', { path: ':nonce' });
+      this.route('verify', { path: 'verify/:nonce' });
     });
   });
 
