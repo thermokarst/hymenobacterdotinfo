@@ -7,7 +7,7 @@ var CustomSession = Session.extend({
     let token = this.get('secure.token');
     if (!Ember.isEmpty(token)) {
       let t = parseBase64(token);
-      return this.container.lookup('store:main').find('user', t['sub']);
+      return this.container.lookup('service:store').find('user', t['sub']);
     }
     return null;
   }.property('secure.token'),

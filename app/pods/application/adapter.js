@@ -29,4 +29,13 @@ export default DS.RESTAdapter.extend({
       return error;
     }
   },
+
+  shouldReloadAll: function() {
+    return true;
+  },
+
+  shouldBackgroundReloadRecord: function() {
+    return false;
+  }
+
 });

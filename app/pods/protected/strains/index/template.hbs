@@ -14,7 +14,7 @@
     {{#each sortedStrains as |row|}}
       <tr>
         <td>
-          {{#link-to 'protected.strains.show' row.id classBinding="data.typeStrain:type-strain"}}
+          {{#link-to 'protected.strains.show' row classBinding="data.typeStrain:type-strain"}}
             {{row.fullNameMU}}
           {{/link-to}}
         </td>
