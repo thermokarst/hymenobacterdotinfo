@@ -15,7 +15,7 @@ export default Ember.Component.extend({
         return;
       }
 
-      if (user.get('isDirty')) {
+      if (user.get('hasDirtyAttributes')) {
         user.save().then(() => {
           this.sendAction();
         }).catch(() => {

@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
     save: function() {
       let strain = this.get('strain');
 
-      if (strain.get('isDirty')) {
+      if (strain.get('hasDirtyAttributes')) {
         strain.save().then((strain) => {
           this.transitionToRoute('protected.strains.show', strain);
         }, (err) => {

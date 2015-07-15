@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
     save: function() {
       let species = this.get('model');
 
-      if (species.get('isDirty')) {
+      if (species.get('hasDirtyAttributes')) {
         species.save().then((species) => {
           this.transitionToRoute('protected.species.show', species);
         }, (err) => {
