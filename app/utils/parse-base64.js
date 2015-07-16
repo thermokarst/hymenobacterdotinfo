@@ -1,6 +1,7 @@
 export default function parseBase64(token) {
-  let tokenData = atob(token.split('.')[1]);
+  let tokenData;
   try {
+    tokenData = atob(token.split('.')[1]);
     return JSON.parse(tokenData);
   } catch (e) {
     return tokenData;
