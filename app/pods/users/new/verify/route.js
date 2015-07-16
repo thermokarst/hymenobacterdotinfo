@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ajaxRequest from '../../../../utils/ajax-request';
 
 export default Ember.Route.extend({
   apiURL: function() {
@@ -10,19 +11,8 @@ export default Ember.Route.extend({
   }.property(),
 
   model: function(params) {
-    let url = this.get('apiURL') + '/api/' + this.get('genus') + '/users/verify/' + params.nonce;
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      let options = {
-        success: function(data){
-          resolve(data);
-        },
-        error: function(jqXHR, status, error){
-          reject(jqXHR, status, error);
-        },
-        dataType: 'text json',
-      };
-      Ember.$.ajax(url, options);
-    });
+    let url = `${this.get('apiURL')}/api/${this.get('genus')}/users/verify/${params.nonce}`;
+    return ajaxRequest(url);
   },
 
 
