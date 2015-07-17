@@ -1,7 +1,7 @@
 <div class="span-1">
   <fieldset>
     <legend>New User Signup</legend>
-    <form>
+    <form {{action 'save' on='submit'}}>
       <ul>
         <li>
           <label>Name</label>
@@ -20,9 +20,9 @@
           {{input type="password" value=passwordConfirm}}
         </li>
         <li>
-          <a class="button-green smaller" {{action 'save'}}>
+          <button type="submit" class="button-green smaller">
             Submit
-          </a>
+          </button>
         </li>
       </ul>
     </form>

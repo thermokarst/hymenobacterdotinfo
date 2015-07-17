@@ -1,4 +1,4 @@
-<form class="grid-form">
+<form class="grid-form" {{action 'save' on='submit'}}>
   <fieldset>
     <legend><em>{{species.speciesName}}</em></legend>
     <div data-row-span="2">
@@ -30,13 +30,13 @@
       </div>
     </div>
   </fieldset>
-</form>
-<br>
-<a class="button-red smaller" {{action 'cancel'}}>
-  Cancel
-</a>
-{{#if species.hasDirtyAttributes}}
-  <a class="button-green smaller" {{action 'save'}}>
-    Save
+  <br>
+  <a class="button-red smaller" {{action 'cancel'}}>
+    Cancel
   </a>
-{{/if}}
+  {{#if species.hasDirtyAttributes}}
+    <button type="submit" class="button-green smaller">
+      Save
+    </button>
+  {{/if}}
+</form>
