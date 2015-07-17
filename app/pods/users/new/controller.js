@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  classNames: ['grid-1'],
+export default Ember.Controller.extend({
   passwordConfirm: null,
 
   actions: {
@@ -17,7 +16,10 @@ export default Ember.Component.extend({
 
       if (user.get('hasDirtyAttributes')) {
         user.save().then(() => {
-          this.sendAction();
+          this.transitionTo('login').then(() => {
+            this.get('flashMessages').information(`You have successfully signed up.
+              Please check your email for further instructions.`);
+          });
         }).catch(() => {
           // Manually clean up messages because there is no transition
           this.get('flashMessages').clearMessages();
