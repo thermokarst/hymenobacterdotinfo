@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 export default function ajaxRequest(url, options) {
   return new Ember.RSVP.Promise(function(resolve, reject) {
     options = options || {};

@@ -2,7 +2,7 @@
 
 <div class="span-1">
   <fieldset>
-    <form>
+    <form {{action 'search' on='submit'}}>
       <ul>
         <li>
           <label>Strains</label>
@@ -29,9 +29,9 @@
           }}
         </li>
         <li>
-          <a class="action button-gray smaller right" {{action 'search'}}>
+          <button type="submit" class="action button-gray smaller right">
             Search
-          </a>
+          </button>
         </li>
       </ul>
     </form>
