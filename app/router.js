@@ -9,6 +9,8 @@ Router.map(function() {
   this.route('login');
 
   this.route('users', function() {
+    this.route('requestlockouthelp');
+    this.route('lockoutauthenticate');
     this.route('new', function() {
       this.route('verify', { path: 'verify/:nonce' });
     });
