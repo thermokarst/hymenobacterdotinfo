@@ -12,12 +12,4 @@ export default Ember.Route.extend(UnauthenticatedRouteMixin, {
     controller.setProperties(model);
   },
 
-  actions: {
-    success: function() {
-      this.transitionTo('login').then(() => {
-        this.get('flashMessages').information(`You have successfully signed up.
-          Please check your email for further instructions.`);
-      });
-    }
-  },
 });

@@ -3,6 +3,13 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   queryParams: ['strain_ids', 'characteristic_ids'],
 
+  csvLink: function() {
+    let token = encodeURIComponent(this.get('session.secure.token'));
+    return `${this.get('globals.apiURL')}/api/${this.get('globals.genus')}/` +
+      `compare?token=${token}&strain_ids=${this.get('strain_ids')}&` +
+      `characteristic_ids=${this.get('characteristic_ids')}&mimeType=csv`;
+  }.property('strain_ids', 'characteristic_ids').readOnly(),
+
   strains: function() {
     let strains = [];
     let strain_ids = this.get('strain_ids').split(',');
@@ -20,31 +27,5 @@ export default Ember.Controller.extend({
     });
     return characteristics;
   }.property('characteristic_ids'),
-
-  // Set up data table matrix
-  data: function() {
-    let characteristics = this.get('characteristics');
-    let strains = this.get('strains');
-    let measurements = this.get('model');
-    let data = Ember.A();
-
-    characteristics.forEach((characteristic) => {
-      let row = {
-        characteristic: characteristic.get('characteristicName'),
-      };
-
-      strains.forEach((strain) => {
-        let meas = measurements.filterBy('strain.id', strain.get('id'))
-          .filterBy('characteristic.id', characteristic.get('id'));
-        if (!Ember.isEmpty(meas)) {
-          row[strain.get('id')] = meas[0].get('value');
-        } else {
-          row[strain.get('id')] = '';
-        }
-      });
-      data.pushObject(row);
-    });
-    return data;
-  }.property('characteristics', 'strains').readOnly(),
 
 });

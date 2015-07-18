@@ -13,14 +13,15 @@
       </tr>
     </thead>
     <tbody>
-      {{#each data as |row|}}
+      {{#each model as |row|}}
         <tr>
-          <td>{{row.characteristic}}</td>
-          {{#each strains as |strain|}}
-            <td>{{get-property row strain.id}}</td>
+          {{#each row key="@index" as |col|}}
+            <td>{{col}}</td>
           {{/each}}
         </tr>
       {{/each}}
     </tbody>
   </table>
+  <hr>
+  <a href="{{csvLink}}" download>Download as CSV</a>
 </div>
