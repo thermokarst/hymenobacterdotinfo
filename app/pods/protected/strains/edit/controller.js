@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
     },
 
     cancel: function() {
-      let strain = this.get('protected.strain');
+      let strain = this.get('strain');
 
       strain.get('errors').clear();
       strain.rollback();
