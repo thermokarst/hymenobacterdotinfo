@@ -1,3 +1,7 @@
+.ql-editor {
+  font-size: 18px;
+}
+
 .overflow-div {
   white-space: nowrap;
   overflow: auto;
