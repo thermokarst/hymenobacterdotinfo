@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
       let species = this.get('model');
 
       species.get('errors').clear();
-      species.rollback();
+      species.rollbackAttributes();
 
       this.transitionToRoute('protected.species.show', species);
     },

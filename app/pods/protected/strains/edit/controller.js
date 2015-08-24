@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
       let strain = this.get('strain');
 
       strain.get('errors').clear();
-      strain.rollback();
+      strain.rollbackAttributes();
 
       this.transitionToRoute('protected.strains.show', strain);
     },
