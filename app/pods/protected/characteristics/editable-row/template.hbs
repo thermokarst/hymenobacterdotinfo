@@ -1,0 +1,15 @@
+{{#if isEditing}}
+  <td>{{input value=characteristicName}}</td>
+  <td>{{input value=characteristicTypeName}}</td>
+  <td>{{input value=sortOrder}}</td>
+  <td {{action 'save'}}>Save</td>
+{{else}}
+  <td>{{row.characteristicName}}</td>
+  <td>{{row.characteristicTypeName}}</td>
+  <td>{{row.sortOrder}}</td>
+  {{#if row.canEdit}}
+    <td {{action 'edit'}}>Edit</td>
+  {{else}}
+    <td></td>
+  {{/if}}
+{{/if}}
