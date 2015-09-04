@@ -7,12 +7,19 @@
       <th>Name</th>
       <th>Type</th>
       <th>Sort Order</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     {{#each sortedCharacteristics as |row|}}
-      {{protected/characteristics/editable-row row=row}}
+      <tr>
+        <td>
+          {{#link-to 'protected.characteristics.show' row}}
+            {{row.characteristicName}}
+          {{/link-to}}
+        </td>
+        <td>{{row.characteristicTypeName}}</td>
+        <td>{{row.sortOrder}}</td>
+      </tr>
     {{/each}}
   </tbody>
 </table>
