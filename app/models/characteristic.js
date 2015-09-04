@@ -12,4 +12,5 @@ export default DS.Model.extend({
   updatedBy             : DS.attr('number'),
   deletedBy             : DS.attr('number'),
   sortOrder             : DS.attr('number'),
+  canEdit               : DS.attr('boolean'),
 });

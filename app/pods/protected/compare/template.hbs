@@ -17,6 +17,14 @@
           }}
         </li>
         <li>
+          <button class="action button-green smaller right" {{action 'selectAllStrains'}}>
+            Select All
+          </button>
+          <button class="action button-red smaller right" {{action 'deselectAllStrains'}}>
+            Deselect All
+          </button>
+        </li>
+        <li>
           <label>Characteristics</label>
           {{
             select-2
@@ -27,6 +35,14 @@
             optionLabelPath="characteristicName"
             placeholder="Select one or more characteristics"
           }}
+        </li>
+        <li>
+          <button class="action button-green smaller right" {{action 'selectAllCharacteristics'}}>
+            Select All
+          </button>
+          <button class="action button-red smaller right" {{action 'deselectAllCharacteristics'}}>
+            Deselect All
+          </button>
         </li>
         <li>
           <button type="submit" class="action button-gray smaller right">
