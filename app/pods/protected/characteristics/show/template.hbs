@@ -18,17 +18,9 @@
       {{! ROW 2 }}
       <div class="grid-2 gutter-20">
         <dl class="span-2">
-          <dt>Strains</dt>
+          <dt>Measurements</dt>
           <dd>
-            <ul>
-              {{#each model.strains as |strain index|}}
-                <li>
-                  {{#link-to 'protected.strains.show' strain.id}}
-                    {{{strain.strainNameMU}}}
-                  {{/link-to}}
-                </li>
-              {{/each}}
-            </ul>
+            {{protected/characteristics/show/measurements-table model=model}}
           </dd>
         </dl>
       </div>

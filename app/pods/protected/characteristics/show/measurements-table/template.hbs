@@ -1,0 +1,26 @@
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th>Strain</th>
+      <th>Value</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each measurementsTable as |row|}}
+      <tr>
+        <td>
+          {{#link-to 'protected.strains.show' row.strain.id}}
+            {{{row.strain.strainNameMU}}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{row.measurement.value}}
+        </td>
+        <td>
+          {{row.measurement.notes}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
