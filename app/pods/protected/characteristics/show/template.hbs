@@ -7,10 +7,16 @@
 
       {{! ROW 1 }}
       <div class="grid-2 gutter-20">
-        <dl class="span-2">
+        <dl class="span-1">
           <dt>Characteristic Type</dt>
           <dd>
             {{model.characteristicTypeName}}
+          </dd>
+        </dl>
+        <dl class="span-1">
+          <dt>Sort Order</dt>
+          <dd>
+            {{model.sortOrder}}
           </dd>
         </dl>
       </div>
@@ -43,3 +49,9 @@
     </fieldset>
   </div>
 </div>
+{{#if model.canEdit}}
+  <br>
+  {{#link-to 'protected.characteristics.edit' model.id class="button-gray smaller"}}
+    Edit
+  {{/link-to}}
+{{/if}}

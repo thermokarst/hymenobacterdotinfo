@@ -1,3 +1,4 @@
+{{#if measurementsPresent}}
 <table class="flakes-table">
   <thead>
     <tr>
@@ -24,3 +25,6 @@
     {{/each}}
   </tbody>
 </table>
+{{else}}
+No measurements on record.
+{{/if}}

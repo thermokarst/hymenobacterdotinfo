@@ -24,7 +24,9 @@ Router.map(function() {
     });
 
     this.route('characteristics', function() {
+      this.route('new');
       this.route('show', { path: ':characteristic_id' });
+      this.route('edit', { path: ':characteristic_id/edit' });
     });
 
     this.route('species', function() {
