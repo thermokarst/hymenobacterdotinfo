@@ -2,7 +2,8 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-  measurements       : DS.hasMany('measurements', { async: true }),
+  measurements       : DS.hasMany('measurements', { async: false }),
+  characteristics    : DS.hasMany('characteristics', { async: false }),
   species            : DS.belongsTo('species', { async: false }),
   strainName         : DS.attr('string'),
   typeStrain         : DS.attr('boolean'),
