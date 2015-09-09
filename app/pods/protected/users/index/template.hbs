@@ -1,0 +1,33 @@
+<h2>{{genus-name}} Users</h2>
+<h3>Total users: {{model.length}}</h3>
+
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Date Registered</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |row|}}
+      <tr>
+        <td>
+          {{#link-to 'protected.users.show' row}}
+            {{row.name}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{row.email}}
+        </td>
+        <td>
+          {{row.fullRole}}
+        </td>
+        <td>
+          {{null-time row.createdAt 'LL'}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -1,8 +1,8 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  strain             : DS.belongsTo('strain', { async: true }),
-  characteristic     : DS.belongsTo('characteristic', { async: true }),
+  strain             : DS.belongsTo('strain', { async: false }),
+  characteristic     : DS.belongsTo('characteristic', { async: false }),
   textMeasurementType: DS.attr('string'),
   txtValue           : DS.attr('string'),
   numValue           : DS.attr('number'),

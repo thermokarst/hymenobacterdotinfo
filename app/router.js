@@ -18,11 +18,20 @@ Router.map(function() {
 
   this.route('protected', { path: '/' }, function() {
     this.route('about');
-    this.route('characteristics');
-    this.route('measurements');
+
+    this.route('users', function() {
+      this.route('show', { path: ':user_id' });
+      this.route('edit', { path: ':user_id/edit' });
+    });
 
     this.route('compare', function() {
       this.route('results');
+    });
+
+    this.route('characteristics', function() {
+      this.route('new');
+      this.route('show', { path: ':characteristic_id' });
+      this.route('edit', { path: ':characteristic_id/edit' });
     });
 
     this.route('species', function() {

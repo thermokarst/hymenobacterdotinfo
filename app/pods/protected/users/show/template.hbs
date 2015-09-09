@@ -1,0 +1,49 @@
+<div class="span-1">
+  <fieldset class="flakes-information-box {{if isEditing 'is-editing'}}">
+    <legend>
+      {{model.name}}
+    </legend>
+
+    {{! ROW 1 }}
+    <div class="grid-2 gutter-20">
+      <dl class="span-1">
+        <dt>Email</dt>
+        <dd>
+          {{model.email}}
+        </dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Role</dt>
+        <dd>
+          {{model.fullRole}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 2 }}
+    <div class="grid-3 gutter-20">
+      <dl class="span-1">
+        <dt>Record Created</dt>
+        <dd>{{null-time model.createdAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Record Updated</dt>
+        <dd>{{null-time model.updatedAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Record Deleted</dt>
+        <dd>{{null-time model.deletedAt 'LL'}}</dd>
+      </dl>
+    </div>
+  </fieldset>
+</div>
+<br>
+{{#link-to 'protected.users.show' model.id class="button-gray smaller"}}
+  Change Password (Does nothing at the moment)
+{{/link-to}}
+{{#if model.canEdit}}
+  <br>
+  {{#link-to 'protected.user.edit' model.id class="button-gray smaller"}}
+    Edit
+  {{/link-to}}
+{{/if}}

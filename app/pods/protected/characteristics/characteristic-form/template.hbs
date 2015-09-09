@@ -1,0 +1,30 @@
+<form class="grid-form" {{action 'save' on='submit'}}>
+  <fieldset>
+    <legend><em>{{characteristic.characteristicName}}</em></legend>
+    <div data-row-span="1">
+      <div data-field-span="1">
+        <label>Characteristic Name</label>
+        {{input value=characteristic.characteristicName}}
+      </div>
+    </div>
+    <div data-row-span="2">
+      <div data-field-span="1">
+        <label>Characteristic Type</label>
+        {{input value=characteristic.characteristicTypeName}}
+      </div>
+      <div data-field-span="1">
+        <label>Sort Order</label>
+        {{input value=characteristic.sortOrder}}
+      </div>
+    </div>
+  </fieldset>
+  <br>
+  <a class="button-red smaller" {{action 'cancel'}}>
+    Cancel
+  </a>
+  {{#if characteristic.hasDirtyAttributes}}
+    <button type="submit" class="button-green smaller">
+      Save
+    </button>
+  {{/if}}
+</form>
