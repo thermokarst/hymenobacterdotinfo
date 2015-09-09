@@ -12,4 +12,17 @@ export default DS.Model.extend({
   isAdmin: function() {
     return this.get('role') === 'A';
   }.property('role'),
+
+  fullRole: function() {
+    let role = this.get('role');
+    if (role === 'R') {
+      return 'Read-Only';
+    } else if (role === 'W') {
+      return 'Write';
+    } else if (role === 'A') {
+      return 'Admin';
+    } else {
+      return 'Error';
+    }
+  }.property('role'),
 });

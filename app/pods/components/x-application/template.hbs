@@ -24,7 +24,7 @@
       {{/link-to}}
     </ul>
     <p class="foot">
-      {{session.currentUser.name}}<br>
+      {{link-to session.currentUser.name 'protected.users.show' session.currentUser.id}}<br>
       <a {{action 'invalidateSession'}}>Logout</a>
     </p>
   {{else}}

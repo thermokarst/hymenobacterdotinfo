@@ -19,7 +19,10 @@ Router.map(function() {
   this.route('protected', { path: '/' }, function() {
     this.route('about');
 
-    this.route('users');
+    this.route('users', function() {
+      this.route('show', { path: ':user_id' });
+      this.route('edit', { path: ':user_id/edit' });
+    });
 
     this.route('compare', function() {
       this.route('results');
