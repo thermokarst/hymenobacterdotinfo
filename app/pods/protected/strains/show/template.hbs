@@ -59,12 +59,26 @@
       <dl class="span-1">
         <dt>Notes</dt>
         <dd>
-          {{{model.notes}}}
+          {{#if model.notes}}
+            {{{model.notes}}}
+          {{else}}
+            No notes.
+          {{/if}}
         </dd>
       </dl>
     </div>
 
     {{! ROW 5 }}
+    <div class="grid-1 gutter-20">
+      <dl class="span-1">
+        <dt>Characteristics</dt>
+        <dd>
+          {{protected/strains/show/measurements-table model=model}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 6 }}
     <div class="grid-3 gutter-20">
       <dl class="span-1">
         <dt>Record Created</dt>
