@@ -14,6 +14,11 @@
       {{#link-to 'protected.characteristics' tagName='li' href=false}}
         {{link-to 'Characteristics' 'protected.characteristics'}}
       {{/link-to}}
+      {{#if session.currentUser.isAdmin}}
+        {{#link-to 'protected.users' tagName='li' href=false}}
+          {{link-to 'Users' 'protected.users'}}
+        {{/link-to}}
+      {{/if}}
       {{#link-to 'protected.about' tagName='li' href=false}}
         {{link-to 'About' 'protected.about'}}
       {{/link-to}}

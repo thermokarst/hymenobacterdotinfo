@@ -7,5 +7,9 @@ export default DS.Model.extend({
   role     : DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  deletedAt: DS.attr('date')
+  deletedAt: DS.attr('date'),
+
+  isAdmin: function() {
+    return this.get('role') === 'A';
+  }.property('role'),
 });

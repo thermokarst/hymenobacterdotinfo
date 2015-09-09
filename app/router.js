@@ -19,6 +19,8 @@ Router.map(function() {
   this.route('protected', { path: '/' }, function() {
     this.route('about');
 
+    this.route('users');
+
     this.route('compare', function() {
       this.route('results');
     });
