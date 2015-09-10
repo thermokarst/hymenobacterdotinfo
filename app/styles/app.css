@@ -7,10 +7,6 @@
   overflow: auto;
 }
 
-.measurements-container {
-  padding: 2em 0em 0em 0em;
-}
-
 .select2-container {
   width: 100%;
 }
@@ -25,6 +21,10 @@
 
 .type-strain {
   color: #5CA934;
+}
+
+table.flakes-table td {
+  white-space: normal;
 }
 
 /* BEGIN https://github.com/tobiasahlin/SpinKit */
