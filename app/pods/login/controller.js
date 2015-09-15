@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
       this.get('flashMessages').clearMessages();
       this.transitionToRoute('loading').then(() => {
         session.authenticate(authenticator, credentials).then(null, (error)=> {
+          this.transitionToRoute('login');
           this.get('flashMessages').error(error.error);
         });
       });
