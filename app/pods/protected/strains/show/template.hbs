@@ -73,7 +73,11 @@
       <dl class="span-1">
         <dt>Characteristics</dt>
         <dd>
-          {{protected/strains/show/measurements-table model=model}}
+          {{
+            protected/strains/show/measurements-table
+            model=model
+            canEdit=false
+          }}
         </dd>
       </dl>
     </div>

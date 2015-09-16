@@ -1,27 +1,34 @@
 {{#if measurementsPresent}}
 <table class="flakes-table">
+  <colgroup>
+    {{#if canEdit}}
+      <col span="1" style="width:40%">
+      <col span="1" style="width:20%">
+      <col span="1" style="width:30%">
+      <col span="1" style="width:10%">
+    {{else}}
+      <col span="1" style="width:40%">
+      <col span="1" style="width:30%">
+      <col span="1" style="width:30%">
+    {{/if}}
+  </colgroup>
   <thead>
     <tr>
       <th>Characteristic</th>
       <th>Value</th>
       <th>Notes</th>
+      {{#if canEdit}}
+      <th>Edit</th>
+      {{/if}}
     </tr>
   </thead>
   <tbody>
     {{#each measurementsTable as |row|}}
-      <tr>
-        <td>
-          {{#link-to 'protected.characteristics.show' row.characteristic.id}}
-            {{{row.characteristic.characteristicName}}}
-          {{/link-to}}
-        </td>
-        <td>
-          {{row.measurement.value}}
-        </td>
-        <td>
-          {{row.measurement.notes}}
-        </td>
-      </tr>
+      {{
+        protected/strains/show/measurements-table-row
+        row=row
+        canEdit=canEdit
+      }}
     {{/each}}
   </tbody>
 </table>

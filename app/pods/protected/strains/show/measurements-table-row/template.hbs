@@ -1,0 +1,37 @@
+{{#if isEditing}}
+  <td>
+    {{input value='Foo'}}
+  </td>
+  <td>
+    {{input value='Bar'}}
+  </td>
+  <td>
+    {{input value='Baz'}}
+  </td>
+  {{#if canEdit}}
+    <td>
+      <button class="button-gray smaller" {{action 'save'}}>
+        Save
+      </button>
+    </td>
+  {{/if}}
+{{else}}
+  <td>
+    {{#link-to 'protected.characteristics.show' row.characteristic.id}}
+      {{{row.characteristic.characteristicName}}}
+    {{/link-to}}
+  </td>
+  <td>
+    {{row.measurement.value}}
+  </td>
+  <td>
+    {{row.measurement.notes}}
+  </td>
+  {{#if canEdit}}
+    <td>
+      <button class="button-gray smaller" {{action 'edit'}}>
+        Edit
+      </button>
+    </td>
+  {{/if}}
+{{/if}}
