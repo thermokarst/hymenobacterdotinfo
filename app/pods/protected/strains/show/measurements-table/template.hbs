@@ -23,10 +23,10 @@
     </tr>
   </thead>
   <tbody>
-    {{#each measurementsTable as |row|}}
+    {{#each sortedMeasurements as |measurement|}}
       {{
         protected/strains/show/measurements-table-row
-        row=row
+        row=measurement
         canEdit=canEdit
       }}
     {{/each}}

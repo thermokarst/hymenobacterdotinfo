@@ -4,6 +4,7 @@ export default Ember.Component.extend({
   actions: {
     save: function() {
       // Need to override the string id for some reason
+      // TODO: check this
       let strain = this.get('strain');
       let id = strain.get('species.id');
       strain.set('species.id', +id);

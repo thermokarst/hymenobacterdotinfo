@@ -6,12 +6,15 @@ export default Ember.Component.extend({
 
   actions: {
     edit: function() {
+      // The parent table fetches all of the characteristics ahead of time
+      this.set('characteristics', this.store.peekAll('characteristic'));
       this.toggleProperty('isEditing');
     },
 
     save: function() {
       this.toggleProperty('isEditing');
-      console.log('saved');
-    }
+      this.get('row').save();
+    },
+    
   },
 });

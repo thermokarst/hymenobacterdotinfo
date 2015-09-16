@@ -1,16 +1,22 @@
 {{#if isEditing}}
   <td>
-    {{input value='Foo'}}
+    {{
+      select-2
+      multiple=false
+      content=characteristics
+      value=row.characteristic
+      optionLabelPath="characteristicName"
+    }}
   </td>
   <td>
-    {{input value='Bar'}}
+    {{input value=row.value}}
   </td>
   <td>
-    {{input value='Baz'}}
+    {{input value=row.notes}}
   </td>
   {{#if canEdit}}
     <td>
-      <button class="button-gray smaller" {{action 'save'}}>
+      <button class="button-red smaller" {{action 'save'}}>
         Save
       </button>
     </td>
@@ -22,10 +28,10 @@
     {{/link-to}}
   </td>
   <td>
-    {{row.measurement.value}}
+    {{row.value}}
   </td>
   <td>
-    {{row.measurement.notes}}
+    {{row.notes}}
   </td>
   {{#if canEdit}}
     <td>
