@@ -27,6 +27,9 @@ module.exports = function(environment) {
       tokenPropertyName: 'token',
       authorizationPrefix: 'Bearer ',
       authorizationHeaderName: 'Authorization',
+      refreshAccessTokens: true,
+      timeFactor: 1000,
+      refreshLeeway: 300,
     },
     contentSecurityPolicy: {
       'default-src': "'none'",
@@ -61,6 +64,7 @@ module.exports = function(environment) {
 
   ENV['simple-auth']['crossOriginWhitelist'] = [apiURL];
   ENV['simple-auth-token']['serverTokenEndpoint'] = apiURL + '/api/authenticate';
+  ENV['simple-auth-token']['serverTokenRefreshEndpoint'] = apiURL + '/api/refresh';
   ENV.apiURL = apiURL;
   ENV.contentSecurityPolicy['connect-src'] = "'self' " + apiURL;
 
