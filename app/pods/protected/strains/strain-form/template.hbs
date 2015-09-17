@@ -49,6 +49,13 @@
       </div>
     </div>
   </fieldset>
+  <div>
+    {{
+      protected/strains/show/measurements-table
+      model=strain
+      canEdit=strain.canEdit
+    }}
+  </div>
   <br>
   <a class="button-red smaller" {{action 'cancel'}}>
     Cancel

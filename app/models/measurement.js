@@ -3,9 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   strain             : DS.belongsTo('strain', { async: false }),
   characteristic     : DS.belongsTo('characteristic', { async: false }),
-  textMeasurementType: DS.attr('string'),
-  txtValue           : DS.attr('string'),
-  numValue           : DS.attr('number'),
+  value              : DS.attr('string'),
   confidenceInterval : DS.attr('number'),
   unitType           : DS.attr('string'),
   notes              : DS.attr('string'),
@@ -14,17 +12,4 @@ export default DS.Model.extend({
   updatedAt          : DS.attr('date'),
   createdBy          : DS.attr('number'),
   updatedBy          : DS.attr('number'),
-
-  value: function() {
-    if (this.get('textMeasurementType')) {
-      return this.get('textMeasurementType');
-    }
-    if (this.get('txtValue')) {
-      return this.get('txtValue');
-    }
-    if (this.get('numValue')) {
-      return this.get('numValue');
-    }
-    return "error";
-  }.property('textMeasurementType', 'txtValue', 'numValue'),
 });

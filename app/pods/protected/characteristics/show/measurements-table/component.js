@@ -5,6 +5,7 @@ export default Ember.Component.extend({
     return this.get('model.measurements.length') > 0;
   }.property('model.measurements'),
 
+  // TODO: this is way more complicated than it should be
   measurementsTable: function() {
     let measurements = this.get('model.measurements');
     let table = [];

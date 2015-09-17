@@ -1,0 +1,43 @@
+{{#if isEditing}}
+  <td>
+    {{
+      select-2
+      multiple=false
+      content=characteristics
+      value=row.characteristic
+      optionLabelPath="characteristicName"
+    }}
+  </td>
+  <td>
+    {{input value=row.value}}
+  </td>
+  <td>
+    {{input value=row.notes}}
+  </td>
+  {{#if canEdit}}
+    <td>
+      <button class="button-red smaller" {{action 'save'}}>
+        Save
+      </button>
+    </td>
+  {{/if}}
+{{else}}
+  <td>
+    {{#link-to 'protected.characteristics.show' row.characteristic.id}}
+      {{{row.characteristic.characteristicName}}}
+    {{/link-to}}
+  </td>
+  <td>
+    {{row.value}}
+  </td>
+  <td>
+    {{row.notes}}
+  </td>
+  {{#if canEdit}}
+    <td>
+      <button class="button-gray smaller" {{action 'edit'}}>
+        Edit
+      </button>
+    </td>
+  {{/if}}
+{{/if}}
