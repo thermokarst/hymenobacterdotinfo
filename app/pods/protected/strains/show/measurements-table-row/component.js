@@ -28,5 +28,9 @@ export default Ember.Component.extend({
       }
     },
 
+    delete: function() {
+      this.get('row').destroyRecord();
+    }
+
   },
 });
