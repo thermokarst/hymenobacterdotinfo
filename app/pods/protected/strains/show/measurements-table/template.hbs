@@ -1,3 +1,11 @@
+{{#if canAdd}}
+<br>
+<button class="button-green smaller" {{action "addCharacteristic"}}>
+  Add characteristic
+</button>
+<br><br>
+{{/if}}
+
 {{#if measurementsPresent}}
 <table class="flakes-table">
   <colgroup>
