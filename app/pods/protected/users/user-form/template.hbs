@@ -1,0 +1,32 @@
+<form class="grid-form" {{action 'save' on='submit'}}>
+  <fieldset>
+    <legend><em>{{user.name}}</em></legend>
+    <div data-row-span="1">
+      <div data-field-span="1">
+        <label>Name</label>
+        {{input value=user.name}}
+      </div>
+    </div>
+    <div data-row-span="1">
+      <div data-field-span="1">
+        <label>Email</label>
+        {{input value=user.email}}
+      </div>
+    </div>
+    <div data-row-span="1">
+      <div data-field-span="1">
+        <label>Role</label>
+        {{user.role}}
+      </div>
+    </div>
+  </fieldset>
+  <br>
+  <a class="button-red smaller" {{action 'cancel'}}>
+    Cancel
+  </a>
+  {{#if user.hasDirtyAttributes}}
+    <button type="submit" class="button-green smaller">
+      Save
+    </button>
+  {{/if}}
+</form>
