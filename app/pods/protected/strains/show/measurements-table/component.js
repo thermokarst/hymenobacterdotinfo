@@ -18,7 +18,7 @@ export default Ember.Component.extend({
     addCharacteristic: function() {
       const c = this.store.createRecord('characteristic', {
         sortOrder: -999
-      })
+      });
       const m = this.store.createRecord('measurement', {
         characteristic: c
       });

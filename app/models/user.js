@@ -5,6 +5,7 @@ export default DS.Model.extend({
   password : DS.attr('string'),
   name     : DS.attr('string'),
   role     : DS.attr('string'),
+  canEdit  : DS.attr('boolean'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   deletedAt: DS.attr('date'),
