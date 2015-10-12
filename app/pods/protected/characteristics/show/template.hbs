@@ -26,6 +26,7 @@
         <dl class="span-2">
           <dt>Measurements</dt>
           <dd>
+            <p>To add/edit/remove a measurement, please visit the strain's page (links below)</p>
             {{protected/characteristics/show/measurements-table model=model}}
           </dd>
         </dl>
@@ -54,4 +55,5 @@
   {{#link-to 'protected.characteristics.edit' model.id class="button-gray smaller"}}
     Edit
   {{/link-to}}
+  {{delete-button delete=(action 'delete')}}
 {{/if}}
