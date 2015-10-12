@@ -44,9 +44,7 @@
       <button class="button-gray smaller" {{action 'edit'}}>
         Edit
       </button>
-      <button class="button-red smaller" {{action 'delete'}}>
-        Delete
-      </button>
+      {{delete-button delete=(action 'delete')}}
     </td>
   {{/if}}
 {{/if}}
