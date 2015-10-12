@@ -16,7 +16,15 @@
     <div data-row-span="1">
       <div data-field-span="1">
         <label>Role</label>
-        {{user.role}}
+        {{#if isAdmin}}
+          <select onchange={{action (mut user.role) value="target.value"}}>
+            {{#each roles as |roleChoice|}}
+              <option value={{roleChoice}} selected={{equal user.role roleChoice}}>{{roleChoice}}</option>
+            {{/each}}
+          </select>
+        {{else}}
+          {{user.role}}
+        {{/if}}
       </div>
     </div>
   </fieldset>
