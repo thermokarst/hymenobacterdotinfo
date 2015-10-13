@@ -16,9 +16,15 @@
   </td>
   {{#if canEdit}}
     <td>
-      <button class="button-red smaller" {{action 'save'}}>
+      {{#if rowChanged}}
+      <button class="button-green smaller" {{action 'save'}}>
         Save
       </button>
+      {{else}}
+      <button class="button-gray smaller" {{action 'save'}}>
+        Cancel
+      </button>
+      {{/if}}
     </td>
   {{/if}}
 {{else}}
@@ -38,6 +44,7 @@
       <button class="button-gray smaller" {{action 'edit'}}>
         Edit
       </button>
+      {{delete-button delete=(action 'delete')}}
     </td>
   {{/if}}
 {{/if}}

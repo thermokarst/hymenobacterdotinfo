@@ -1,0 +1,40 @@
+<form class="grid-form" {{action 'save' on='submit'}}>
+  <fieldset>
+    <legend><em>{{user.name}}</em></legend>
+    <div data-row-span="1">
+      <div data-field-span="1">
+        <label>Name</label>
+        {{input value=user.name}}
+      </div>
+    </div>
+    <div data-row-span="1">
+      <div data-field-span="1">
+        <label>Email</label>
+        {{input value=user.email}}
+      </div>
+    </div>
+    <div data-row-span="1">
+      <div data-field-span="1">
+        <label>Role</label>
+        {{#if isAdmin}}
+          <select onchange={{action (mut user.role) value="target.value"}}>
+            {{#each roles as |roleChoice|}}
+              <option value={{roleChoice}} selected={{equal user.role roleChoice}}>{{roleChoice}}</option>
+            {{/each}}
+          </select>
+        {{else}}
+          {{user.role}}
+        {{/if}}
+      </div>
+    </div>
+  </fieldset>
+  <br>
+  <a class="button-red smaller" {{action 'cancel'}}>
+    Cancel
+  </a>
+  {{#if user.hasDirtyAttributes}}
+    <button type="submit" class="button-green smaller">
+      Save
+    </button>
+  {{/if}}
+</form>

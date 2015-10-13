@@ -11,7 +11,19 @@ export default Ember.Component.extend({
     }
   }.on('didInsertElement'),
 
-  sortParams: ['characteristicTypeName', 'sortOrder', 'characteristicName'],
+  sortParams: ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName'],
   sortedMeasurements: Ember.computed.sort('model.measurements', 'sortParams'),
+
+  actions: {
+    addCharacteristic: function() {
+      const c = this.store.createRecord('characteristic', {
+        sortOrder: -999
+      });
+      const m = this.store.createRecord('measurement', {
+        characteristic: c
+      });
+      this.get('model.measurements').addObject(m);
+    },
+  },
 
 });

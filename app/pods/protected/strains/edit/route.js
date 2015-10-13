@@ -17,6 +17,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   setupController: function(controller, models) {
     controller.setProperties(models);
+    controller.set('metaData', this.store.metadataFor('strain'));
   },
 
 });

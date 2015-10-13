@@ -22,6 +22,7 @@ Router.map(function() {
     this.route('users', function() {
       this.route('show', { path: ':user_id' });
       this.route('edit', { path: ':user_id/edit' });
+      this.route('changepassword', { path: ':user_id/changepassword' });
     });
 
     this.route('compare', function() {
