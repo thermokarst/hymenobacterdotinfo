@@ -4,13 +4,12 @@ export default Ember.Route.extend({
   beforeModel: function(transition) {
     this._super(transition);
 
-    if (this.get('session.currentUser.role') !== 'A') {
+    this.get('session.currentUser').then((currentUser) => {
       let user_id = transition.params['protected.users.show'].user_id;
-      let currentUser_id = this.get('session.currentUser.id')
-      if (currentUser_id !== user_id) {
-        this.transitionTo('protected.users.show', currentUser_id);
+      if (!currentUser.get('isAdmin') && currentUser.get('id') !== user_id) {
+        this.transitionTo('protected.users.index');
       }
-    }
+    })
   },
 
   model: function(params) {
