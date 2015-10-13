@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
       let options = {
         method: 'POST',
         data: {
+          id: this.get('session.currentUser.id'),
           password: this.get('password'),
         },
       };
