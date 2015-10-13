@@ -38,12 +38,20 @@
   </fieldset>
 </div>
 <br>
-{{#link-to 'protected.users.show' model.id class="button-gray smaller"}}
-  Change Password (Does nothing at the moment)
-{{/link-to}}
-{{#if model.canEdit}}
-  <br>
-  {{#link-to 'protected.users.edit' model.id class="button-gray smaller"}}
-    Edit
-  {{/link-to}}
-{{/if}}
+<div class="grid-2 gutter-20">
+  {{#if isUser}}
+    <div class="span-1">
+      {{#link-to 'protected.users.changepassword' model.id class="button-gray smaller"}}
+        Change Password
+      {{/link-to}}
+    </div>
+  {{/if}}
+
+  <div class="span-1">
+    {{#if model.canEdit}}
+      {{#link-to 'protected.users.edit' model.id class="button-gray smaller"}}
+        Edit
+      {{/link-to}}
+    {{/if}}
+  </div>
+</div>
