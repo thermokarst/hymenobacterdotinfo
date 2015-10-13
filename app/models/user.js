@@ -8,7 +8,6 @@ export default DS.Model.extend({
   canEdit  : DS.attr('boolean'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  deletedAt: DS.attr('date'),
 
   isAdmin: function() {
     return this.get('role') === 'A';
