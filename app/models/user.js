@@ -13,6 +13,14 @@ export default DS.Model.extend({
     return this.get('role') === 'A';
   }.property('role'),
 
+  isWriter: function() {
+    return this.get('role') === 'W';
+  }.property('role'),
+
+  isReader: function() {
+    return this.get('role') === 'R';
+  }.property('role'),
+
   fullRole: function() {
     let role = this.get('role');
     if (role === 'R') {
