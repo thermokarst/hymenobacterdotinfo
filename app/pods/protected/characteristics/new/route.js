@@ -3,9 +3,11 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   beforeModel: function(transition) {
     this._super(transition);
-    if (this.get('session.currentUser.role') === 'R') {
-      this.transitionTo('characteristics.index');
-    }
+    this.get('session.currentUser').then((user) => {
+      if (user.get('isReader')) {
+        this.transitionTo('protected.characteristics.index');
+      }
+    });
   },
 
   model: function() {

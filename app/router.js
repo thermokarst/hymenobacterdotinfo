@@ -16,6 +16,8 @@ Router.map(function() {
     });
   });
 
+  this.route('not-found', { path: '/*path' });
+
   this.route('protected', { path: '/' }, function() {
     this.route('about');
 
