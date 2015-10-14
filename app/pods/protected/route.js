@@ -9,4 +9,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     return this.store.find('user', user.sub);
   },
 
+  actions: {
+    error: function() {
+      this.transitionTo('/not-found');
+    },
+
+  },
+
 });
