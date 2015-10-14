@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ajaxError from '../../../../utils/ajax-error';
 
 export default Ember.Controller.extend({
   actions: {
@@ -8,8 +9,8 @@ export default Ember.Controller.extend({
       if (species.get('hasDirtyAttributes')) {
         species.save().then((species) => {
           this.transitionToRoute('protected.species.show', species);
-        }, (err) => {
-          this.get('flashMessages').error(err.responseJSON.error);
+        }, () => {
+          ajaxError(species.get('errors'), this.get('flashMessages'));
         });
       } else {
         this.transitionToRoute('protected.species.show', species);

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ajaxError from '../../../../utils/ajax-error';
 
 export default Ember.Controller.extend({
   actions: {
@@ -18,10 +19,8 @@ export default Ember.Controller.extend({
             this.get('store').unloadAll();
           }
           this.transitionToRoute('protected.users.show', user);
-        }, (err) => {
-          err.errors.forEach((error) => {
-            this.get('flashMessages').error(error.detail);
-          });
+        }, () => {
+          ajaxError(user.get('errors'), this.get('flashMessages'));
         });
       } else {
         this.transitionToRoute('protected.users.show', user);

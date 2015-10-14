@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ajaxError from '../../../utils/ajax-error';
 
 export default Ember.Controller.extend({
   passwordConfirm: null,
@@ -20,12 +21,8 @@ export default Ember.Controller.extend({
             this.get('flashMessages').information(`You have successfully signed up.
               Please check your email for further instructions.`);
           });
-        }).catch(() => {
-          // Manually clean up messages because there is no transition
-          this.get('flashMessages').clearMessages();
-          user.get('errors').forEach((error) => {
-            this.get('flashMessages').error(`${error.attribute.capitalize()} - ${error.message}`);
-          });
+        }, () => {
+          ajaxError(user.get('errors'), this.get('flashMessages'));
         });
       }
     },
