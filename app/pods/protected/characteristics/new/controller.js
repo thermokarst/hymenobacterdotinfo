@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ajaxError from '../../../../utils/ajax-error';
 
 export default Ember.Controller.extend({
   actions: {
@@ -8,8 +9,8 @@ export default Ember.Controller.extend({
       if (characteristic.get('hasDirtyAttributes')) {
         characteristic.save().then((characteristic) => {
           this.transitionToRoute('protected.characteristics.show', characteristic);
-        }, (err) => {
-          this.get('flashMessages').error(err.responseJSON.error);
+        }, () => {
+          ajaxError(characteristic.get('errors'), this.get('flashMessages'));
         });
       } else {
         this.transitionToRoute('protected.characteristics.index');

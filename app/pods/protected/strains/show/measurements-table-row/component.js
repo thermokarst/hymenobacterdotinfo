@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ajaxError from '../../../../../utils/ajax-error';
 
 export default Ember.Component.extend({
   tagName: 'tr',
@@ -22,9 +23,15 @@ export default Ember.Component.extend({
     },
 
     save: function() {
-      this.toggleProperty('isEditing');
       if (this.get('rowChanged')) {
-        this.get('row').save();
+        this.get('row').save().then(() => {
+          this.get('flashMessages').clearMessage();
+          this.toggleProperty('isEditing');
+        }, () => {
+          ajaxError(this.get('row.errors'), this.get('flashMessages'));
+        });
+      } else {
+        this.toggleProperty('isEditing');
       }
     },
 
