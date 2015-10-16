@@ -9,7 +9,7 @@ export default Ember.Route.extend({
       if (!currentUser.get('isAdmin') && currentUser.get('id') !== user_id) {
         this.transitionTo('protected.users.index');
       }
-    })
+    });
   },
 
   model: function(params) {
