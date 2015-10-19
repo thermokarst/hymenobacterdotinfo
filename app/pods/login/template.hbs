@@ -1,12 +1,16 @@
 {{#x-application invalidateSession="invalidateSession"}}
-  <form {{action "authenticate" on="submit"}}>
-    <h2>Log In</h2>
-      {{input value=identification type="text" placeholder="Email"}}
-      {{input value=password type="password" placeholder="Password"}}
-      {{input class="button-gray" type="submit" value="Log In"}}
-  </form>
-  <br>
-  <div>
-    Forget your password? {{link-to 'Request a lockout email.' 'users.requestlockouthelp'}}
-  </div>
+  {{#if loading}}
+    {{loading-panel}}
+  {{else}}
+    <form {{action "authenticate" on="submit"}}>
+      <h2>Log In</h2>
+        {{input value=identification type="text" placeholder="Email"}}
+        {{input value=password type="password" placeholder="Password"}}
+        {{input class="button-gray" type="submit" value="Log In"}}
+    </form>
+    <br>
+    <div>
+      Forget your password? {{link-to 'Request a lockout email.' 'users.requestlockouthelp'}}
+    </div>
+  {{/if}}
 {{/x-application}}
