@@ -28,8 +28,8 @@ module.exports = function(environment) {
       authorizationPrefix: 'Bearer ',
       authorizationHeaderName: 'Authorization',
       refreshAccessTokens: true,
-      timeFactor: 1000,
-      refreshLeeway: 300,
+      timeFactor: 1000, // 1000 ms/s; JWT returned in unix time seconds
+      refreshLeeway: 1800, // (60 s/min) * (30 min) = 1800 s
     },
     contentSecurityPolicy: {
       'default-src': "'none'",

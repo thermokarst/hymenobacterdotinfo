@@ -1,3 +1,4 @@
+// Note: this is here for user lockout authentication
 import Ember from 'ember';
 import JwtTokenAuthenticator from 'simple-auth-token/authenticators/jwt';
 
