@@ -36,6 +36,10 @@ export default Ember.Component.extend({
     },
 
     delete: function() {
+      let char = this.get('row.characteristic');
+      if (char.get('isNew')) {
+        char.destroyRecord();
+      }
       this.get('row').destroyRecord();
     }
 

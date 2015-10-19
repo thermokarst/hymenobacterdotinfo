@@ -7,24 +7,32 @@
 {{/if}}
 
 {{#if measurementsPresent}}
+{{#if paramsChanged}}
+  <button class="button-gray smaller" {{action 'resetSortParam'}}>
+    Reset sort
+  </button>
+{{/if}}
 <table class="flakes-table">
   <colgroup>
     {{#if canEdit}}
-      <col span="1" style="width:40%">
+      <col span="1" style="width:10%">
+      <col span="1" style="width:30%">
       <col span="1" style="width:20%">
       <col span="1" style="width:20%">
       <col span="1" style="width:20%">
     {{else}}
-      <col span="1" style="width:40%">
+      <col span="1" style="width:10%">
+      <col span="1" style="width:30%">
       <col span="1" style="width:30%">
       <col span="1" style="width:30%">
     {{/if}}
   </colgroup>
   <thead>
     <tr>
-      <th>Characteristic</th>
-      <th>Value</th>
-      <th>Notes</th>
+      <th {{action "changeSortParam" "characteristic.characteristicTypeName"}} class="click">Type</th>
+      <th {{action "changeSortParam" "characteristic.characteristicName"}} class="click">Characteristic</th>
+      <th {{action "changeSortParam" "value"}} class="click">Value</th>
+      <th {{action "changeSortParam" "notes"}} class="click">Notes</th>
       {{#if canEdit}}
       <th>Edit</th>
       {{/if}}

@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     let user_id = transition.params['protected.users.edit'].user_id;
 
     this.get('session.currentUser').then((user) => {
-      if (user.get('id') !== user_id || user.get('isAdmin')) {
+      if (user.get('id') !== user_id && !user.get('isAdmin')) {
         this.transitionTo('protected.users.index');
       }
     });
