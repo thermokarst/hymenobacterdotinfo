@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  loading: false,
+
   actions: {
     authenticate: function() {
       let credentials = this.getProperties('identification', 'password');
@@ -9,12 +11,12 @@ export default Ember.Controller.extend({
 
       // Manually clean up because there might not be a transition
       this.get('flashMessages').clearMessages();
-      this.transitionToRoute('loading').then(() => {
-        session.authenticate(authenticator, credentials).then(null, (error)=> {
-          this.transitionToRoute('login');
-          this.get('flashMessages').error(error.error);
-        });
-      });
+      this.set('loading', true).then(session.authenticate(authenticator, credentials).catch((error) => {
+        this.transitionToRoute('login');
+        this.set('loading', false);
+        this.get('flashMessages').error(error.error);
+      }));
+      this.set('loading', false);
     }
   }
 });
