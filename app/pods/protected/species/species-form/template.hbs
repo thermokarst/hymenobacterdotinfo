@@ -11,8 +11,9 @@
         {{input type="checkbox" checked=species.typeSpecies}} {{if species.typeSpecies 'Yes' 'No'}}
       </div>
     </div>
-    <div data-row-span="2">
-      <div data-field-span="2">
+    {{#unless species.isNew}}
+    <div data-row-span="1">
+      <div data-field-span="1">
         <label>Strains</label>
         {{#each species.strains as |strain index|}}
           {{if index ","}}
@@ -20,11 +21,13 @@
             {{{strain.strainNameMU}}}
           {{/link-to}}
         {{/each}}
-        {{add-button label="Add Strain" link="protected.strains.new"}}
+        {{add-button label="Add Strain" link="protected.strains.new" canAdd=metaData.canAdd}}
       </div>
     </div>
-    <div data-row-span="2">
-      <div data-field-span="2">
+    {{/unless}}
+
+    <div data-row-span="1">
+      <div data-field-span="1">
         <label>Etymology</label>
         {{text-editor value=species.etymology}}
       </div>
