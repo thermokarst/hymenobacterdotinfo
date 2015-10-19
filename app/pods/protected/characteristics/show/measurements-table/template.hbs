@@ -1,14 +1,19 @@
 {{#if measurementsPresent}}
+{{#if paramsChanged}}
+  <button class="button-gray smaller" {{action 'resetSortParam'}}>
+    Reset sort
+  </button>
+{{/if}}
 <table class="flakes-table">
   <thead>
     <tr>
-      <th>Strain</th>
-      <th>Value</th>
-      <th>Notes</th>
+      <th {{action "changeSortParam" "strain.strainName"}} class="click">Strain</th>
+      <th {{action "changeSortParam" "value"}} class="click">Value</th>
+      <th {{action "changeSortParam" "notes"}} class="click">Notes</th>
     </tr>
   </thead>
   <tbody>
-    {{#each measurementsTable as |row|}}
+    {{#each sortedMeasurements as |row|}}
       <tr>
         <td>
           {{#link-to 'protected.strains.show' row.strain.id}}
@@ -16,10 +21,10 @@
           {{/link-to}}
         </td>
         <td>
-          {{row.measurement.value}}
+          {{row.value}}
         </td>
         <td>
-          {{row.measurement.notes}}
+          {{row.notes}}
         </td>
       </tr>
     {{/each}}

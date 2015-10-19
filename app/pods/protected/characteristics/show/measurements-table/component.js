@@ -5,17 +5,27 @@ export default Ember.Component.extend({
     return this.get('model.measurements.length') > 0;
   }.property('model.measurements'),
 
-  // TODO: this is way more complicated than it should be
-  measurementsTable: function() {
-    let measurements = this.get('model.measurements');
-    let table = [];
-    measurements.forEach((measurement) => {
-      let row = {};
-      row['measurement'] = measurement;
-      row['strain'] = this.store.peekRecord('strain', measurement.get('strain.id'));
-      table.push(row);
-    });
-    return table;
-  }.property(),
+  sortParams: ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName'],
+  sortAsc: true,
+  paramsChanged: false,
+  sortedMeasurements: Ember.computed.sort('model.measurements', 'sortParams'),
+
+  actions: {
+    changeSortParam: function(col) {
+      let sort = this.get('sortAsc') ? 'asc' : 'desc';
+      let sortCol = `${col}:${sort}`;
+      this.set('sortParams', [sortCol]);
+      this.set('paramsChanged', true);
+      this.toggleProperty('sortAsc');
+      return false;
+    },
+
+    resetSortParam: function() {
+      this.set('sortParams', ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName']);
+      this.set('paramsChanged', false);
+      this.set('sortAsc', true);
+      return false;
+    },
+  },
 
 });
