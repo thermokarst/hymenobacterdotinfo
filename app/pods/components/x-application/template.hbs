@@ -14,7 +14,7 @@
       {{#link-to 'protected.characteristics' tagName='li' href=false}}
         {{link-to 'Characteristics' 'protected.characteristics'}}
       {{/link-to}}
-      {{#if session.currentUser.isAdmin}}
+      {{#if currentUser.account.isAdmin}}
         {{#link-to 'protected.users' tagName='li' href=false}}
           {{link-to 'Users' 'protected.users'}}
         {{/link-to}}
@@ -24,7 +24,7 @@
       {{/link-to}}
     </ul>
     <p class="foot">
-      {{link-to session.currentUser.name 'protected.users.show' session.currentUser.id}}<br>
+      {{link-to currentUser.account.name 'protected.users.show' currentUser.account.id}}<br>
       <a {{action 'invalidateSession'}}>Logout</a>
     </p>
   {{else}}

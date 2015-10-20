@@ -2,6 +2,9 @@ import Ember from 'ember';
 import ajaxRequest from '../../../../utils/ajax-request';
 
 export default Ember.Controller.extend({
+  session: Ember.inject.service('session'),
+  currentUser: Ember.inject.service('session-account'),
+
   passwordConfirm: null,
 
   actions: {
@@ -16,11 +19,11 @@ export default Ember.Controller.extend({
       let options = {
         method: 'POST',
         data: {
-          id: this.get('session.currentUser.id'),
+          id: this.get('currentUser.account.id'),
           password: this.get('password'),
         },
       };
-      ajaxRequest(url, options);
+      ajaxRequest(url, options, this.get('session'));
       this.transitionTo('protected.users.index');
       this.get('flashMessages').information('Your password has been changed.');
     },
