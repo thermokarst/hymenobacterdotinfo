@@ -1,10 +1,11 @@
 import Ember from 'ember';
-import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend({
+  currentUser: Ember.inject.service('session-account'),
+
   beforeModel: function(transition) {
     this._super(transition);
-    this.get('session.currentUser').then((user) => {
+    this.get('currentUser.account').then((user) => {
       if (user.get('isReader')) {
         this.transitionTo('protected.characteristics.index');
       }

@@ -1,13 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  currentUser: Ember.inject.service('session-account'),
+
   model: function() {
     return this.store.findAll('strain');
   },
 
   setupController: function(controller, model) {
     controller.set('model', model);
-    this.get('session.currentUser').then((user) => {
+    this.get('currentUser.account').then((user) => {
       controller.set('metaData', user.get('metaData'));
     });
   },

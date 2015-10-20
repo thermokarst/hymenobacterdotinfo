@@ -2,6 +2,8 @@ import Ember from 'ember';
 import ajaxRequest from '../../../../utils/ajax-request';
 
 export default Ember.Route.extend({
+  session: Ember.inject.service('session'),
+
   queryParams: {
     strain_ids: {
       refreshModel: true,
@@ -33,7 +35,7 @@ export default Ember.Route.extend({
       method: 'GET',
       data: params,
     };
-    return ajaxRequest(url, options);
+    return ajaxRequest(url, options, this.get('session'));
   },
 
   setupController: function(controller, model) {

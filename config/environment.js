@@ -15,34 +15,13 @@ module.exports = function(environment) {
       genus: 'hymenobacter',
     },
     podModulePrefix: 'hymenobacterdotinfo/pods',
-    'simple-auth': {
-      session: 'session:custom',
-      authorizer: 'simple-auth-authorizer:token',
-      store: 'simple-auth-session-store:local-storage',
-      routeAfterAuthentication: 'protected.index',
-    },
-    'simple-auth-token': {
-      identificationField: 'email',
-      passwordField: 'password',
-      tokenPropertyName: 'token',
-      authorizationPrefix: 'Bearer ',
-      authorizationHeaderName: 'Authorization',
-      refreshAccessTokens: true,
-      timeFactor: 1000, // 1000 ms/s; JWT returned in unix time seconds
-      refreshLeeway: 1800, // (60 s/min) * (30 min) = 1800 s
-    },
-    contentSecurityPolicy: {
-      'default-src': "'none'",
-      'script-src': "'self'",
-      'font-src': "'self'",
-      'img-src': "'self' data:",
-      'style-src': "'self' 'unsafe-inline'",
-      'media-src': "'self'"
-    },
     flashMessageDefaults: {
       sticky: true,
       type: 'error',
       types: ['error', 'warning', 'success', 'information', 'tip', 'message'],
+    },
+    'ember-simple-auth': {
+      routeAfterAuthentication: 'protected.compare',
     },
   };
 
@@ -62,11 +41,7 @@ module.exports = function(environment) {
     apiURL = 'https://bactdb.herokuapp.com';
   }
 
-  ENV['simple-auth']['crossOriginWhitelist'] = [apiURL];
-  ENV['simple-auth-token']['serverTokenEndpoint'] = apiURL + '/api/authenticate';
-  ENV['simple-auth-token']['serverTokenRefreshEndpoint'] = apiURL + '/api/refresh';
   ENV.apiURL = apiURL;
-  ENV.contentSecurityPolicy['connect-src'] = "'self' " + apiURL;
 
   return ENV;
 };
