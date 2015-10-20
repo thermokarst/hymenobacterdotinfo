@@ -2,6 +2,8 @@ import Ember from 'ember';
 import ajaxRequest from '../../../../utils/ajax-request';
 
 export default Ember.Controller.extend({
+  currentUser: Ember.inject.service('session-account'),
+
   passwordConfirm: null,
 
   actions: {
@@ -16,7 +18,7 @@ export default Ember.Controller.extend({
       let options = {
         method: 'POST',
         data: {
-          id: this.get('session.currentUser.id'),
+          id: this.get('currentUser.account.id'),
           password: this.get('password'),
         },
       };
