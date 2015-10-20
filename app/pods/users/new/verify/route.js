@@ -2,6 +2,8 @@ import Ember from 'ember';
 import ajaxRequest from '../../../../utils/ajax-request';
 
 export default Ember.Route.extend({
+  session: Ember.inject.service('session'),
+
   apiURL: function() {
     return this.get('globals.apiURL');
   }.property(),
@@ -12,7 +14,7 @@ export default Ember.Route.extend({
 
   model: function(params) {
     let url = `${this.get('apiURL')}/api/${this.get('genus')}/users/verify/${params.nonce}`;
-    return ajaxRequest(url);
+    return ajaxRequest(url, {}, this.get('session'));
   },
 
 
