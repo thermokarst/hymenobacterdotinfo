@@ -13,8 +13,9 @@ export default Ember.Controller.extend({
           ajaxError(characteristic.get('errors'), this.get('flashMessages'));
         });
       } else {
-        characteristic.deleteRecord();
-        this.transitionToRoute('protected.characteristics.show', characteristic);
+        characteristic.deleteRecord().then(() => {
+          this.transitionToRoute('protected.characteristics.show', characteristic);
+        });
       }
     },
 

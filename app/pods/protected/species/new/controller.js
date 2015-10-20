@@ -13,8 +13,9 @@ export default Ember.Controller.extend({
           ajaxError(species.get('errors'), this.get('flashMessages'));
         });
       } else {
-        species.deleteRecord();
-        this.transitionToRoute('protected.species.index');
+        species.deleteRecord().then(() => {
+          this.transitionToRoute('protected.species.index');
+        });
       }
     },
 
