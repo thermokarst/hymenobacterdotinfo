@@ -20,6 +20,9 @@ module.exports = function(environment) {
       type: 'error',
       types: ['error', 'warning', 'success', 'information', 'tip', 'message'],
     },
+    'ember-simple-auth': {
+      routeAfterAuthentication: 'protected.compare',
+    },
   };
 
   var apiURL;
