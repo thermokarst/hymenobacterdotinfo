@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -33,4 +34,13 @@ export default DS.Model.extend({
       return 'Error';
     }
   }.property('role'),
+
+  canWrite: Ember.computed('role', function() {
+    return this.get('role') !== 'R';
+  }),
+
+  metaData: Ember.computed('canWrite', function() {
+    return { 'canAdd': this.get('canWrite') };
+  }),
+
 });
