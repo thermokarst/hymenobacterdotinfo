@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
       // Manually clean up because there might not be a transition
       this.get('flashMessages').clearMessages();
       let { identification, password } = this.getProperties('identification', 'password');
-      this.set('loading', true)
+      this.set('loading', true);
       this.get('session').authenticate('authenticator:oauth2', identification, password).catch((error) => {
         this.transitionToRoute('login');
         this.set('loading', false);
