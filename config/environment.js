@@ -14,6 +14,7 @@ module.exports = function(environment) {
     APP: {
       genus: 'clostridium',
     },
+    podModulePrefix: 'clostridiumdotinfo/pods',
     flashMessageDefaults: {
       sticky: true,
       type: 'error',
