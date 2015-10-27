@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
         data: { email: this.get('email') },
       };
       ajaxRequest(url, options, this.get('session'));
-      this.transitionTo('login');
+      this.transitionToRoute('login');
       this.get('flashMessages').information('Please check your email');
     },
 
