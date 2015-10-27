@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
         },
       };
       ajaxRequest(url, options, this.get('session'));
-      this.transitionTo('protected.users.index');
+      this.transitionToRoute('protected.users.index');
       this.get('flashMessages').information('Your password has been changed.');
     },
 
