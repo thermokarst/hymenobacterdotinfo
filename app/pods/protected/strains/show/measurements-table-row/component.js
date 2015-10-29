@@ -25,7 +25,7 @@ export default Ember.Component.extend({
     save: function() {
       if (this.get('rowChanged')) {
         this.get('row').save().then(() => {
-          this.get('flashMessages').clearMessage();
+          this.get('flashMessages').clearMessages();
           this.toggleProperty('isEditing');
         }, () => {
           ajaxError(this.get('row.errors'), this.get('flashMessages'));
