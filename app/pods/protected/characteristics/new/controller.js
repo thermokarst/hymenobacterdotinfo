@@ -13,12 +13,16 @@ export default Ember.Controller.extend({
           ajaxError(characteristic.get('errors'), this.get('flashMessages'));
         });
       } else {
-        this.transitionToRoute('protected.characteristics.index');
+        characteristic.destroyRecord().then(() => {
+          this.transitionToRoute('protected.characteristics.index');
+        });
       }
     },
 
     cancel: function() {
-      this.transitionToRoute('protected.characteristics.index');
+      this.get('model').destroyRecord().then(() => {
+        this.transitionToRoute('protected.characteristics.index');
+      });
     },
 
   },

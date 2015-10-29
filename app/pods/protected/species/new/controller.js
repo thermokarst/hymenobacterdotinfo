@@ -13,14 +13,16 @@ export default Ember.Controller.extend({
           ajaxError(species.get('errors'), this.get('flashMessages'));
         });
       } else {
-        species.deleteRecord().then(() => {
+        species.destroyRecord().then(() => {
           this.transitionToRoute('protected.species.index');
         });
       }
     },
 
     cancel: function() {
-      this.transitionToRoute('protected.species.index');
+      this.get('model').destroyRecord().then(() => {
+        this.transitionToRoute('protected.species.index');
+      });
     },
 
   },

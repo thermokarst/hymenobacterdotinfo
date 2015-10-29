@@ -18,11 +18,11 @@ export default Ember.Route.extend({
 
   actions: {
     willTransition: function(/*transition*/) {
-      let controller = this.get('controller');
-      let characteristic = controller.get('model');
+      const controller = this.get('controller');
+      const characteristic = controller.get('model');
 
       if (characteristic.get('isNew')) {
-        characteristic.deleteRecord();
+        characteristic.destroyRecord();
       }
     },
   },
