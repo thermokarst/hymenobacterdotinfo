@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  currentUser: Ember.inject.service('session-account'),
+const { Component, inject: { service }} = Ember;
+
+export default Component.extend({
+  currentUser: service('session-account'),
 
   metaData: null,
 

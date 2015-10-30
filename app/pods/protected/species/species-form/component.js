@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const { Component } = Ember;
+
+export default Component.extend({
+  species: null,
+
   actions: {
     save: function() {
       this.sendAction('save');
