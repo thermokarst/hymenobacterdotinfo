@@ -6,6 +6,7 @@ export default Component.extend({
   currentUser: service('session-account'),
 
   metaData: null,
+  species: null,
 
   setupMetaDataOnInit: Ember.on('init', function() {
     this.get('currentUser.account').then((user) => {
