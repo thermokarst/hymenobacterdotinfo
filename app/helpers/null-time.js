@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { formatDate } from '../utils/date-helpers';
+import formatDate from '../utils/date-helpers';
 
 export default Ember.Helper.helper(function(params) {
   let value = params[0],
