@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import ajaxError from '../utils/ajax-error';
 
-export default Ember.Mixin.create({
+const { Mixin } = Ember;
+
+export default Mixin.create({
   actions: {
     save: function() {
       const model = this.get('model');
@@ -20,12 +22,11 @@ export default Ember.Mixin.create({
 
     cancel: function() {
       const model = this.get('model');
-      const fallbackRoute = this.get('fallbackRoute');
 
       model.get('errors').clear();
       model.rollbackAttributes();
 
-      this.transitionToRoute(fallbackRoute, model);
+      this.transitionToRoute(this.get('fallbackRoute'), model);
     },
   },
 });
