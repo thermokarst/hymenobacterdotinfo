@@ -8,4 +8,5 @@ export default Mirage.Factory.extend({
   strains: [],
   totalStrains: 0,
   sortOrder: faker.random.number(),
+  canEdit: faker.random.boolean(),
 });

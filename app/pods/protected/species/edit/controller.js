@@ -1,29 +1,31 @@
 import Ember from 'ember';
 import ajaxError from '../../../../utils/ajax-error';
 
-export default Ember.Controller.extend({
+const { Controller } = Ember;
+
+export default Controller.extend({
   actions: {
     save: function() {
-      let species = this.get('model');
+      const model = this.get('model');
 
-      if (species.get('hasDirtyAttributes')) {
-        species.save().then((species) => {
-          this.transitionToRoute('protected.species.show', species);
+      if (model.get('hasDirtyAttributes')) {
+        model.save().then((model) => {
+          this.transitionToRoute('protected.species.show', model);
         }, () => {
-          ajaxError(species.get('errors'), this.get('flashMessages'));
+          ajaxError(model.get('errors'), this.get('flashMessages'));
         });
       } else {
-        this.transitionToRoute('protected.species.show', species);
+        this.transitionToRoute('protected.species.show', model);
       }
     },
 
     cancel: function() {
-      let species = this.get('model');
+      const model = this.get('model');
 
-      species.get('errors').clear();
-      species.rollbackAttributes();
+      model.get('errors').clear();
+      model.rollbackAttributes();
 
-      this.transitionToRoute('protected.species.show', species);
+      this.transitionToRoute('protected.species.show', model);
     },
 
   },

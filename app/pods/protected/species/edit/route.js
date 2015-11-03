@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
-  currentUser: Ember.inject.service('session-account'),
+const { Route, inject: { service } } = Ember;
+
+export default Route.extend({
+  currentUser: service('session-account'),
 
   beforeModel: function(transition) {
     this._super(transition);
@@ -12,17 +14,10 @@ export default Ember.Route.extend({
     });
   },
 
-  afterModel: function(species) {
-    if (!species.get('canEdit')) {
-      this.transitionTo('species.show', species.get('id'));
+  afterModel: function(model) {
+    if (!model.get('canEdit')) {
+      this.transitionTo('species.show', model.get('id'));
     }
-  },
-
-  setupController: function(controller, model) {
-    controller.set('model', model);
-    this.get('currentUser.account').then((user) => {
-      controller.set('metaData', user.get('metaData'));
-    });
   },
 
 });

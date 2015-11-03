@@ -37,3 +37,20 @@ test('visiting /species/:id', function(assert) {
     assert.equal(find(".flakes-information-box > legend > em").text().trim(), species.speciesName);
   });
 });
+
+test('editing /species/:id/edit', function(assert) {
+  const species = server.create('species', { 'canEdit': true });
+  visit(`/species/${species.id}/edit`);
+
+  andThen(function() {
+    assert.equal(currentURL(), `/species/${species.id}/edit`);
+
+    fillIn('.species-name', 'Revised Species Name');
+    click('.save-species');
+
+    andThen(function() {
+      assert.equal(currentURL(), `/species/${species.id}`);
+      assert.equal(find(".flakes-information-box > legend > em").text().trim(), 'Revised Species Name');
+    });
+  });
+});

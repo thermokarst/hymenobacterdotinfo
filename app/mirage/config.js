@@ -8,16 +8,11 @@ export default function() {
 export function testConfig() {
   this.urlPrefix = 'https://bactdb-test.herokuapp.com';
   this.namespace = '/api/hymenobacter';
+  this.timing = 0;
 
-  this.get('/users/:id', function(db, request) {
-    return { 'user': db.users.find(request.params.id) };
-  });
+  this.get('/users/:id');
 
-  this.get('/species', function(db) {
-    return { 'species': db.species };
-  });
-
-  this.get('/species/:id', function(db, request) {
-    return { 'species': db.species.find(request.params.id) };
-  });
+  this.get('/species');
+  this.get('/species/:id');
+  this.put('/species/:id');
 }
