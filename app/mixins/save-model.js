@@ -4,6 +4,8 @@ import ajaxError from '../utils/ajax-error';
 const { Mixin } = Ember;
 
 export default Mixin.create({
+  fallbackRoute: null,
+
   actions: {
     save: function() {
       const model = this.get('model');

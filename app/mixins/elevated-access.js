@@ -5,6 +5,9 @@ const { Mixin , inject: { service } } = Ember;
 export default Mixin.create({
   currentUser: service('session-account'),
 
+  fallbackRouteBefore: null,
+  fallbackRouteAfter: null,
+
   beforeModel: function(transition) {
     this._super(transition);
     this.get('currentUser.account').then((user) => {
@@ -18,5 +21,16 @@ export default Mixin.create({
     if (!model.get('canEdit')) {
       this.transitionTo(this.get('fallbackRouteAfter'), model.get('id'));
     }
+  },
+
+  actions: {
+    willTransition: function(/*transition*/) {
+      const controller = this.get('controller');
+      const model = controller.get('model');
+
+      if (model.get('isNew')) {
+        model.destroyRecord();
+      }
+    },
   },
 });
