@@ -38,6 +38,7 @@
     "ember-data": "1.13.13",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.3",
+    "ember-one-way-input": "0.1.3",
     "ember-select-2": "1.3.0",
     "ember-simple-auth": "1.0.0"
   }
