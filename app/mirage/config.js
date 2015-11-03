@@ -16,4 +16,8 @@ export function testConfig() {
   this.get('/species', function(db) {
     return { 'species': db.species };
   });
+
+  this.get('/species/:id', function(db, request) {
+    return { 'species': db.species.find(request.params.id) };
+  });
 }

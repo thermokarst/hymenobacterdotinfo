@@ -27,3 +27,13 @@ test('visiting /species', function(assert) {
     assert.equal(find("#total-species").text(), "Total species: 20");
   });
 });
+
+test('visiting /species/:id', function(assert) {
+  const species = server.create('species');
+  visit(`/species/${species.id}`);
+
+  andThen(function() {
+    assert.equal(currentURL(), `/species/${species.id}`);
+    assert.equal(find(".flakes-information-box > legend > em").text().trim(), species.speciesName);
+  });
+});
