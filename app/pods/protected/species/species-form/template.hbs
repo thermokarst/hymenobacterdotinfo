@@ -1,14 +1,14 @@
 <form class="grid-form" {{action 'save' on='submit'}}>
   <fieldset>
-    <legend><em>{{species.speciesName}}</em></legend>
+    <legend><em>{{speciesName}}</em></legend>
     <div data-row-span="2">
       <div data-field-span="1">
         <label>Species Name</label>
-        {{input value=species.speciesName class="species-name"}}
+        {{one-way-input type="text" class="species-name" value=speciesName update=(action "nameDidChange")}}
       </div>
       <div data-field-span="1">
         <label>Type Species?</label>
-        {{input type="checkbox" checked=species.typeSpecies}} {{if species.typeSpecies 'Yes' 'No'}}
+        {{one-way-input type="checkbox" value=typeSpecies update=(action "typeSpeciesDidChange")}} {{if typeSpecies 'Yes' 'No'}}
       </div>
     </div>
     {{#unless species.isNew}}
@@ -37,9 +37,7 @@
   <a class="button-red smaller" {{action 'cancel'}}>
     Cancel
   </a>
-  {{#if species.hasDirtyAttributes}}
-    <button type="submit" class="button-green smaller save-species">
-      Save
-    </button>
-  {{/if}}
+  <button type="submit" class="button-green smaller save-species">
+    Save
+  </button>
 </form>

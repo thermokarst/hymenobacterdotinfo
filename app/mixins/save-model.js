@@ -7,9 +7,11 @@ export default Mixin.create({
   fallbackRoute: null,
 
   actions: {
-    save: function() {
+    save: function(properties) {
       const model = this.get('model');
       const fallbackRoute = this.get('fallbackRoute');
+
+      model.setProperties(properties);
 
       if (model.get('hasDirtyAttributes')) {
         model.save().then((model) => {
