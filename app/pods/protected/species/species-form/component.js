@@ -45,7 +45,6 @@ export default Component.extend({
 
     typeSpeciesDidChange: function() {
       this.toggleProperty('typeSpecies');
-      console.log(this.get('typeSpecies'));
     },
   },
 });

@@ -8,7 +8,8 @@
       </div>
       <div data-field-span="1">
         <label>Type Species?</label>
-        {{one-way-input type="checkbox" value=typeSpecies update=(action "typeSpeciesDidChange")}} {{if typeSpecies 'Yes' 'No'}}
+        <input type="checkbox" checked={{typeSpecies}} value="{{typeSpecies}}" onchange={{action "typeSpeciesDidChange"}}>
+        {{if typeSpecies 'Yes' 'No'}}
       </div>
     </div>
     {{#unless species.isNew}}
