@@ -54,3 +54,17 @@ test('editing /species/:id/edit', function(assert) {
     });
   });
 });
+
+test('creating /species/new', function(assert) {
+  visit(`/species/new`);
+
+  andThen(function() {
+    assert.equal(currentURL(), `/species/new`);
+    fillIn('.species-name', 'New Species Name');
+    click('.save-species');
+
+    andThen(function() {
+      assert.equal(find(".flakes-information-box > legend > em").text().trim(), 'New Species Name');
+    });
+  });
+});

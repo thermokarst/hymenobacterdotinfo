@@ -18,7 +18,7 @@ export default Mixin.create({
   },
 
   afterModel: function(model) {
-    if (!model.get('canEdit')) {
+    if (!model.get('isNew') && !model.get('canEdit')) {
       this.transitionTo(this.get('fallbackRouteAfter'), model.get('id'));
     }
   },

@@ -13,6 +13,7 @@ export function testConfig() {
   this.get('/users/:id');
 
   this.get('/species');
+  this.post('/species');
   this.get('/species/:id');
   this.put('/species/:id');
 }
