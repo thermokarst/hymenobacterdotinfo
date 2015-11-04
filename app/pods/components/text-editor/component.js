@@ -3,7 +3,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   quill: null,
-  value: null, // passed in
+  value: null,
+  update: null,
 
   didInsertElement: function() {
     let quill = new Quill(`#${this.get('elementId')} .editor`, {
@@ -22,11 +23,10 @@ export default Ember.Component.extend({
 
     quill.on('text-change', (delta, source) => {
       if (source === 'user') {
-        this.set('value', Ember.$(quill.getHTML()).html());
+        this.attrs['update'](Ember.$(quill.getHTML()).html());
       }
     });
 
     this.set('quill', quill);
   },
-
 });
