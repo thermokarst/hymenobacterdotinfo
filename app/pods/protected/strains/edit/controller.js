@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
           ajaxError(strain.get('errors'), this.get('flashMessages'));
         });
       } else {
-        strain.deleteRecord().then(() => {
+        strain.destroyRecord().then(() => {
           this.transitionToRoute('protected.strains.show', strain);
         });
       }

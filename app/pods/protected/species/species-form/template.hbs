@@ -1,21 +1,22 @@
 <form class="grid-form" {{action 'save' on='submit'}}>
   <fieldset>
-    <legend><em>{{species.speciesName}}</em></legend>
+    <legend><em>{{speciesName}}</em></legend>
     <div data-row-span="2">
       <div data-field-span="1">
         <label>Species Name</label>
-        {{input value=species.speciesName}}
+        {{one-way-input type="text" class="species-name" value=speciesName update=(action "speciesNameDidChange")}}
       </div>
       <div data-field-span="1">
         <label>Type Species?</label>
-        {{input type="checkbox" checked=species.typeSpecies}} {{if species.typeSpecies 'Yes' 'No'}}
+        <input type="checkbox" checked={{typeSpecies}} value="{{typeSpecies}}" onchange={{action "typeSpeciesDidChange"}}>
+        {{if typeSpecies 'Yes' 'No'}}
       </div>
     </div>
-    {{#unless species.isNew}}
+    {{#unless isNew}}
     <div data-row-span="1">
       <div data-field-span="1">
         <label>Strains</label>
-        {{#each species.strains as |strain index|}}
+        {{#each strains as |strain index|}}
           {{if index ","}}
           {{#link-to 'protected.strains.show' strain.id}}
             {{{strain.strainNameMU}}}
@@ -29,7 +30,7 @@
     <div data-row-span="1">
       <div data-field-span="1">
         <label>Etymology</label>
-        {{text-editor value=species.etymology}}
+        {{text-editor value=etymology update=(action "etymologyDidChange")}}
       </div>
     </div>
   </fieldset>
@@ -37,8 +38,8 @@
   <a class="button-red smaller" {{action 'cancel'}}>
     Cancel
   </a>
-  {{#if species.hasDirtyAttributes}}
-    <button type="submit" class="button-green smaller">
+  {{# if isDirty}}
+    <button type="submit" class="button-green smaller save-species">
       Save
     </button>
   {{/if}}

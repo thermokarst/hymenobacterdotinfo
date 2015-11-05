@@ -25,11 +25,11 @@ export default Ember.Route.extend({
 
   actions: {
     willTransition: function(/*transition*/) {
-      let controller = this.get('controller');
-      let strain = controller.get('strain');
+      const controller = this.get('controller');
+      const strain = controller.get('strain');
 
       if (strain.get('isNew')) {
-        strain.deleteRecord();
+        strain.destroyRecord();
       }
     },
   },
