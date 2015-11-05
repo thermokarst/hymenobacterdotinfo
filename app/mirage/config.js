@@ -16,4 +16,9 @@ export function testConfig() {
   this.post('/species');
   this.get('/species/:id');
   this.put('/species/:id');
+
+  this.get('/characteristics');
+  this.post('/characteristics');
+  this.get('/characteristics/:id');
+  this.put('/characteristics/:id');
 }

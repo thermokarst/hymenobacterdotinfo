@@ -1,25 +1,15 @@
 import Ember from 'ember';
+import ElevatedAccess from '../../../../mixins/elevated-access';
 
-export default Ember.Route.extend({
-  currentUser: Ember.inject.service('session-account'),
+const { Route } = Ember;
 
-  beforeModel: function(transition) {
-    this._super(transition);
-    this.get('currentUser.account').then((user) => {
-      if (user.get('isReader')) {
-        this.transitionTo('protected.characteristics.index');
-      }
-    });
-  },
+export default Route.extend(ElevatedAccess, {
+  // Required for ElevatedAccess mixin
+  fallbackRouteBefore: 'protected.characteristics.index',
+  fallbackRouteAfter: 'protected.characteristics.show',
 
   model: function(params) {
-    return this.store.findRecord('characteristic', params.characteristic_id, { reload: true });
-  },
-
-  afterModel: function(model) {
-    if (!model.get('canEdit')) {
-      this.transitionTo('characteristics.show', model.get('id'));
-    }
+    return this.store.findRecord('characteristic', params.characteristic_id);
   },
 
 });

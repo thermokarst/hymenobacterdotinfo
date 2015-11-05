@@ -1,20 +1,20 @@
 <form class="grid-form" {{action 'save' on='submit'}}>
   <fieldset>
-    <legend><em>{{characteristic.characteristicName}}</em></legend>
+    <legend><em>{{characteristicName}}</em></legend>
     <div data-row-span="1">
       <div data-field-span="1">
         <label>Characteristic Name</label>
-        {{input value=characteristic.characteristicName}}
+        {{one-way-input type="text" class="characteristic-name" value=characteristicName update=(action "characteristicNameDidChange")}}
       </div>
     </div>
     <div data-row-span="2">
       <div data-field-span="1">
         <label>Characteristic Type</label>
-        {{input value=characteristic.characteristicTypeName}}
+        {{one-way-input type="text" class="characteristic-type-name" value=characteristicTypeName update=(action "characteristicTypeNameDidChange")}}
       </div>
       <div data-field-span="1">
         <label>Sort Order</label>
-        {{input value=characteristic.sortOrder}}
+        {{one-way-input type="text" class="sort-order" value=sortOrder update=(action "sortOrderDidChange")}}
       </div>
     </div>
   </fieldset>
@@ -22,8 +22,8 @@
   <a class="button-red smaller" {{action 'cancel'}}>
     Cancel
   </a>
-  {{#if characteristic.hasDirtyAttributes}}
-    <button type="submit" class="button-green smaller">
+  {{#if isDirty}}
+    <button type="submit" class="button-green smaller save-characteristic">
       Save
     </button>
   {{/if}}
