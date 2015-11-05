@@ -66,6 +66,7 @@ test('creating /characteristics/new', function(assert) {
 
     andThen(function() {
       assert.equal(find(".flakes-information-box > legend").text().trim(), 'New Characteristic Name');
+      assert.equal(server.db.characteristics.length, 1);
     });
   });
 });
