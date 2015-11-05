@@ -1,10 +1,9 @@
 import Ember from 'ember';
+import SetupMetaData from '../../../../mixins/setup-metadata';
 
-const { Component, inject: { service } } = Ember;
+const { Component } = Ember;
 
-export default Component.extend({
-  currentUser: service('session-account'),
-
+export default Component.extend(SetupMetaData, {
   // Read-only attributes
   species: null,
   isNew: null,
@@ -29,12 +28,6 @@ export default Component.extend({
     });
     // Read-only attributes
     this.set('isNew', this.get('species.isNew'));
-  }),
-
-  setupMetaDataOnInit: Ember.on('init', function() {
-    this.get('currentUser.account').then((user) => {
-      this.set('metaData', user.get('metaData'));
-    });
   }),
 
   updateField: function(property, value) {
