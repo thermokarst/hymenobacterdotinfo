@@ -23,7 +23,7 @@ export default BaseAuthenticator.extend({
     return RSVP.resolve(data);
   },
 
-  invalidate: function(data) {
+  invalidate: function(/* data */) {
     return RSVP.resolve();
   },
 });

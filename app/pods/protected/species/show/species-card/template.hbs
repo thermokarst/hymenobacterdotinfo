@@ -1,0 +1,62 @@
+<div class="grid-1">
+  <div class="span-1">
+    <fieldset class="flakes-information-box">
+      <legend>
+        Species <em>{{species.speciesName}}</em>
+      </legend>
+
+      {{! ROW 1 }}
+      <div class="grid-2 gutter-20">
+        <dl class="span-1">
+          <dt>Strains</dt>
+          <dd>
+            <ul>
+              {{#each species.strains as |strain index|}}
+                <li>
+                  {{#link-to 'protected.strains.show' strain.id}}
+                    {{{strain.strainNameMU}}}
+                  {{/link-to}}
+                </li>
+              {{/each}}
+            </ul>
+          </dd>
+        </dl>
+        <dl class="span-1">
+          <dt>Type Species?</dt>
+          <dd>
+            {{if species.typeSpecies 'Yes' 'No'}}
+          </dd>
+        </dl>
+      </div>
+
+      {{! ROW 2 }}
+      <div class="grid-1 gutter-20">
+        <dl class="span-1">
+          <dt>Etymology</dt>
+          <dd>
+            {{{species.etymology}}}
+          </dd>
+        </dl>
+      </div>
+
+      {{! ROW 3 }}
+      <div class="grid-2 gutter-20">
+        <dl class="span-1">
+          <dt>Record Created</dt>
+          <dd>{{null-time species.createdAt 'LL'}}</dd>
+        </dl>
+        <dl class="span-1">
+          <dt>Record Updated</dt>
+          <dd>{{null-time species.updatedAt 'LL'}}</dd>
+        </dl>
+      </div>
+    </fieldset>
+  </div>
+</div>
+{{#if species.canEdit}}
+  <br>
+  {{#link-to 'protected.species.edit' species class="button-gray smaller"}}
+    Edit
+  {{/link-to}}
+  {{delete-button delete=(action 'deleteSpecies')}}
+{{/if}}

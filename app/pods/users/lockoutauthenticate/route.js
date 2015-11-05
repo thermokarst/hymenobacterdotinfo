@@ -12,7 +12,7 @@ export default Ember.Route.extend(UnauthenticatedRouteMixin, {
     this.get('session').authenticate('authenticator:jwt-resolved', token).then(() => {
       this.get('currentUser.account').then((account) => {
         this.transitionTo('protected.users.changepassword', account.get('id'));
-      })
+      });
     });
   },
 

@@ -1,12 +1,9 @@
 import Ember from 'ember';
+import DeleteModel from '../../../../mixins/delete-model';
 
-export default Ember.Controller.extend({
-  actions: {
-    delete: function() {
-      this.get('model').destroyRecord().then(() => {
-        this.transitionToRoute('protected.species.index');
-      });
-    },
-  },
+const { Controller } = Ember;
 
+export default Controller.extend(DeleteModel, {
+  // Required for DeleteModel mixin
+  transitionRoute: 'protected.species.index',
 });

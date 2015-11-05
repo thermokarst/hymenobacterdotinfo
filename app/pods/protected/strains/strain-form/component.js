@@ -9,5 +9,13 @@ export default Ember.Component.extend({
     cancel: function() {
       this.sendAction('cancel');
     },
-  }
+
+    isolatedFromDidChange: function(value) {
+      this.set('strain.isolatedFrom', value);
+    },
+
+    notesDidChange: function(value) {
+      this.set('strain.notes', value);
+    },
+  },
 });

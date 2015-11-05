@@ -1,10 +1,10 @@
 import parseBase64 from '../../../utils/parse-base64';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | parse base64');
+module('parseBase64');
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  var result = parseBase64();
+  var result = parseBase64('123');
   assert.ok(result);
 });

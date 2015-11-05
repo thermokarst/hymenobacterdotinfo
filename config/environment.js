@@ -36,6 +36,7 @@ module.exports = function(environment) {
     apiURL = 'https://bactdb-test.herokuapp.com';
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
+    ENV.locationType = 'none';
   }
 
   if (environment === 'production') {
