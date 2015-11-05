@@ -7,7 +7,7 @@ export default function() {
 
 export function testConfig() {
   this.urlPrefix = 'https://bactdb-test.herokuapp.com';
-  this.namespace = '/api/hymenobacter';
+  this.namespace = '/api/clostridium';
   this.timing = 0;
 
   this.get('/users/:id');
