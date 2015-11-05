@@ -1,27 +1,6 @@
 <h2>{{genus-name}} Characteristics</h2>
-<h3 id="total-characteristics">Total characteristics: {{model.length}}</h3>
 
-{{add-button label="Add Characteristic" link="protected.characteristics.new" canAdd=metaData.canAdd}}
-
-<table class="flakes-table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Sort Order</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each sortedCharacteristics as |row|}}
-      <tr>
-        <td>
-          {{#link-to 'protected.characteristics.show' row}}
-            {{row.characteristicName}}
-          {{/link-to}}
-        </td>
-        <td>{{row.characteristicTypeName}}</td>
-        <td>{{row.sortOrder}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{
+  protected/characteristics/index/characteristics-table
+  characteristics=model
+}}
