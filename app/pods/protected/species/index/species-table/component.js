@@ -1,18 +1,10 @@
 import Ember from 'ember';
+import SetupMetaData from '../../../../../mixins/setup-metadata';
 
-const { Component, inject: { service }} = Ember;
+const { Component } = Ember;
 
-export default Component.extend({
-  currentUser: service('session-account'),
-
-  metaData: null,
+export default Component.extend(SetupMetaData, {
   species: null,
-
-  setupMetaDataOnInit: Ember.on('init', function() {
-    this.get('currentUser.account').then((user) => {
-      this.set('metaData', user.get('metaData'));
-    });
-  }),
 
   sortParams: ['speciesName', 'strainCount'],
   sortedSpecies: Ember.computed.sort('species', 'sortParams'),

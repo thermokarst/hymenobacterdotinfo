@@ -1,0 +1,55 @@
+<div class="grid-1">
+  <div class="span-1">
+    <fieldset class="flakes-information-box">
+      <legend>
+        {{characteristic.characteristicName}}
+      </legend>
+
+      {{! ROW 1 }}
+      <div class="grid-2 gutter-20">
+        <dl class="span-1">
+          <dt>Characteristic Type</dt>
+          <dd>
+            {{characteristic.characteristicTypeName}}
+          </dd>
+        </dl>
+        <dl class="span-1">
+          <dt>Sort Order</dt>
+          <dd>
+            {{characteristic.sortOrder}}
+          </dd>
+        </dl>
+      </div>
+
+      {{! ROW 2 }}
+      <div class="grid-2 gutter-20">
+        <dl class="span-2">
+          <dt>Measurements</dt>
+          <dd>
+            <p>To add/edit/remove a measurement, please visit the strain's page (links below)</p>
+            {{protected/characteristics/show/measurements-table characteristic=characteristic}}
+          </dd>
+        </dl>
+      </div>
+
+      {{! ROW 3 }}
+      <div class="grid-2 gutter-20">
+        <dl class="span-1">
+          <dt>Record Created</dt>
+          <dd>{{null-time characteristic.createdAt 'LL'}}</dd>
+        </dl>
+        <dl class="span-1">
+          <dt>Record Updated</dt>
+          <dd>{{null-time characteristic.updatedAt 'LL'}}</dd>
+        </dl>
+      </div>
+    </fieldset>
+  </div>
+</div>
+{{#if characteristic.canEdit}}
+  <br>
+  {{#link-to 'protected.characteristics.edit' characteristic.id class="button-gray smaller"}}
+    Edit
+  {{/link-to}}
+  {{delete-button delete=(action 'deleteCharacteristic')}}
+{{/if}}

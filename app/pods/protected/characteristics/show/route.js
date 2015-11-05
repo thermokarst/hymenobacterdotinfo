@@ -1,8 +1,10 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const { Route } = Ember;
+
+export default Route.extend({
   model: function(params) {
-    return this.store.findRecord('characteristic', params.characteristic_id, { reload: true });
+    return this.store.findRecord('characteristic', params.characteristic_id);
   },
 
 });

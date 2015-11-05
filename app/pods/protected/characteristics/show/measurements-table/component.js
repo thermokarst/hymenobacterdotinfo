@@ -1,19 +1,24 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  measurementsPresent: function() {
-    return this.get('model.measurements.length') > 0;
-  }.property('model.measurements'),
+const { Component, computed } = Ember;
+const { sort } = computed;
+
+export default Component.extend({
+  characteristic: null,
+
+  measurementsPresent: computed('characteristic', function() {
+    return this.get('characteristic.measurements.length') > 0;
+  }),
 
   sortParams: ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName'],
   sortAsc: true,
   paramsChanged: false,
-  sortedMeasurements: Ember.computed.sort('model.measurements', 'sortParams'),
+  sortedMeasurements: sort('characteristic.measurements', 'sortParams'),
 
   actions: {
     changeSortParam: function(col) {
-      let sort = this.get('sortAsc') ? 'asc' : 'desc';
-      let sortCol = `${col}:${sort}`;
+      const sort = this.get('sortAsc') ? 'asc' : 'desc';
+      const sortCol = `${col}:${sort}`;
       this.set('sortParams', [sortCol]);
       this.set('paramsChanged', true);
       this.toggleProperty('sortAsc');

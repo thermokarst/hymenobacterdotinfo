@@ -65,6 +65,7 @@ test('creating /species/new', function(assert) {
 
     andThen(function() {
       assert.equal(find(".flakes-information-box > legend > em").text().trim(), 'New Species Name');
+      assert.equal(server.db.species.length, 1);
     });
   });
 });

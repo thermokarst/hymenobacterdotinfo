@@ -5,5 +5,6 @@ const { Controller } = Ember;
 
 export default Controller.extend(SaveModel, {
   // Required for SaveModel mixin
-  fallbackRoute: 'protected.species.show',
+  fallbackRouteSave: 'protected.species.show',
+  fallbackRouteCancel: 'protected.species.show',
 });
