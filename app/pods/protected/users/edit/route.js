@@ -1,8 +1,12 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
-  currentUser: Ember.inject.service('session-account'),
+const { Route, inject: { service } } = Ember;
 
+export default Route.extend({
+  currentUser: service('session-account'),
+
+  // Not using ElevatedAccess Mixin because the rules for viewing user accounts
+  // is slightly different.
   beforeModel: function(transition) {
     this._super(transition);
 
@@ -16,7 +20,7 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    return this.store.findRecord('user', params.user_id, { reload: true });
+    return this.store.findRecord('user', params.user_id);
   },
 
 });

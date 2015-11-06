@@ -16,6 +16,7 @@ export default Mixin.create({
 
       if (model.get('hasDirtyAttributes')) {
         model.save().then((model) => {
+          this.get('flashMessages').clearMessages();
           this.transitionToRoute(fallbackRoute, model);
         }, () => {
           ajaxError(model.get('errors'), this.get('flashMessages'));

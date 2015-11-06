@@ -1,29 +1,29 @@
 <form class="grid-form" {{action 'save' on='submit'}}>
   <fieldset>
-    <legend><em>{{user.name}}</em></legend>
+    <legend><em>{{name}}</em></legend>
     <div data-row-span="1">
       <div data-field-span="1">
         <label>Name</label>
-        {{input value=user.name class="user-name"}}
+        {{one-way-input type="text" class="user-name" value=name update=(action "nameDidChange")}}
       </div>
     </div>
     <div data-row-span="1">
       <div data-field-span="1">
         <label>Email</label>
-        {{input value=user.email}}
+        {{one-way-input type="text" class="email" value=email update=(action "emailDidChange")}}
       </div>
     </div>
     <div data-row-span="1">
       <div data-field-span="1">
         <label>Role</label>
-        {{#if session.currentUser.isAdmin}}
-          <select onchange={{action (mut user.role) value="target.value"}}>
+        {{#if isAdmin}}
+          <select onchange={{action "roleDidChange" value="target.value"}}>
             {{#each roles as |roleChoice|}}
-              <option value={{roleChoice}} selected={{equal user.role roleChoice}}>{{roleChoice}}</option>
+              <option value={{roleChoice}} selected={{equal role roleChoice}}>{{roleChoice}}</option>
             {{/each}}
           </select>
         {{else}}
-          {{user.role}}
+          {{role}} {{!-- Not editable --}}
         {{/if}}
       </div>
     </div>
@@ -32,7 +32,7 @@
   <a class="button-red smaller" {{action 'cancel'}}>
     Cancel
   </a>
-  {{#if user.hasDirtyAttributes}}
+  {{#if isDirty}}
     <button type="submit" class="button-green smaller save-user">
       Save
     </button>

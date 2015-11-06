@@ -44,7 +44,7 @@
   {{/if}}
 
   <div class="span-1">
-    {{#if model.canEdit}}
+    {{#if user.canEdit}}
       {{#link-to 'protected.users.edit' user.id class="button-gray smaller"}}
         Edit
       {{/link-to}}
