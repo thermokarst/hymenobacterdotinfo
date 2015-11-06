@@ -10,7 +10,10 @@ export function testConfig() {
   this.namespace = '/api/hymenobacter';
   this.timing = 0;
 
+  this.get('/users');
+  this.post('/users');
   this.get('/users/:id');
+  this.put('/users/:id');
 
   this.get('/species');
   this.post('/species');
