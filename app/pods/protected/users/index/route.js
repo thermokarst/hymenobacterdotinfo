@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
-  currentUser: Ember.inject.service('session-account'),
+const { Route, inject: { service } } = Ember;
+
+export default Route.extend({
+  currentUser: service('session-account'),
 
   beforeModel: function(transition) {
     this._super(transition);
