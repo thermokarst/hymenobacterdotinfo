@@ -1,51 +1,51 @@
 <form class="grid-form" {{action 'save' on='submit'}}>
   <fieldset>
-    <legend><em>{{strain.strainName}}</em></legend>
+    <legend><em>{{strainName}}</em></legend>
     <div data-row-span="2">
       <div data-field-span="1">
         <label>Strain Name</label>
-        {{input value=strain.strainName class="strain-name"}}
+        {{one-way-input type="text" class="strain-name" value=strainName update=(action "strainNameDidChange")}}
       </div>
       <div data-field-span="1">
         <label>Type Strain?</label>
-        {{input type="checkbox" checked=strain.typeStrain}} {{if strain.typeStrain 'Yes' 'No'}}
+        <input type="checkbox" checked={{typeStrain}} value="{{typeStrain}}" onchange={{action "typeStrainDidChange"}}>
+        {{if typeStrain 'Yes' 'No'}}
       </div>
     </div>
     <div data-row-span="2">
       <div data-field-span="2">
         <label>Species</label>
-          {{
-            select-2
-            content=species
-            optionLabelPath="speciesName"
-            value=strain.species
-          }}
+        <select onchange={{action "speciesDidChange" value="target.value"}}>
+          {{#each speciesList as |speciesChoice|}}
+            <option value={{speciesChoice}} selected={{equal species speciesChoice}}>{{speciesChoice.speciesName}}</option>
+          {{/each}}
+        </select>
       </div>
     </div>
     <div data-row-span="2">
       <div data-field-span="2">
         <label>Isolated From</label>
-        {{text-editor value=strain.isolatedFrom update=(action "isolatedFromDidChange")}}
+        {{text-editor value=isolatedFrom update=(action "isolatedFromDidChange")}}
       </div>
     </div>
     <div data-row-span="3">
       <div data-field-span="1">
         <label>Accession Numbers</label>
-        {{input value=strain.accessionNumbers}}
+        {{one-way-input type="text" class="accession-numbers" value=accessionNumbers update=(action "accessionNumbersNameDidChange")}}
       </div>
       <div data-field-span="1">
         <label>GenBank</label>
-        {{input value=strain.genbank}}
+        {{one-way-input type="text" class="genbank" value=genbank update=(action "genbankDidChange")}}
       </div>
       <div data-field-span="1">
         <label>Whole Genome Sequence</label>
-        {{input value=strain.wholeGenomeSequence}}
+        {{one-way-input type="text" class="whole-genome-sequenc" value=wholeGenomeSequence update=(action "wholeGenomeSequenceDidChange")}}
       </div>
     </div>
     <div data-row-span="2">
       <div data-field-span="2">
         <label>Notes</label>
-        {{text-editor value=strain.notes update=(action "notesDidChange")}}
+        {{text-editor value=notes update=(action "notesDidChange")}}
       </div>
     </div>
   </fieldset>
@@ -61,7 +61,7 @@
   <a class="button-red smaller" {{action 'cancel'}}>
     Cancel
   </a>
-  {{#if strain.hasDirtyAttributes}}
+  {{#if isDirty}}
     <button type="submit" class="button-green smaller save-strain">
       Save
     </button>

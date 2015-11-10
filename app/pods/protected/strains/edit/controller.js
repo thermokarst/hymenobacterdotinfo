@@ -1,32 +1,10 @@
 import Ember from 'ember';
-import ajaxError from '../../../../utils/ajax-error';
+import SaveModel from '../../../../mixins/save-model';
 
-export default Ember.Controller.extend({
-  actions: {
-    save: function() {
-      let strain = this.get('strain');
+const { Controller } = Ember;
 
-      if (strain.get('hasDirtyAttributes')) {
-        strain.save().then((strain) => {
-          this.transitionToRoute('protected.strains.show', strain);
-        }, () => {
-          ajaxError(strain.get('errors'), this.get('flashMessages'));
-        });
-      } else {
-        strain.destroyRecord().then(() => {
-          this.transitionToRoute('protected.strains.show', strain);
-        });
-      }
-    },
-
-    cancel: function() {
-      let strain = this.get('strain');
-
-      strain.get('errors').clear();
-      strain.rollbackAttributes();
-
-      this.transitionToRoute('protected.strains.show', strain);
-    },
-
-  },
+export default Controller.extend(SaveModel, {
+  // Required for SaveModel mixin
+  fallbackRouteSave: 'protected.strains.show',
+  fallbackRouteCancel: 'protected.strains.show',
 });
