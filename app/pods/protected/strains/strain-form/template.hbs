@@ -4,7 +4,7 @@
     <div data-row-span="2">
       <div data-field-span="1">
         <label>Strain Name</label>
-        {{input value=strain.strainName}}
+        {{input value=strain.strainName class="strain-name"}}
       </div>
       <div data-field-span="1">
         <label>Type Strain?</label>
@@ -62,7 +62,7 @@
     Cancel
   </a>
   {{#if strain.hasDirtyAttributes}}
-    <button type="submit" class="button-green smaller">
+    <button type="submit" class="button-green smaller save-strain">
       Save
     </button>
   {{/if}}
