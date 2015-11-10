@@ -1,11 +1,12 @@
 import Ember from 'ember';
-import ajaxError from '../../../../../utils/ajax-error';
+import ajaxError from '../../../../utils/ajax-error';
 
 const { Component } = Ember;
 
 export default Component.extend({
   tagName: 'tr',
   isEditing: false,
+  allCharacteristics: null,
 
   oldCharacteristicId: function() {
     let json = this.get('row').toJSON();

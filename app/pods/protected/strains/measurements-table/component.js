@@ -1,48 +1,49 @@
 import Ember from 'ember';
 
-const { Component } = Ember;
+const { Component, computed } = Ember;
+const { sort } = computed;
 
 export default Component.extend({
-  measurementsPresent: function() {
-    return this.get('model.measurements.length') > 0;
-  }.property('model.measurements'),
+  // Passed in
+  strain: null,
+  allCharacteristics: null,
+  canEdit: false,
+  canAdd: false,
+  "add-characteristic": null,
 
-  fetchCharacteristics: function() {
-    if (this.get('canEdit')) {
-      this.store.findAll('characteristic');
-    }
-  }.on('didInsertElement'),
-
+  // Properties
   sortParams: ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName'],
   sortAsc: true,
   paramsChanged: false,
-  sortedMeasurements: Ember.computed.sort('model.measurements', 'sortParams'),
+  sortedMeasurements: sort('strain.measurements', 'sortParams'),
+  measurementsPresent: computed('strain.measurements', function() {
+    return this.get('strain.measurements.length') > 0;
+  }),
+
+  // TODO: remove this
+  // fetchCharacteristics: function() {
+  //   if (this.get('canEdit')) {
+  //     this.store.findAll('characteristic');
+  //   }
+  // }.on('didInsertElement'),
 
   actions: {
     addCharacteristic: function() {
-      const c = this.store.createRecord('characteristic', {
-        sortOrder: -999
-      });
-      const m = this.store.createRecord('measurement', {
-        characteristic: c
-      });
-      this.get('model.measurements').addObject(m);
+      const newChar = this.attrs['add-characteristic']();
+      this.get('strain.measurements').addObject(newChar);
     },
 
     changeSortParam: function(col) {
-      let sort = this.get('sortAsc') ? 'asc' : 'desc';
-      let sortCol = `${col}:${sort}`;
-      this.set('sortParams', [sortCol]);
+      const sort = this.get('sortAsc') ? 'asc' : 'desc';
+      this.set('sortParams', [`${col}:${sort}`]);
       this.set('paramsChanged', true);
       this.toggleProperty('sortAsc');
-      return false;
     },
 
     resetSortParam: function() {
       this.set('sortParams', ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName']);
       this.set('paramsChanged', false);
       this.set('sortAsc', true);
-      return false;
     },
   },
 

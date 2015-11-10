@@ -52,9 +52,10 @@
   <div>
     {{
       protected/strains/measurements-table
-      model=strain
+      strain=strain
+      add-characteristic=(action "addCharacteristic")
       canEdit=strain.canEdit
-      canAdd=canAdd
+      canAdd=metaData.canAdd
     }}
   </div>
   <br>
