@@ -1,27 +1,6 @@
 <h2>{{genus-name}} Strains</h2>
-<h3 id="total-strains">Total strains: {{model.length}}</h3>
 
-{{add-button label="Add Strain" link="protected.strains.new" canAdd=metaData.canAdd}}
-
-<table class="flakes-table">
-  <thead>
-    <tr>
-      <th>Species</th>
-      <th>Total Measurements</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each sortedStrains as |row|}}
-      <tr>
-        <td>
-          {{#link-to 'protected.strains.show' row classBinding="data.typeStrain:type-strain"}}
-            {{row.fullNameMU}}
-          {{/link-to}}
-        </td>
-        <td>
-          {{row.totalMeasurements}}
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{
+  protected/strains/index/strain-table
+  strains=model
+}}
