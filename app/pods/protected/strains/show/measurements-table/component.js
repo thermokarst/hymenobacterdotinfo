@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const { Component } = Ember;
+
+export default Component.extend({
   measurementsPresent: function() {
     return this.get('model.measurements.length') > 0;
   }.property('model.measurements'),

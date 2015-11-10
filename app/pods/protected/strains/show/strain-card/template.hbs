@@ -1,0 +1,105 @@
+<div class="span-1">
+  <fieldset class="flakes-information-box">
+    <legend>
+      {{strain.strainNameMU}}
+    </legend>
+
+    {{! ROW 1 }}
+    <div class="grid-2 gutter-20">
+      <dl class="span-1">
+        <dt>Species</dt>
+        <dd>
+          {{#link-to 'protected.species.show' strain.species.id}}
+            <em>{{strain.species.speciesNameMU}}</em>
+          {{/link-to}}
+        </dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Type Strain?</dt>
+        <dd>
+          {{if strain.typeStrain 'Yes' 'No'}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 2 }}
+    <div class="grid-3 gutter-20">
+      <dl class="span-1">
+        <dt>Accession Numbers</dt>
+        <dd>
+          {{strain.accessionNumbers}}
+        </dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Genbank</dt>
+        <dd>
+          {{genbank-url genbank=strain.genbank}}
+        </dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Whole Genome Sequence</dt>
+        <dd>
+          {{genbank-url genbank=strain.wholeGenomeSequence}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 3 }}
+    <div class="grid-1 gutter-20">
+      <dl class="span-1">
+        <dt>Isolated From</dt>
+        <dd>
+          {{{strain.isolatedFrom}}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 4 }}
+    <div class="grid-1 gutter-20">
+      <dl class="span-1">
+        <dt>Notes</dt>
+        <dd>
+          {{#if strain.notes}}
+            {{{strain.notes}}}
+          {{else}}
+            No notes.
+          {{/if}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 5 }}
+    <div class="grid-1 gutter-20">
+      <dl class="span-1">
+        <dt>Characteristics</dt>
+        <dd>
+          {{
+            protected/strains/show/measurements-table
+            model=strain
+            canEdit=false
+            canAdd=false
+          }}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 6 }}
+    <div class="grid-2 gutter-20">
+      <dl class="span-1">
+        <dt>Record Created</dt>
+        <dd>{{null-time strain.createdAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Record Updated</dt>
+        <dd>{{null-time strain.updatedAt 'LL'}}</dd>
+      </dl>
+    </div>
+  </fieldset>
+</div>
+{{#if strain.canEdit}}
+  <br>
+  {{#link-to 'protected.strains.edit' strain class="button-gray smaller"}}
+    Edit
+  {{/link-to}}
+  {{delete-button delete=(action 'deleteStrain')}}
+{{/if}}
