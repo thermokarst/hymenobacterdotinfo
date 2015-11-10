@@ -1,32 +1,6 @@
-<div class="grid-1">
-  <div class="span-1">
-    <fieldset>
-      <legend>New User Signup</legend>
-      <form {{action 'save' on='submit'}}>
-        <ul>
-          <li>
-            <label>Name</label>
-            {{input value=user.name class="user-name"}}
-          </li>
-          <li>
-            <label>Email</label>
-            {{input value=user.email class="email"}}
-          </li>
-          <li>
-            <label>Password</label>
-            {{input type="password" value=user.password class="password"}}
-          </li>
-          <li>
-            <label>Password (confirm)</label>
-            {{input type="password" value=passwordConfirm class="password-verify"}}
-          </li>
-          <li>
-            <button type="submit" class="button-green smaller save-user">
-              Submit
-            </button>
-          </li>
-        </ul>
-      </form>
-    </fieldset>
-  </div>
-</div>
+{{
+  users/new/new-user-form
+  user=model
+  isLoading=isLoading
+  on-save=(action "save")
+}}
