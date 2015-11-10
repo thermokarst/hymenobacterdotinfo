@@ -9,6 +9,7 @@ export default Component.extend(SetupMetaData, {
   isNew: null,
   isDirty: false,
   speciesList: null,
+  allCharacteristics: null,
 
   // Actions
   "on-save": null,

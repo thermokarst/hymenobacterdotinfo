@@ -9,6 +9,8 @@ export default Component.extend({
   allCharacteristics: null,
   canEdit: false,
   canAdd: false,
+
+  // Actions
   "add-characteristic": null,
 
   // Properties
@@ -19,13 +21,6 @@ export default Component.extend({
   measurementsPresent: computed('strain.measurements', function() {
     return this.get('strain.measurements.length') > 0;
   }),
-
-  // TODO: remove this
-  // fetchCharacteristics: function() {
-  //   if (this.get('canEdit')) {
-  //     this.store.findAll('characteristic');
-  //   }
-  // }.on('didInsertElement'),
 
   actions: {
     addCharacteristic: function() {

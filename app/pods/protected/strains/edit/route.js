@@ -12,6 +12,7 @@ export default Route.extend(ElevatedAccess, {
     return Ember.RSVP.hash({
       strain: this.store.findRecord('strain', params.strain_id),
       species: this.store.findAll('species'), // Need for dropdown
+      characteristics: this.store.findAll('characteristic'), // Need for dropdown
     });
   },
 
@@ -26,6 +27,7 @@ export default Route.extend(ElevatedAccess, {
   setupController: function(controller, models) {
     controller.set('model', models.strain);
     controller.set('speciesList', models.species);
+    controller.set('allCharacteristics', models.characteristics);
   },
 
   actions: {
