@@ -1,21 +1,22 @@
 import Ember from 'ember';
 import ajaxError from '../../../../utils/ajax-error';
 
-const { Component } = Ember;
+const { Component, computed } = Ember;
 
 export default Component.extend({
   tagName: 'tr',
   isEditing: false,
   allCharacteristics: null,
+  measurement: null,
 
   oldCharacteristicId: function() {
-    let json = this.get('row').toJSON();
+    let json = this.get('measurement').toJSON();
     return json.characteristic;
   }.property(),
 
-  rowChanged: Ember.computed('row.notes', 'row.value', 'row.characteristic.id', function() {
-    return this.get('row.hasDirtyAttributes') ||
-      this.get('oldCharacteristicId') !== this.get('row.characteristic.id');
+  rowChanged: computed('measurement.notes', 'measurement.value', 'measurement.characteristic.id', function() {
+    return this.get('measurement.hasDirtyAttributes') ||
+      this.get('oldCharacteristicId') !== this.get('measurement.characteristic.id');
   }),
 
   actions: {
@@ -25,11 +26,11 @@ export default Component.extend({
 
     save: function() {
       if (this.get('rowChanged')) {
-        this.get('row').save().then(() => {
+        this.get('measurement').save().then(() => {
           this.get('flashMessages').clearMessages();
           this.toggleProperty('isEditing');
         }, () => {
-          ajaxError(this.get('row.errors'), this.get('flashMessages'));
+          ajaxError(this.get('measurement.errors'), this.get('flashMessages'));
         });
       } else {
         this.toggleProperty('isEditing');
@@ -37,11 +38,11 @@ export default Component.extend({
     },
 
     delete: function() {
-      let char = this.get('row.characteristic');
+      let char = this.get('measurement.characteristic');
       if (char.get('isNew')) {
         char.destroyRecord();
       }
-      this.get('row').destroyRecord();
+      this.get('measurement').destroyRecord();
     }
 
   },

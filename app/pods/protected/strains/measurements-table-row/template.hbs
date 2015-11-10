@@ -5,15 +5,15 @@
       select-2
       multiple=false
       content=allCharacteristics
-      value=row.characteristic
+      value=measurement.characteristic
       optionLabelPath="characteristicName"
     }}
   </td>
   <td>
-    {{input value=row.value}}
+    {{input value=measurement.value}}
   </td>
   <td>
-    {{input value=row.notes}}
+    {{input value=measurement.notes}}
   </td>
   {{#if canEdit}}
     <td>
@@ -30,18 +30,18 @@
   {{/if}}
 {{else}}
   <td>
-    {{{row.characteristic.characteristicTypeName}}}
+    {{{measurement.characteristic.characteristicTypeName}}}
   </td>
   <td>
-    {{#link-to 'protected.characteristics.show' row.characteristic.id}}
-      {{{row.characteristic.characteristicName}}}
+    {{#link-to 'protected.characteristics.show' measurement.characteristic.id}}
+      {{{measurement.characteristic.characteristicName}}}
     {{/link-to}}
   </td>
   <td>
-    {{row.value}}
+    {{measurement.value}}
   </td>
   <td>
-    {{row.notes}}
+    {{measurement.notes}}
   </td>
   {{#if canEdit}}
     <td>
