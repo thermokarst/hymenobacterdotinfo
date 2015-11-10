@@ -1,9 +1,9 @@
 import Ember from 'ember';
+import DeleteModel from '../../../../mixins/delete-model';
 
-export default Ember.Controller.extend({
-  currentUser: Ember.inject.service('session-account'),
+const { Controller } = Ember;
 
-  isUser: Ember.computed('model.id', 'currentUser.account.id', function() {
-    return this.get('model.id') === this.get('currentUser.account.id');
-  }),
+export default Controller.extend(DeleteModel, {
+  // Required for DeleteModel mixin
+  transitionRoute: 'protected.index',
 });

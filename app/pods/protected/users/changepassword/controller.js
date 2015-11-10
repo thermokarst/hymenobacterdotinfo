@@ -1,33 +1,30 @@
 import Ember from 'ember';
 import ajaxRequest from '../../../../utils/ajax-request';
 
-export default Ember.Controller.extend({
-  session: Ember.inject.service('session'),
-  currentUser: Ember.inject.service('session-account'),
+const { Controller, inject: { service } } = Ember;
 
-  passwordConfirm: null,
+export default Controller.extend({
+  session: service(),
+  currentUser: service('session-account'),
 
   actions: {
-    save: function() {
-      if (this.get('password') !== this.get('passwordConfirm')) {
-        this.get('flashMessages').clearMessages();
-        this.get('flashMessages').error("Password fields don't match");
-        return;
-      }
-
-      let url = `${this.get('globals.apiURL')}/api/${this.get('globals.genus')}/users/password`;
-      let options = {
+    save: function(password) {
+      const url = `${this.get('globals.apiURL')}/api/${this.get('globals.genus')}/users/password`;
+      const id = this.get('currentUser.account.id');
+      const options = {
         method: 'POST',
         data: {
-          id: this.get('currentUser.account.id'),
-          password: this.get('password'),
+          id: id,
+          password: password,
         },
       };
       ajaxRequest(url, options, this.get('session'));
-      this.transitionToRoute('protected.users.index');
+      this.transitionToRoute('protected.users.show', id);
       this.get('flashMessages').information('Your password has been changed.');
     },
 
+    cancel: function() {
+      this.transitionToRoute('protected.users.show', this.get('currentUser.account.id'));
+    },
   },
-
 });

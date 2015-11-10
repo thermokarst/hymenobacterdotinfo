@@ -1,0 +1,53 @@
+<div class="span-1">
+  <fieldset class="flakes-information-box">
+    <legend>
+      {{user.name}}
+    </legend>
+
+    {{! ROW 1 }}
+    <div class="grid-2 gutter-20">
+      <dl class="span-1">
+        <dt>Email</dt>
+        <dd>
+          {{user.email}}
+        </dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Role</dt>
+        <dd>
+          {{user.fullRole}}
+        </dd>
+      </dl>
+    </div>
+
+    {{! ROW 2 }}
+    <div class="grid-2 gutter-20">
+      <dl class="span-1">
+        <dt>Record Created</dt>
+        <dd>{{null-time user.createdAt 'LL'}}</dd>
+      </dl>
+      <dl class="span-1">
+        <dt>Record Updated</dt>
+        <dd>{{null-time user.updatedAt 'LL'}}</dd>
+      </dl>
+    </div>
+  </fieldset>
+</div>
+<br>
+<div class="grid-2 gutter-20">
+  {{#if isUser}}
+    <div class="span-1">
+      {{#link-to 'protected.users.changepassword' user.id class="button-gray smaller"}}
+        Change Password
+      {{/link-to}}
+    </div>
+  {{/if}}
+
+  <div class="span-1">
+    {{#if user.canEdit}}
+      {{#link-to 'protected.users.edit' user.id class="button-gray smaller"}}
+        Edit
+      {{/link-to}}
+    {{/if}}
+  </div>
+</div>

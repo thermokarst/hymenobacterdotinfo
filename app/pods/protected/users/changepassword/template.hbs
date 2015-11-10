@@ -1,24 +1,5 @@
-<div class="grid-1">
-  <div class="span-1">
-    <fieldset>
-      <legend>Change password</legend>
-      <form {{action 'save' on='submit'}}>
-        <ul>
-          <li>
-            <label>New Password</label>
-            {{input type="password" value=password}}
-          </li>
-          <li>
-            <label>New Password (confirm)</label>
-            {{input type="password" value=passwordConfirm}}
-          </li>
-          <li>
-            <button type="submit" class="button-green smaller">
-              Submit
-            </button>
-          </li>
-        </ul>
-      </form>
-    </fieldset>
-  </div>
-</div>
+{{
+  protected/users/changepassword/password-form
+  on-save=(action "save")
+  on-cancel=(action "cancel")
+}}

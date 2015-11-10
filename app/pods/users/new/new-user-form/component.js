@@ -1,24 +1,22 @@
 import Ember from 'ember';
-import SetupMetaData from '../../../../mixins/setup-metadata';
 
 const { Component } = Ember;
 
-export default Component.extend(SetupMetaData, {
+export default Component.extend({
   // Read-only attributes
   user: null,
-  isDirty: false,
-  roles: Ember.String.w('A R W'),
+  isLoading: null,
 
   // Actions
   "on-save": null,
   "on-cancel": null,
-  "on-update": null,
 
   // Property mapping
-  propertiesList: ['name', 'email', 'role'],
+  propertiesList: ['name', 'email', 'password', 'passwordConfirm'],
   name: null,
   email: null,
-  role: null,
+  password: null,
+  passwordConfirm: null,
 
   resetOnInit: Ember.on('init', function() {
     this.get('propertiesList').forEach((field) => {
@@ -39,11 +37,14 @@ export default Component.extend(SetupMetaData, {
 
   actions: {
     save: function() {
-      return this.attrs['on-save'](this.getProperties(this.get('propertiesList')));
-    },
+      // All validation is server-side, except for password verification matching
+      if (this.get('password') !== this.get('passwordConfirm')) {
+        this.get('flashMessages').clearMessages();
+        this.get('flashMessages').error("Password fields don't match");
+        return;
+      }
 
-    cancel: function() {
-      return this.attrs['on-cancel']();
+      return this.attrs['on-save'](this.getProperties(this.get('propertiesList')));
     },
 
     nameDidChange: function(value) {
@@ -54,8 +55,12 @@ export default Component.extend(SetupMetaData, {
       this.updateField('email', value);
     },
 
-    roleDidChange: function(value) {
-      this.updateField('role', value);
+    passwordDidChange: function(value) {
+      this.updateField('password', value);
     },
-  },
+
+    passwordConfirmDidChange: function(value) {
+      this.updateField('passwordConfirm', value);
+    }
+  }
 });
