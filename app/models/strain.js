@@ -25,6 +25,10 @@ export default DS.Model.extend({
     return Ember.String.htmlSafe(`${this.get('strainName')}${type}`);
   }.property('strainName', 'typeStrain').readOnly(),
 
+  fullName: Ember.computed('species', 'strainName', function() {
+    return `${this.get('species.speciesName')} ${this.get('strainNameMU')}`;
+  }),
+
   fullNameMU: function() {
     return Ember.String.htmlSafe(`<em>${this.get('species.speciesName')}</em> ${this.get('strainNameMU')}`);
   }.property('species', 'strainNameMU').readOnly(),

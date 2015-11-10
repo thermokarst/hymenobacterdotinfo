@@ -17,7 +17,7 @@
         <label>Species</label>
         <select onchange={{action "speciesDidChange" value="target.value"}}>
           {{#each speciesList as |speciesChoice|}}
-            <option value={{speciesChoice}} selected={{equal species speciesChoice}}>{{speciesChoice.speciesName}}</option>
+            <option value={{speciesChoice.id}} selected={{equal species.id speciesChoice.id}}>{{speciesChoice.speciesName}}</option>
           {{/each}}
         </select>
       </div>

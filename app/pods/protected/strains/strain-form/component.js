@@ -63,7 +63,8 @@ export default Component.extend(SetupMetaData, {
     },
 
     speciesDidChange: function(value) {
-      this.updateField('species', value);
+      const newSpecies = this.get('speciesList').findBy('id', value);
+      this.updateField('species', newSpecies);
     },
 
     isolatedFromDidChange: function(value) {

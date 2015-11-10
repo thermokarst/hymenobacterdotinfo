@@ -13,17 +13,12 @@ export default Mixin.create({
       const fallbackRoute = this.get('fallbackRouteSave');
 
       model.setProperties(properties);
-
-      if (model.get('hasDirtyAttributes')) {
-        model.save().then((model) => {
-          this.get('flashMessages').clearMessages();
-          this.transitionToRoute(fallbackRoute, model);
-        }, () => {
-          ajaxError(model.get('errors'), this.get('flashMessages'));
-        });
-      } else {
+      model.save().then((model) => {
+        this.get('flashMessages').clearMessages();
         this.transitionToRoute(fallbackRoute, model);
-      }
+      }, () => {
+        ajaxError(model.get('errors'), this.get('flashMessages'));
+      });
     },
 
     cancel: function() {

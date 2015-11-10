@@ -98,7 +98,7 @@
 </div>
 {{#if strain.canEdit}}
   <br>
-  {{#link-to 'protected.strains.edit' strain class="button-gray smaller"}}
+  {{#link-to 'protected.strains.edit' strain.id class="button-gray smaller"}}
     Edit
   {{/link-to}}
   {{delete-button delete=(action 'deleteStrain')}}

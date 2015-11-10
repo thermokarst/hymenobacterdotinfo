@@ -36,7 +36,7 @@ export function testConfig() {
     return {
       strain: db.strains.find(request.params.id),
       species: db.species, // Just send back everything we've got
-    }
+    };
   });
   this.put('/strains/:id');
 }
