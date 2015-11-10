@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ajaxError from '../../../../utils/ajax-error';
 
 const { Component, computed } = Ember;
 
@@ -25,16 +24,8 @@ export default Component.extend({
     },
 
     save: function() {
-      if (this.get('rowChanged')) {
-        this.get('measurement').save().then(() => {
-          this.get('flashMessages').clearMessages();
-          this.toggleProperty('isEditing');
-        }, () => {
-          ajaxError(this.get('measurement.errors'), this.get('flashMessages'));
-        });
-      } else {
-        this.toggleProperty('isEditing');
-      }
+      this.attrs['save-measurement'](this.get('measurement'));
+      this.toggleProperty('isEditing');
     },
 
     delete: function() {

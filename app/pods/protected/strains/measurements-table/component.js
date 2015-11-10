@@ -12,6 +12,7 @@ export default Component.extend({
 
   // Actions
   "add-characteristic": null,
+  "save-measurement": null,
 
   // Properties
   sortParams: ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName'],
@@ -39,6 +40,10 @@ export default Component.extend({
       this.set('sortParams', ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName']);
       this.set('paramsChanged', false);
       this.set('sortAsc', true);
+    },
+
+    saveMeasurement: function(measurement) {
+      return this.attrs['save-measurement'](measurement);
     },
   },
 

@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import SaveModel from '../../../../mixins/save-model';
+import ajaxError from '../../../../utils/ajax-error';
 
 const { Controller } = Ember;
 
@@ -14,5 +15,14 @@ export default Controller.extend(SaveModel, {
         characteristic: this.store.createRecord('characteristic', { sortOrder: -999 }),
       });
     },
+
+    saveMeasurement: function(measurement) {
+      measurement.save().then(() => {
+        this.get('flashMessages').clearMessages();
+      }, () => {
+        ajaxError(measurement.get('errors'), this.get('flashMessages'));
+      });
+    },
+
   },
 });

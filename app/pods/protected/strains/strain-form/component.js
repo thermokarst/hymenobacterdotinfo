@@ -16,6 +16,7 @@ export default Component.extend(SetupMetaData, {
   "on-cancel": null,
   "on-update": null,
   "add-characteristic": null,
+  "save-measurement": null,
 
   // Property mapping
   propertiesList: ['strainName', 'typeStrain', 'species', 'isolatedFrom', 'accessionNumbers', 'genbank', 'wholeGenomeSequence', 'notes'],
@@ -58,6 +59,10 @@ export default Component.extend(SetupMetaData, {
 
     addCharacteristic: function() {
       return this.attrs['add-characteristic']();
+    },
+
+    saveMeasurement: function(measurement) {
+      return this.attrs['save-measurement'](measurement);
     },
 
     strainNameDidChange: function(value) {
