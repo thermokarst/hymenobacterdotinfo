@@ -24,5 +24,13 @@ export default Controller.extend(SaveModel, {
       });
     },
 
+    deleteMeasurement: function(measurement) {
+      const characteristic = measurement.get('characteristic');
+      if (characteristic.get('isNew')) {
+        characteristic.destroyRecord();
+      }
+      measurement.destroyRecord();
+    },
+
   },
 });

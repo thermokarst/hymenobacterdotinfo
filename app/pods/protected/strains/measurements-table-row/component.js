@@ -8,8 +8,12 @@ export default Component.extend({
   allCharacteristics: null,
   measurement: null,
 
+  // Actions
+  "save-measurement": null,
+  "delete-measurement": null,
+
   oldCharacteristicId: function() {
-    let json = this.get('measurement').toJSON();
+    const json = this.get('measurement').toJSON();
     return json.characteristic;
   }.property(),
 
@@ -29,12 +33,8 @@ export default Component.extend({
     },
 
     delete: function() {
-      let char = this.get('measurement.characteristic');
-      if (char.get('isNew')) {
-        char.destroyRecord();
-      }
-      this.get('measurement').destroyRecord();
-    }
+      this.attrs['delete-measurement'](this.get('measurement'));
+    },
 
   },
 });

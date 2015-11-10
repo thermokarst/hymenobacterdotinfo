@@ -13,6 +13,7 @@ export default Component.extend({
   // Actions
   "add-characteristic": null,
   "save-measurement": null,
+  "delete-measurement": null,
 
   // Properties
   sortParams: ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName'],
@@ -44,6 +45,10 @@ export default Component.extend({
 
     saveMeasurement: function(measurement) {
       return this.attrs['save-measurement'](measurement);
+    },
+
+    deleteMeasurement: function(measurement) {
+      return this.attrs['delete-measurement'](measurement);
     },
   },
 
