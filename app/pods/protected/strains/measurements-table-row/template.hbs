@@ -5,19 +5,19 @@
       select-2
       multiple=false
       content=allCharacteristics
-      value=measurement.characteristic
+      value=characteristic
       optionLabelPath="characteristicName"
     }}
   </td>
   <td>
-    {{input value=measurement.value}}
+    {{one-way-input type="text" class="measurement-value" value=value update=(action "valueDidChange")}}
   </td>
   <td>
-    {{input value=measurement.notes}}
+    {{one-way-input type="text" class="measurement-notes" value=notes update=(action "notesDidChange")}}
   </td>
   {{#if canEdit}}
     <td>
-      {{#if rowChanged}}
+      {{#if isDirty}}
       <button class="button-green smaller" {{action 'save'}}>
         Save
       </button>

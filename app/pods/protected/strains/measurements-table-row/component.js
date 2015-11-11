@@ -4,23 +4,39 @@ const { Component, computed } = Ember;
 
 export default Component.extend({
   tagName: 'tr',
+
+  // Read-only attributes
   isEditing: false,
   allCharacteristics: null,
   measurement: null,
+  isDirty: null,
 
   // Actions
   "save-measurement": null,
   "delete-measurement": null,
 
-  oldCharacteristicId: function() {
-    const json = this.get('measurement').toJSON();
-    return json.characteristic;
-  }.property(),
+  // Property mapping
+  propertiesList: ['characteristic', 'value', 'notes'],
+  characteristic: null,
+  value: null,
+  notes: null,
 
-  rowChanged: computed('measurement.notes', 'measurement.value', 'measurement.characteristic.id', function() {
-    return this.get('measurement.hasDirtyAttributes') ||
-      this.get('oldCharacteristicId') !== this.get('measurement.characteristic.id');
+  resetOnInit: Ember.on('init', function() {
+    this.get('propertiesList').forEach((field) => {
+      const valueInMeasurement = this.get('measurement').get(field);
+      this.set(field, valueInMeasurement);
+    });
   }),
+
+  updateField: function(property, value) {
+    this.set(property, value);
+    // Manually compare against passed in value
+    if (this.get('measurement').get(property) !== value) {
+      this.set('isDirty', true);
+    } else {
+      this.set('isDirty', false);
+    }
+  },
 
   actions: {
     edit: function() {
@@ -28,12 +44,24 @@ export default Component.extend({
     },
 
     save: function() {
-      this.attrs['save-measurement'](this.get('measurement'));
+      this.attrs['save-measurement'](this.get('measurement'), this.getProperties(this.get('propertiesList')));
       this.toggleProperty('isEditing');
     },
 
     delete: function() {
       this.attrs['delete-measurement'](this.get('measurement'));
+    },
+
+    characteristicDidChange: function(value) {
+      this.updateField('characteristic', value);
+    },
+
+    valueDidChange: function(value) {
+      this.updateField('value', value);
+    },
+
+    notesDidChange: function(value) {
+      this.updateField('notes', value);
     },
 
   },

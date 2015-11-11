@@ -62,8 +62,8 @@ export default Component.extend(SetupMetaData, {
       return this.attrs['add-characteristic']();
     },
 
-    saveMeasurement: function(measurement) {
-      return this.attrs['save-measurement'](measurement);
+    saveMeasurement: function(measurement, properties) {
+      return this.attrs['save-measurement'](measurement, properties);
     },
 
     deleteMeasurement: function(measurement) {

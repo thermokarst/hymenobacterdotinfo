@@ -16,7 +16,8 @@ export default Controller.extend(SaveModel, {
       });
     },
 
-    saveMeasurement: function(measurement) {
+    saveMeasurement: function(measurement, properties) {
+      measurement.setProperties(properties);
       measurement.save().then(() => {
         this.get('flashMessages').clearMessages();
       }, () => {
