@@ -1,16 +1,12 @@
 import Ember from 'ember';
+import ElevatedAccess from '../../../../mixins/elevated-access';
 
-export default Ember.Route.extend({
-  currentUser: Ember.inject.service('session-account'),
+const { Route } = Ember;
 
-  beforeModel: function(transition) {
-    this._super(transition);
-    this.get('currentUser.account').then((user) => {
-      if (user.get('isReader')) {
-        this.transitionTo('protected.strains.index');
-      }
-    });
-  },
+export default Route.extend(ElevatedAccess, {
+  // Required for ElevatedAccess mixin
+  fallbackRouteBefore: 'protected.strains.index',
+  fallbackRouteAfter: 'protected.strains.show',
 
   model: function() {
     return Ember.RSVP.hash({
@@ -19,19 +15,28 @@ export default Ember.Route.extend({
     });
   },
 
+  // Overriding afterModel because of RSVP hash
+  afterModel: function(models) {
+    if (!models.strain.get('isNew') && !models.strain.get('canEdit')) {
+      this.transitionTo(this.get('fallbackRouteAfter'), models.strain.get('id'));
+    }
+  },
+
+  // Setting up controller because of RSVP hash
   setupController: function(controller, models) {
-    controller.setProperties(models);
+    controller.set('model', models.strain);
+    controller.set('speciesList', models.species);
   },
 
   actions: {
+    // Overriding willTransition because of RSVP hash
     willTransition: function(/*transition*/) {
       const controller = this.get('controller');
-      const strain = controller.get('strain');
+      const model = controller.get('model');
 
-      if (strain.get('isNew')) {
-        strain.destroyRecord();
+      if (model.get('isNew')) {
+        model.destroyRecord();
       }
     },
   },
-
 });

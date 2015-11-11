@@ -24,4 +24,19 @@ export function testConfig() {
   this.post('/characteristics');
   this.get('/characteristics/:id');
   this.put('/characteristics/:id');
+
+  this.get('/strains', function(db /*, request*/) {
+    return {
+      strains: db.strains,
+      species: db.species,
+    };
+  });
+  this.post('/strains');
+  this.get('/strains/:id', function(db, request) {
+    return {
+      strain: db.strains.find(request.params.id),
+      species: db.species, // Just send back everything we've got
+    };
+  });
+  this.put('/strains/:id');
 }

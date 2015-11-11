@@ -1,17 +1,17 @@
 {{#if canAdd}}
-<br>
-<button class="button-green smaller" {{action "addCharacteristic"}}>
-  Add characteristic
-</button>
-<br><br>
+  <br>
+  <button class="button-green smaller" {{action "addCharacteristic"}}>
+    Add characteristic
+  </button>
+  <br><br>
 {{/if}}
 
 {{#if measurementsPresent}}
-{{#if paramsChanged}}
-  <button class="button-gray smaller" {{action 'resetSortParam'}}>
-    Reset sort
-  </button>
-{{/if}}
+  {{#if paramsChanged}}
+    <button class="button-gray smaller" {{action 'resetSortParam'}}>
+      Reset sort
+    </button>
+  {{/if}}
 <table class="flakes-table">
   <colgroup>
     {{#if canEdit}}
@@ -41,8 +41,11 @@
   <tbody>
     {{#each sortedMeasurements as |measurement|}}
       {{
-        protected/strains/show/measurements-table-row
-        row=measurement
+        protected/strains/measurements-table-row
+        measurement=measurement
+        save-measurement=(action "saveMeasurement")
+        delete-measurement=(action "deleteMeasurement")
+        allCharacteristics=allCharacteristics
         canEdit=canEdit
       }}
     {{/each}}
