@@ -1,3 +1,6 @@
 {{#x-application invalidateSession="invalidateSession"}}
-  {{login/login-form}}
+  {{
+    login/login-form
+    on-submit=(action "authenticate")
+  }}
 {{/x-application}}
