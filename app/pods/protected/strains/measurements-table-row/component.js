@@ -53,7 +53,8 @@ export default Component.extend({
     },
 
     characteristicDidChange: function(value) {
-      this.updateField('characteristic', value);
+      const newCharacteristic = this.get('allCharacteristics').findBy('id', value);
+      this.updateField('characteristic', newCharacteristic);
     },
 
     valueDidChange: function(value) {

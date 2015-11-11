@@ -1,13 +1,11 @@
 {{#if isEditing}}
   <td></td>
   <td>
-    {{
-      select-2
-      multiple=false
-      content=allCharacteristics
-      value=characteristic
-      optionLabelPath="characteristicName"
-    }}
+    <select onchange={{action "characteristicDidChange" value="target.value"}}>
+      {{#each allCharacteristics as |characteristicChoice|}}
+        <option value={{characteristicChoice.id}} selected={{equal characteristic.id characteristicChoice.id}}>{{characteristicChoice.characteristicName}}</option>
+      {{/each}}
+    </select>
   </td>
   <td>
     {{one-way-input type="text" class="measurement-value" value=value update=(action "valueDidChange")}}
