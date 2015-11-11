@@ -15,5 +15,13 @@ export default Component.extend({
     submit: function() {
       return this.attrs['on-submit'](this.get('identification'), this.get('password'));
     },
+
+    identificationDidChange: function(value) {
+      this.set('identification', value);
+    },
+
+    passwordDidChange: function(value) {
+      this.set('password', value);
+    },
   },
 });
