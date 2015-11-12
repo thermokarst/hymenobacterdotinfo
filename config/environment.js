@@ -24,6 +24,15 @@ module.exports = function(environment) {
       routeAfterAuthentication: 'protected.compare',
       routeIfAlreadyAuthenticated: 'protected.compare',
     },
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self'",
+      'connect-src': "'self'",
+      'img-src': "'self'",
+      'style-src': "'self' 'unsafe-inline'",
+      'media-src': "'self'"
+    }
   };
 
   var apiURL;
@@ -52,6 +61,7 @@ module.exports = function(environment) {
   }
 
   ENV.apiURL = apiURL;
+  ENV.contentSecurityPolicy['connect-src'] = `'self' ${apiURL}`;
 
   return ENV;
 };
