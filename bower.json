@@ -21,6 +21,8 @@
     "quill": "~0.19.14",
     "pretender": "~0.10.1",
     "lodash": "~3.7.0",
-    "Faker": "~3.0.0"
+    "Faker": "~3.0.0",
+    "selectize": "~0.12.1",
+    "jQuery UI Sortable": "jquery-ui-sortable#*"
   }
 }
