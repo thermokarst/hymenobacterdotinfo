@@ -1,16 +1,16 @@
 import Ember from 'ember';
 
-const { Component } = Ember;
+const { Component, isEmpty } = Ember;
 
 export default Component.extend({
   tagName: 'select',
 
-  value: null,
   nameAttr: null,
   listItems: null,
   placeholder: null,
   selected: null,
   selectize: null,
+  multiple: false,
 
   attributeBindings: [
     'multiple',
@@ -29,11 +29,29 @@ export default Component.extend({
   },
 
   didInsertElement: function() {
+    this._super(...arguments);
+
     this.$().selectize({
+      closeAfterSelect: true,
+      selectOnTab: true,
       plugins: ['drag_drop'],
       items: this.get('selected'),
     });
+
     this.set('selectize', this.$()[0].selectize);
+  },
+
+  didRender: function() {
+    this._super(...arguments);
+
+    const selected = this.get('selected');
+    if (!isEmpty(selected)) {
+      this.get('selected').forEach((item) => {
+        this.get('selectize').addItem(item, true);
+      });
+    } else {
+      this.get('selectize').clear(true);
+    }
   },
 
 });
