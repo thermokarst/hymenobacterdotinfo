@@ -33,7 +33,7 @@ export default Route.extend({
     compare.set('selectedStrains', params.strain_ids);
     compare.set('selectedCharacteristics', params.characteristic_ids);
 
-    return this.get('ajax').request('/compare', { data: params })
+    return this.get('ajax').request('/compare', { data: params });
   },
 
   setupController: function(controller, model) {
