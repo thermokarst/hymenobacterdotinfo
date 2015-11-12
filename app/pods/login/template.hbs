@@ -1,12 +1,6 @@
 {{#x-application invalidateSession="invalidateSession"}}
-  <form {{action "authenticate" on="submit"}}>
-    <h2>Log In</h2>
-      {{input value=identification type="text" placeholder="Email"}}
-      {{input value=password type="password" placeholder="Password"}}
-      {{input class="button-gray" type="submit" value="Log In"}}
-  </form>
-  <br>
-  <div>
-    {{link-to 'Forget your password?' 'users.requestlockouthelp'}}
-  </div>
+  {{
+    login/login-form
+    on-submit=(action "authenticate")
+  }}
 {{/x-application}}

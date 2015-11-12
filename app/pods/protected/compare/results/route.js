@@ -1,8 +1,10 @@
 import Ember from 'ember';
 import ajaxRequest from '../../../../utils/ajax-request';
 
-export default Ember.Route.extend({
-  session: Ember.inject.service('session'),
+const { Route, $: { isEmptyObject }, inject: { service } } = Ember;
+
+export default Route.extend({
+  session: service(),
 
   queryParams: {
     strain_ids: {
@@ -15,8 +17,9 @@ export default Ember.Route.extend({
 
   beforeModel: function(transition) {
     this._super(transition);
-    if (Ember.$.isEmptyObject(transition.queryParams.strain_ids) ||
-        Ember.$.isEmptyObject(transition.queryParams.characteristic_ids)) {
+    const strain_ids = transition.queryParams.strain_ids;
+    const characteristic_ids = transition.queryParams.characteristic_ids;
+    if (isEmptyObject(strain_ids) || isEmptyObject(characteristic_ids)) {
       this.transitionTo('protected.compare');
     }
   },
@@ -26,12 +29,12 @@ export default Ember.Route.extend({
       this.transitionTo('protected.compare');
     }
 
-    let compare = this.controllerFor('protected.compare');
+    const compare = this.controllerFor('protected.compare');
     compare.set('selectedStrains', params.strain_ids);
     compare.set('selectedCharacteristics', params.characteristic_ids);
 
-    let url = `${this.get('globals.apiURL')}/api/${this.get('globals.genus')}/compare`;
-    let options = {
+    const url = `${this.get('globals.apiURL')}/api/${this.get('globals.genus')}/compare`;
+    const options = {
       method: 'GET',
       data: params,
     };
@@ -40,9 +43,26 @@ export default Ember.Route.extend({
 
   setupController: function(controller, model) {
     model.forEach((m, i) => {
-      let c = this.store.peekRecord('characteristic', m[0]);
+      const c = this.store.peekRecord('characteristic', m[0]);
       model[i][0] = c.get('characteristicName');
     });
+
+    const compare = this.controllerFor('protected.compare');
+
+    const strains = [];
+    const strain_ids = compare.get('selectedStrains').split(',');
+    strain_ids.forEach((id) => {
+      strains.push(this.store.peekRecord('strain', id));
+    });
+    controller.set('strains', strains);
+
+    const characteristics = [];
+    const characteristic_ids = compare.get('selectedCharacteristics').split(',');
+    characteristic_ids.forEach((id) => {
+      characteristics.push(this.store.peekRecord('characteristic', id));
+    });
+    controller.set('characteristics', characteristics);
+
     controller.set('model', model);
   },
 
