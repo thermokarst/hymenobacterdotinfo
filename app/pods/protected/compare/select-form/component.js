@@ -20,7 +20,7 @@ export default Component.extend({
 
   updateCharacteristics: function(selection) {
     this.set('selectedCharacteristics', selection);
-    this.attrs['update-characteristics'](this.get('selectedCharacteristics'));
+    this.attrs['update-characteristics'](selection);
   },
 
   actions: {
@@ -51,15 +51,19 @@ export default Component.extend({
       chars.forEach((char) => {
         char_ids.push(char.get('id'));
       });
-      this.updateCharacteristics(char_ids.join(","));
+      this.updateCharacteristics(char_ids);
     },
 
     deselectAllCharacteristics: function() {
-      this.updateCharacteristics("");
+      this.updateCharacteristics([]);
     },
 
     updateStrainSelection: function(selection) {
       this.updateStrains(selection);
+    },
+
+    updateCharacteristicSelection: function(selection) {
+      this.updateCharacteristics(selection);
     },
   },
 });

@@ -25,13 +25,13 @@
         <li>
           <label>Characteristics</label>
           {{
-            select-2
+            x-select
+            listItems=characteristics
+            nameAttr="characteristicName"
+            update=(action "updateCharacteristicSelection")
+            placeholder="Select one ore more characteristics"
             multiple=true
-            content=characteristics
-            value=selectedCharacteristics
-            optionValuePath="id"
-            optionLabelPath="characteristicName"
-            placeholder="Select one or more characteristics"
+            selected=selectedCharacteristics
           }}
         </li>
         <li>
