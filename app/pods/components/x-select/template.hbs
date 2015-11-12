@@ -1,0 +1,6 @@
+{{#if placeholder}}
+  <option value="">{{placeholder}}</option>
+{{/if}}
+{{#each listItems as |option|}}
+  <option value={{option.id}} selected={{equal option.id value.id}}>{{get-property option nameAttr}}</option>
+{{/each}}

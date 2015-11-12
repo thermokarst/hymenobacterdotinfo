@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-// This will be unneccesary when ember 2.0 lands
-export function getProperty(params) {
-  return Ember.get(params[0], params[1]);
-}
+const { get, Helper: { helper } } = Ember;
 
-export default Ember.HTMLBars.makeBoundHelper(getProperty);
+// This will be unneccesary when ember 2.0 lands
+export default helper(function(params) {
+  return get(params[0], params[1]);
+});

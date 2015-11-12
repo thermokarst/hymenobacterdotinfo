@@ -5,13 +5,13 @@
         <li>
           <label>Strains</label>
           {{
-            select-2
+            x-select
+            listItems=strains
+            nameAttr="fullNameMU"
+            update=(action "updateStrainSelection")
+            placeholder="Select one ore more strains"
             multiple=true
-            content=strains
-            value=selectedStrains
-            optionValuePath="id"
-            optionLabelPath="fullNameMU"
-            placeholder="Select one or more strains"
+            selected=selectedStrains
           }}
         </li>
         <li>

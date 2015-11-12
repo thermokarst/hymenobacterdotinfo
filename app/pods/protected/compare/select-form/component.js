@@ -13,10 +13,10 @@ export default Component.extend({
   selectedStrains: null,
   selectedCharacteristics: null,
 
-  updateStrains: function(selection) {
-    this.set('selectedStrains', selection);
-    this.attrs['update-strains'](this.get('selectedStrains'));
-  },
+  // updateStrains: function(selection) {
+  //   this.set('selectedStrains', selection);
+  //   this.attrs['update-strains'](this.get('selectedStrains'));
+  // },
 
   updateCharacteristics: function(selection) {
     this.set('selectedCharacteristics', selection);
@@ -56,6 +56,11 @@ export default Component.extend({
 
     deselectAllCharacteristics: function() {
       this.updateCharacteristics("");
+    },
+
+    updateStrainSelection: function(selection) {
+      this.set('selectedStrains', selection);
+      this.attrs["update-strains"](selection);
     },
   },
 });
