@@ -1,20 +1,17 @@
 import Ember from 'ember';
-import ajaxRequest from '../../../../utils/ajax-request';
 
 const { Route, inject: { service } } = Ember;
 
 export default Route.extend({
   session: service(),
-  globals: service(),
+  ajax: service(),
 
   model: function(params) {
-    const url = `${this.get('globals.apiURL')}/api/${this.get('globals.genus')}/users/verify/${params.nonce}`;
-    return ajaxRequest(url, {}, this.get('session'));
+    return this.get('ajax').request(`/users/verify/${params.nonce}`);
   },
 
-
   afterModel: function(model/*, transition*/) {
-    this.get('flashMessages').success(model.get('msg'));
+    this.get('flashMessages').success(model.msg);
     this.transitionTo('login');
   },
 

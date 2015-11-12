@@ -1,10 +1,10 @@
 import Ember from 'ember';
-import ajaxRequest from '../../../../utils/ajax-request';
 
 const { Route, $: { isEmptyObject }, inject: { service } } = Ember;
 
 export default Route.extend({
   session: service(),
+  ajax: service(),
 
   queryParams: {
     strain_ids: {
@@ -33,12 +33,7 @@ export default Route.extend({
     compare.set('selectedStrains', params.strain_ids);
     compare.set('selectedCharacteristics', params.characteristic_ids);
 
-    const url = `${this.get('globals.apiURL')}/api/${this.get('globals.genus')}/compare`;
-    const options = {
-      method: 'GET',
-      data: params,
-    };
-    return ajaxRequest(url, options, this.get('session'));
+    return this.get('ajax').request('/compare', { data: params })
   },
 
   setupController: function(controller, model) {
