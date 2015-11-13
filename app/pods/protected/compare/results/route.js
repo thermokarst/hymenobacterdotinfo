@@ -30,8 +30,8 @@ export default Route.extend({
     }
 
     const compare = this.controllerFor('protected.compare');
-    compare.set('selectedStrains', params.strain_ids);
-    compare.set('selectedCharacteristics', params.characteristic_ids);
+    compare.set('selectedStrains', params.strain_ids.split(","));
+    compare.set('selectedCharacteristics', params.characteristic_ids.split(","));
 
     return this.get('ajax').request('/compare', { data: params });
   },
@@ -45,14 +45,14 @@ export default Route.extend({
     const compare = this.controllerFor('protected.compare');
 
     const strains = [];
-    const strain_ids = compare.get('selectedStrains').split(',');
+    const strain_ids = compare.get('selectedStrains');
     strain_ids.forEach((id) => {
       strains.push(this.store.peekRecord('strain', id));
     });
     controller.set('strains', strains);
 
     const characteristics = [];
-    const characteristic_ids = compare.get('selectedCharacteristics').split(',');
+    const characteristic_ids = compare.get('selectedCharacteristics');
     characteristic_ids.forEach((id) => {
       characteristics.push(this.store.peekRecord('characteristic', id));
     });

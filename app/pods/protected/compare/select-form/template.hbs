@@ -5,12 +5,12 @@
         <li>
           <label>Strains</label>
           {{
-            select-2
+            x-select
+            options=strains
+            nameAttr='fullNameMU'
             multiple=true
-            content=strains
-            value=selectedStrains
-            optionValuePath="id"
-            optionLabelPath="fullNameMU"
+            selected=selectedStrains
+            update=(action "updateStrainSelection")
             placeholder="Select one or more strains"
           }}
         </li>
@@ -25,12 +25,12 @@
         <li>
           <label>Characteristics</label>
           {{
-            select-2
+            x-select
+            options=characteristics
+            nameAttr='characteristicName'
             multiple=true
-            content=characteristics
-            value=selectedCharacteristics
-            optionValuePath="id"
-            optionLabelPath="characteristicName"
+            selected=selectedCharacteristics
+            update=(action "updateCharacteristicsSelection")
             placeholder="Select one or more characteristics"
           }}
         </li>

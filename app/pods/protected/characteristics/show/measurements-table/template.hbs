@@ -17,7 +17,7 @@
       <tr>
         <td>
           {{#link-to 'protected.strains.show' row.strain.id}}
-            {{{row.strain.strainNameMU}}}
+            {{strain-name strain=row.strain}}
           {{/link-to}}
         </td>
         <td>

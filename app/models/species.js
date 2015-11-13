@@ -17,9 +17,4 @@ export default Model.extend({
   updatedBy   : attr('number'),
   sortOrder   : attr('number'),
   canEdit     : attr('boolean'),
-
-  // TODO: move this to component/helper
-  speciesNameMU: function() {
-    return Ember.String.htmlSafe(`<em>${this.get('speciesName')}</em>`);
-  }.property('speciesName').readOnly(),
 });

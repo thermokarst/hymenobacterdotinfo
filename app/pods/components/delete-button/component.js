@@ -2,10 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'button',
-  classNames: ["button-red", "smaller"],
+  classNames: ["button-red", "smaller", "delete"],
+  showConfirmDelete: false,
 
   click: function() {
-    if (window.confirm("Do you really want to delete this?")) {
+    if (!this.get('showConfirmDelete')) {
+      this.set('showConfirmDelete', true);
+    } else {
       this.attrs.delete();
     }
   },

@@ -15,11 +15,13 @@
     <div data-row-span="2">
       <div data-field-span="2">
         <label>Species</label>
-        <select onchange={{action "speciesDidChange" value="target.value"}}>
-          {{#each speciesList as |speciesChoice|}}
-            <option value={{speciesChoice.id}} selected={{equal species.id speciesChoice.id}}>{{speciesChoice.speciesName}}</option>
-          {{/each}}
-        </select>
+        {{
+          x-select
+          options=speciesList
+          nameAttr='speciesName'
+          selected=species.id
+          update=(action "speciesDidChange")
+        }}
       </div>
     </div>
     <div data-row-span="2">

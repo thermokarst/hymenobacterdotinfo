@@ -1,7 +1,7 @@
 <div class="span-1">
   <fieldset class="flakes-information-box">
     <legend>
-      {{strain.strainNameMU}}
+      {{strain-name strain=strain}}
     </legend>
 
     {{! ROW 1 }}
@@ -10,7 +10,7 @@
         <dt>Species</dt>
         <dd>
           {{#link-to 'protected.species.show' strain.species.id}}
-            <em>{{strain.species.speciesNameMU}}</em>
+            <em>{{strain.species.speciesName}}</em>
           {{/link-to}}
         </dd>
       </dl>
