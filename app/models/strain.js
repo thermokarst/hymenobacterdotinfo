@@ -23,12 +23,6 @@ export default Model.extend({
   canEdit            : attr('boolean'),
 
   // TODO: move this to component/helper
-  strainNameMU: function() {
-    let type = this.get('typeStrain') ? '<sup>T</sup>' : '';
-    return Ember.String.htmlSafe(`${this.get('strainName')}${type}`);
-  }.property('strainName', 'typeStrain').readOnly(),
-
-  // TODO: move this to component/helper
   fullName: Ember.computed('species', 'strainName', function() {
     return `${this.get('species.speciesName')} ${this.get('strainNameMU')}`;
   }),

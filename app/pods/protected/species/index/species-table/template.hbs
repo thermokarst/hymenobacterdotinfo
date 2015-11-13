@@ -23,7 +23,7 @@
           {{#each species.strains as |strain index|}}
             {{if index ","}}
             {{#link-to 'protected.strains.show' strain.id}}
-              {{{strain.strainNameMU}}}
+              {{strain-name strain=strain}}
             {{/link-to}}
           {{/each}}
         </td>
