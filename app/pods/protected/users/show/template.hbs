@@ -1,53 +1,5 @@
-<div class="span-1">
-  <fieldset class="flakes-information-box">
-    <legend>
-      {{model.name}}
-    </legend>
-
-    {{! ROW 1 }}
-    <div class="grid-2 gutter-20">
-      <dl class="span-1">
-        <dt>Email</dt>
-        <dd>
-          {{model.email}}
-        </dd>
-      </dl>
-      <dl class="span-1">
-        <dt>Role</dt>
-        <dd>
-          {{model.fullRole}}
-        </dd>
-      </dl>
-    </div>
-
-    {{! ROW 2 }}
-    <div class="grid-2 gutter-20">
-      <dl class="span-1">
-        <dt>Record Created</dt>
-        <dd>{{null-time model.createdAt 'LL'}}</dd>
-      </dl>
-      <dl class="span-1">
-        <dt>Record Updated</dt>
-        <dd>{{null-time model.updatedAt 'LL'}}</dd>
-      </dl>
-    </div>
-  </fieldset>
-</div>
-<br>
-<div class="grid-2 gutter-20">
-  {{#if isUser}}
-    <div class="span-1">
-      {{#link-to 'protected.users.changepassword' model.id class="button-gray smaller"}}
-        Change Password
-      {{/link-to}}
-    </div>
-  {{/if}}
-
-  <div class="span-1">
-    {{#if model.canEdit}}
-      {{#link-to 'protected.users.edit' model.id class="button-gray smaller"}}
-        Edit
-      {{/link-to}}
-    {{/if}}
-  </div>
-</div>
+{{
+  protected/users/show/user-card
+  user=model
+  on-delete=(action 'delete')
+}}

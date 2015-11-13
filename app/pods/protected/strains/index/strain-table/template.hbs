@@ -1,0 +1,26 @@
+<h3 id="total-strains">Total strains: {{strains.length}}</h3>
+
+{{add-button label="Add Strain" link="protected.strains.new" canAdd=metaData.canAdd}}
+
+<table class="flakes-table">
+  <thead>
+    <tr>
+      <th>Species</th>
+      <th>Total Measurements</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedStrains as |strain|}}
+      <tr>
+        <td>
+          {{#link-to 'protected.strains.show' strain classBinding="data.typeStrain:type-strain"}}
+            {{strain.fullNameMU}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{strain.totalMeasurements}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

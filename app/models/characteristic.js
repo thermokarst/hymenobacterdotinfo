@@ -1,14 +1,16 @@
 import DS from 'ember-data';
 
-export default DS.Model.extend({
-  characteristicName    : DS.attr('string'),
-  characteristicTypeName: DS.attr('string'),
-  strains               : DS.hasMany('strain', { async: false }),
-  measurements          : DS.hasMany('measurements', { async: false }),
-  createdAt             : DS.attr('date'),
-  updatedAt             : DS.attr('date'),
-  createdBy             : DS.attr('number'),
-  updatedBy             : DS.attr('number'),
-  sortOrder             : DS.attr('number'),
-  canEdit               : DS.attr('boolean'),
+const { Model, attr, hasMany } = DS;
+
+export default Model.extend({
+  characteristicName    : attr('string'),
+  characteristicTypeName: attr('string'),
+  strains               : hasMany('strain', { async: false }),
+  measurements          : hasMany('measurements', { async: false }),
+  createdAt             : attr('date'),
+  updatedAt             : attr('date'),
+  createdBy             : attr('number'),
+  updatedBy             : attr('number'),
+  sortOrder             : attr('number'),
+  canEdit               : attr('boolean'),
 });

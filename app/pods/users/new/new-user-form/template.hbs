@@ -1,0 +1,36 @@
+{{#if isLoading}}
+  {{loading-panel}}
+{{else}}
+  <div class="grid-1">
+    <div class="span-1">
+      <fieldset>
+        <legend>New User Signup</legend>
+        <form {{action 'save' on='submit'}}>
+          <ul>
+            <li>
+              <label>Name</label>
+              {{one-way-input type="text" class="user-name" value=name update=(action "nameDidChange")}}
+            </li>
+            <li>
+              <label>Email</label>
+              {{one-way-input type="text" class="email" value=email update=(action "emailDidChange")}}
+            </li>
+            <li>
+              <label>Password</label>
+              {{one-way-input type="password" class="password" value=password update=(action "passwordDidChange")}}
+            </li>
+            <li>
+              <label>Password (confirm)</label>
+              {{one-way-input type="password" class="password-verify" value=passwordConfirm update=(action "passwordConfirmDidChange")}}
+            </li>
+            <li>
+              <button type="submit" class="button-green smaller save-user">
+                Submit
+              </button>
+            </li>
+          </ul>
+        </form>
+      </fieldset>
+    </div>
+  </div>
+{{/if}}

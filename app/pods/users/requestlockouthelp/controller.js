@@ -1,17 +1,15 @@
 import Ember from 'ember';
-import ajaxRequest from '../../../utils/ajax-request';
 
-export default Ember.Controller.extend({
-  session: Ember.inject.service('session'),
+const { Controller, inject: { service } } = Ember;
+
+export default Controller.extend({
+  session: service(),
+  globals: service(),
+  ajax: service(),
 
   actions: {
-    save: function() {
-      let url = `${this.get('globals.apiURL')}/api/${this.get('globals.genus')}/users/lockout`;
-      let options = {
-        method: 'POST',
-        data: { email: this.get('email') },
-      };
-      ajaxRequest(url, options, this.get('session'));
+    submit: function(email) {
+      this.get('ajax').post('/users/lockout', { data: { email: email } } );
       this.transitionToRoute('login');
       this.get('flashMessages').information('Please check your email');
     },

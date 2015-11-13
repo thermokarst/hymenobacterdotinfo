@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  queryParams: ['token'],
+const { Controller } = Ember;
 
+export default Controller.extend({
+  queryParams: ['token'],
+  token: null,
 });

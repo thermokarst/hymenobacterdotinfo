@@ -1,8 +1,11 @@
 {{
   protected/strains/strain-form
-  strain=strain
-  species=species
-  canAdd=metaData.canAdd
-  save="save"
-  cancel="cancel"
+  strain=model
+  speciesList=speciesList
+  add-characteristic=(action "addCharacteristic")
+  allCharacteristics=allCharacteristics
+  save-measurement=(action "saveMeasurement")
+  delete-measurement=(action "deleteMeasurement")
+  on-save=(action "save")
+  on-cancel=(action "cancel")
 }}

@@ -1,12 +1,12 @@
 import Ember from 'ember';
 import SetupMetaData from '../../../../../mixins/setup-metadata';
 
-const { Component } = Ember;
+const { Component, computed: { sort } } = Ember;
 
 export default Component.extend(SetupMetaData, {
   species: null,
 
   sortParams: ['speciesName', 'strainCount'],
-  sortedSpecies: Ember.computed.sort('species', 'sortParams'),
+  sortedSpecies: sort('species', 'sortParams'),
 
 });

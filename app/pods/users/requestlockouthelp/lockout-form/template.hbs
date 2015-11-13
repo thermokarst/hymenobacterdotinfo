@@ -1,0 +1,18 @@
+<div class="grid-1">
+  <div class="span-1">
+    <fieldset>
+      <legend>Account Lockout/Password Reset</legend>
+      <form {{action 'save' on='submit'}}>
+        <ul>
+          <li>
+            <label>Email</label>
+            {{one-way-input type="text" class="email" value=email update=(action "emailDidChange")}}
+          </li>
+          <li>
+            <button type="submit" class="button-green smaller">Submit</button>
+          </li>
+        </ul>
+      </form>
+    </fieldset>
+  </div>
+</div>

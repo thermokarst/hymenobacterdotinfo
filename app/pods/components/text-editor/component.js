@@ -1,13 +1,25 @@
 import Ember from 'ember';
 /* global Quill */
 
-export default Ember.Component.extend({
-  quill: null,
+const { Component } = Ember;
+
+export default Component.extend({
+  // Passed in
   value: null,
-  update: null,
+
+  // Internal
+  quill: null,
+
+  didReceiveAttrs() {
+    this._super(...arguments);
+
+    if (!this.attrs.update) {
+      throw new Error(`You must provide an \`update\` action.`);
+    }
+  },
 
   didInsertElement: function() {
-    let quill = new Quill(`#${this.get('elementId')} .editor`, {
+    const quill = new Quill(`#${this.get('elementId')} .editor`, {
       formats: ['bold', 'italic', 'underline'],
       modules: {
         'toolbar': { container: `#${this.get('elementId')} .toolbar` }

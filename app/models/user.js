@@ -1,29 +1,32 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-export default DS.Model.extend({
-  email    : DS.attr('string'),
-  password : DS.attr('string'),
-  name     : DS.attr('string'),
-  role     : DS.attr('string'),
-  canEdit  : DS.attr('boolean'),
-  createdAt: DS.attr('date'),
-  updatedAt: DS.attr('date'),
+const { Model, attr } = DS;
+const { computed } = Ember;
 
-  isAdmin: function() {
+export default Model.extend({
+  email    : attr('string'),
+  password : attr('string'),
+  name     : attr('string'),
+  role     : attr('string'),
+  canEdit  : attr('boolean'),
+  createdAt: attr('date'),
+  updatedAt: attr('date'),
+
+  isAdmin: computed('role', function() {
     return this.get('role') === 'A';
-  }.property('role'),
+  }),
 
-  isWriter: function() {
+  isWriter: computed('role', function() {
     return this.get('role') === 'W';
-  }.property('role'),
+  }),
 
-  isReader: function() {
+  isReader: computed('role', function() {
     return this.get('role') === 'R';
-  }.property('role'),
+  }),
 
-  fullRole: function() {
-    let role = this.get('role');
+  fullRole: computed('role', function() {
+    const role = this.get('role');
     if (role === 'R') {
       return 'Read-Only';
     } else if (role === 'W') {
@@ -33,13 +36,13 @@ export default DS.Model.extend({
     } else {
       return 'Error';
     }
-  }.property('role'),
+  }),
 
-  canWrite: Ember.computed('role', function() {
+  canWrite: computed('role', function() {
     return this.get('role') !== 'R';
   }),
 
-  metaData: Ember.computed('canWrite', function() {
+  metaData: computed('canWrite', function() {
     return { 'canAdd': this.get('canWrite') };
   }),
 

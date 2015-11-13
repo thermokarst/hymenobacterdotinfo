@@ -1,19 +1,22 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 
-export default DS.RESTSerializer.extend({
+const { RESTSerializer } = DS;
+const { isNone } = Ember;
+
+export default RESTSerializer.extend({
   isNewSerializerAPI: true,
 
   serializeBelongsTo: function(snapshot, json, relationship) {
-    var key = relationship.key;
-    var belongsTo = snapshot.belongsTo(key);
+    let key = relationship.key;
+    const belongsTo = snapshot.belongsTo(key);
     key = this.keyForRelationship ? this.keyForRelationship(key, "belongsTo", "serialize") : key;
-    json[key] = Ember.isNone(belongsTo) ? belongsTo : +belongsTo.record.id;
+    json[key] = isNone(belongsTo) ? belongsTo : +belongsTo.record.id;
   },
 
   serializeHasMany: function(snapshot, json, relationship) {
-    var key = relationship.key;
-    var hasMany = snapshot.hasMany(key);
+    let key = relationship.key;
+    const hasMany = snapshot.hasMany(key);
     key = this.keyForRelationship ? this.keyForRelationship(key, "hasMany", "serialize") : key;
 
     json[key] = [];

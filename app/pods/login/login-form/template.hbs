@@ -1,0 +1,12 @@
+<form {{action "submit" on="submit"}}>
+  <h2>Log In</h2>
+    {{one-way-input type="text" class="identification" value=identification update=(action "identificationDidChange") placeholder="Email"}}
+    {{one-way-input type="password" class="password" value=password update=(action "passwordDidChange") placeholder="Password"}}
+    <button type="submit" class="button-gray log-in">
+      Log In
+    </button>
+</form>
+<br>
+<div>
+  {{link-to 'Forget your password?' 'users.requestlockouthelp'}}
+</div>

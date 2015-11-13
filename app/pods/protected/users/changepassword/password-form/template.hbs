@@ -1,0 +1,29 @@
+<div class="grid-1">
+  <div class="span-1">
+    <fieldset>
+      <legend>Change password</legend>
+      <form {{action 'save' on='submit'}}>
+        <ul>
+          <li>
+            <label>New Password</label>
+            {{one-way-input type="password" class="password" value=password update=(action "passwordDidChange")}}
+          </li>
+          <li>
+            <label>New Password (confirm)</label>
+            {{one-way-input type="password" class="password-confirm" value=passwordConfirm update=(action "passwordConfirmDidChange")}}
+          </li>
+          <li>
+            <a class="button-red smaller" {{action 'cancel'}}>
+              Cancel
+            </a>
+            {{#if matches}}
+              <button type="submit" class="button-green smaller submit-password">
+                Submit
+              </button>
+            {{/if}}
+          </li>
+        </ul>
+      </form>
+    </fieldset>
+  </div>
+</div>

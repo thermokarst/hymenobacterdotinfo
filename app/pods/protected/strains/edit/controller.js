@@ -1,31 +1,36 @@
 import Ember from 'ember';
+import SaveModel from '../../../../mixins/save-model';
 import ajaxError from '../../../../utils/ajax-error';
 
-export default Ember.Controller.extend({
-  actions: {
-    save: function() {
-      let strain = this.get('strain');
+const { Controller } = Ember;
 
-      if (strain.get('hasDirtyAttributes')) {
-        strain.save().then((strain) => {
-          this.transitionToRoute('protected.strains.show', strain);
-        }, () => {
-          ajaxError(strain.get('errors'), this.get('flashMessages'));
-        });
-      } else {
-        strain.destroyRecord().then(() => {
-          this.transitionToRoute('protected.strains.show', strain);
-        });
-      }
+export default Controller.extend(SaveModel, {
+  // Required for SaveModel mixin
+  fallbackRouteSave: 'protected.strains.show',
+  fallbackRouteCancel: 'protected.strains.show',
+
+  actions: {
+    addCharacteristic: function() {
+      return this.store.createRecord('measurement', {
+        characteristic: this.store.createRecord('characteristic', { sortOrder: -999 }),
+      });
     },
 
-    cancel: function() {
-      let strain = this.get('strain');
+    saveMeasurement: function(measurement, properties) {
+      measurement.setProperties(properties);
+      measurement.save().then(() => {
+        this.get('flashMessages').clearMessages();
+      }, () => {
+        ajaxError(measurement.get('errors'), this.get('flashMessages'));
+      });
+    },
 
-      strain.get('errors').clear();
-      strain.rollbackAttributes();
-
-      this.transitionToRoute('protected.strains.show', strain);
+    deleteMeasurement: function(measurement) {
+      const characteristic = measurement.get('characteristic');
+      if (characteristic.get('isNew')) {
+        characteristic.destroyRecord();
+      }
+      measurement.destroyRecord();
     },
 
   },
