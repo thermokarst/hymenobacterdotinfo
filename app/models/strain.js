@@ -31,6 +31,6 @@ export default Model.extend({
   // TODO: move this to component/helper
   // Can't move until Select2 refactor
   fullNameMU: function() {
-    return Ember.String.htmlSafe(`<em>${this.get('species.speciesName')}</em> ${this.get('strainNameMU')}`);
+    return Ember.String.htmlSafe(`<em>${this.get('species.speciesName')}</em> ${this.get('strainName')}`);
   }.property('species', 'strainNameMU').readOnly(),
 });
