@@ -2,6 +2,7 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 const { Model, hasMany, belongsTo, attr } = DS;
+const { computed } = Ember;
 
 export default Model.extend({
   measurements       : hasMany('measurements', { async: false }),
@@ -22,12 +23,13 @@ export default Model.extend({
   sortOrder          : attr('number'),
   canEdit            : attr('boolean'),
 
-  // TODO: move this to component/helper
-  fullName: Ember.computed('species', 'strainName', function() {
+  // Used internally for sorting
+  fullName: computed('species', 'strainName', function() {
     return `${this.get('species.speciesName')} ${this.get('strainNameMU')}`;
   }),
 
   // TODO: move this to component/helper
+  // Can't move until Select2 refactor
   fullNameMU: function() {
     return Ember.String.htmlSafe(`<em>${this.get('species.speciesName')}</em> ${this.get('strainNameMU')}`);
   }.property('species', 'strainNameMU').readOnly(),
