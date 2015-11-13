@@ -12,10 +12,12 @@ export default Controller.extend({
     },
 
     updateStrainSelection: function(selection) {
+      console.log(selection);
       this.set('selectedStrains', selection);
     },
 
     updateCharacteristicSelection: function(selection) {
+      console.log(selection);
       this.set('selectedCharacteristics', selection);
     },
   }

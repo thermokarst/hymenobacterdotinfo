@@ -17,41 +17,34 @@ export default Component.extend({
   ],
 
   change: function() {
-    this.attrs["update"](this.get('selectize').getValue());
+    this.attrs["update"](this.$()[0].selectize.getValue());
   },
 
   didReceiveAttrs: function() {
     this._super(...arguments);
+    console.log('didReceiveAttrs');
 
     if (!this.attrs.update) {
       throw new Error(`You must provide an \`update\` action.`);
     }
+
+    Ember.run.schedule('actions', this, () => {
+      console.log('before adding');
+      this.$()[0].selectize.setValue(this.get('selected'), true);
+      console.log('after adding')
+    });
   },
 
   didInsertElement: function() {
-    this._super(...arguments);
-
-    this.$().selectize({
+    console.log('didInsertElement');
+    const options = {
       closeAfterSelect: true,
       selectOnTab: true,
       plugins: ['drag_drop'],
       items: this.get('selected'),
-    });
-
-    this.set('selectize', this.$()[0].selectize);
-  },
-
-  didRender: function() {
-    this._super(...arguments);
-
-    const selected = this.get('selected');
-    if (!isEmpty(selected)) {
-      this.get('selected').forEach((item) => {
-        this.get('selectize').addItem(item, true);
-      });
-    } else {
-      this.get('selectize').clear(true);
     }
+
+    this.$().selectize(options);
   },
 
 });

@@ -10,16 +10,11 @@ export default Component.extend({
   "update-strains": null,
   "update-characteristics": null,
 
-  selectedStrains: null,
-  selectedCharacteristics: null,
-
   updateStrains: function(selection) {
-    this.set('selectedStrains', selection);
     this.attrs["update-strains"](selection);
   },
 
   updateCharacteristics: function(selection) {
-    this.set('selectedCharacteristics', selection);
     this.attrs['update-characteristics'](selection);
   },
 
