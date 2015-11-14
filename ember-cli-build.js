@@ -14,6 +14,8 @@ module.exports = function(defaults) {
   // quill
   app.import('bower_components/quill/dist/quill.base.css');
   app.import('bower_components/quill/dist/quill.snow.css');
+  // select2
+  app.import('bower_components/select2/select2.css');
 
   // LIBS ////////////////////////////////////////////////////////////////////////
   // flakes (and deps)
@@ -25,6 +27,14 @@ module.exports = function(defaults) {
   app.import('bower_components/moment/moment.js');
   // quill
   app.import('bower_components/quill/dist/quill.min.js');
+  // select2
+  app.import('bower_components/select2/select2.min.js');
+
+  // MISC ////////////////////////////////////////////////////////////////////////
+  // select2
+  app.import('bower_components/select2/select2.png', { destDir: 'assets' });
+  app.import('bower_components/select2/select2x2.png', { destDir: 'assets' });
+  app.import('bower_components/select2/select2-spinner.gif', { destDir: 'assets' });
 
   return app.toTree();
 };
