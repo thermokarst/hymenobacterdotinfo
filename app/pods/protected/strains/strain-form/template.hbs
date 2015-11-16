@@ -30,7 +30,7 @@
         {{text-editor value=isolatedFrom update=(action "isolatedFromDidChange")}}
       </div>
     </div>
-    <div data-row-span="3">
+    <div data-row-span="2">
       <div data-field-span="1">
         <label>Accession Numbers</label>
         {{one-way-input type="text" class="accession-numbers" value=accessionNumbers update=(action "accessionNumbersNameDidChange")}}
@@ -39,6 +39,8 @@
         <label>GenBank</label>
         {{one-way-input type="text" class="genbank" value=genbank update=(action "genbankDidChange")}}
       </div>
+    </div>
+    <div data-row-span="1">
       <div data-field-span="1">
         <label>Whole Genome Sequence</label>
         {{one-way-input type="text" class="whole-genome-sequenc" value=wholeGenomeSequence update=(action "wholeGenomeSequenceDidChange")}}
