@@ -61,7 +61,7 @@ module.exports = function(environment) {
   }
 
   ENV.apiURL = apiURL;
-  ENV.contentSecurityPolicy['connect-src'] = `'self' ${apiURL}`;
+  ENV.contentSecurityPolicy['connect-src'] = "'self' " + apiURL;
 
   return ENV;
 };
