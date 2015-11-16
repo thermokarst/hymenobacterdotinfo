@@ -19,11 +19,13 @@ export function testConfig() {
   this.post('/species');
   this.get('/species/:id');
   this.put('/species/:id');
+  this.delete('/species/:id');
 
   this.get('/characteristics');
   this.post('/characteristics');
   this.get('/characteristics/:id');
   this.put('/characteristics/:id');
+  this.delete('/characteristics/:id');
 
   this.get('/strains', function(db /*, request*/) {
     return {
@@ -39,4 +41,5 @@ export function testConfig() {
     };
   });
   this.put('/strains/:id');
+  this.delete('/strains/:id');
 }

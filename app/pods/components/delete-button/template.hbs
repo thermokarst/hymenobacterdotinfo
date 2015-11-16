@@ -1,5 +1,12 @@
-{{#if showConfirmDelete}}
-  Are you sure?
+{{#unless showConfirmDelete}}
+  <button class="button-red smaller delete" {{action "initialClick"}}>
+    Delete
+  </button>
 {{else}}
-  Delete
-{{/if}}
+  <button class="button-red smaller delete-confirm" {{action "confirmDelete"}}>
+    Confirm Delete
+  </button>
+  <button class="button-gray smaller delete-cancel" {{action "cancelDelete"}}>
+    Cancel Delete
+  </button>
+{{/unless}}
