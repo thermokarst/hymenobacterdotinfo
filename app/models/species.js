@@ -1,6 +1,5 @@
 import DS from 'ember-data';
 import config from '../config/environment';
-import Ember from 'ember';
 
 const { Model, attr, hasMany } = DS;
 
