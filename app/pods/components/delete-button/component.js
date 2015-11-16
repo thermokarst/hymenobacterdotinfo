@@ -1,16 +1,23 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  tagName: 'button',
-  classNames: ["button-red", "smaller", "delete"],
+const { Component } = Ember;
+
+export default Component.extend({
+  tagName: 'span',
   showConfirmDelete: false,
 
-  click: function() {
-    if (!this.get('showConfirmDelete')) {
+  actions: {
+    initialClick: function() {
       this.set('showConfirmDelete', true);
-    } else {
+    },
+
+    cancelDelete: function() {
+      this.set('showConfirmDelete', false);
+    },
+
+    confirmDelete: function() {
       this.attrs.delete();
-    }
+    },
   },
 
 });

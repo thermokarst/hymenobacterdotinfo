@@ -6,10 +6,10 @@ import { authenticateSession } from '../helpers/ember-simple-auth';
 module('Acceptance | characteristics', {
   beforeEach: function() {
     this.application = startApp();
+    server.create('users', { role: 'A', canEdit: true, sub: 1 });
     authenticateSession(this.application, {
       access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiYWN0ZGIiLCJzdWIiOiIxIiwiZXhwIjoxNDQ2NTAyMjI2LCJpYXQiOjE0NDY0OTg2MjZ9.vIjKHAsp2TkCV505EbtCo2xQT-2oQkB-Nv5y0b6E7Mg"
     });
-    server.create('users', { role: 'A', canEdit: true });
   },
 
   afterEach: function() {
@@ -67,6 +67,25 @@ test('creating /characteristics/new', function(assert) {
     andThen(function() {
       assert.equal(find(".flakes-information-box > legend").text().trim(), 'New Characteristic Name');
       assert.equal(server.db.characteristics.length, 1);
+    });
+  });
+});
+
+test('deleting /characteristics/:id', function(assert) {
+  const characteristic = server.create('characteristics', { 'canEdit': true });
+  visit(`/characteristics/${characteristic.id}`);
+
+  andThen(function() {
+    assert.equal(currentURL(), `/characteristics/${characteristic.id}`);
+    click('button.delete');
+
+    andThen(function() {
+      click('button.delete-confirm');
+
+      andThen(function() {
+        assert.equal(currentURL(), `/characteristics`);
+        assert.equal(server.db.characteristics.length, 0);
+      });
     });
   });
 });

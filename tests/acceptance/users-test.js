@@ -6,10 +6,10 @@ import { invalidateSession, authenticateSession } from '../helpers/ember-simple-
 module('Acceptance | users', {
   beforeEach: function() {
     this.application = startApp();
+    server.create('users', { role: 'A', canEdit: true, sub: 1 });
     authenticateSession(this.application, {
       access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiYWN0ZGIiLCJzdWIiOiIxIiwiZXhwIjoxNDQ2NTAyMjI2LCJpYXQiOjE0NDY0OTg2MjZ9.vIjKHAsp2TkCV505EbtCo2xQT-2oQkB-Nv5y0b6E7Mg"
     });
-    server.create('users', { role: 'A', canEdit: true });
   },
 
   afterEach: function() {
