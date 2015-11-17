@@ -1,3 +1,7 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({});
+const { Component, inject: { service } } = Ember;
+
+export default Component.extend({
+  globals: service(),
+});

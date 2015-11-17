@@ -1,8 +1,14 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const { Component, computed, inject: { service } } = Ember;
+
+export default Component.extend({
+  globals: service(),
+
   tagName: 'em',
-  genus: function() {
+
+  genus: computed('globals.genus', function() {
     return this.get('globals.genus').capitalize();
-  }.property().readOnly(),
+  }),
+
 });
