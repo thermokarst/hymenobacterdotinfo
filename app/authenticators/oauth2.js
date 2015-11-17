@@ -1,13 +1,14 @@
 import OAuth2PasswordGrant from 'ember-simple-auth/authenticators/oauth2-password-grant';
 import config from '../config/environment';
 import parseBase64 from '../utils/parse-base64';
+import Ember from 'ember';
 const { RSVP: { Promise }, isEmpty, run, Logger: { warn } } = Ember;
 
 export default OAuth2PasswordGrant.extend({
   serverTokenEndpoint: `${config.apiURL}/api/authenticate`,
   serverTokenRefreshEndpoint: `${config.apiURL}/api/refresh`,
 
-  authenticate: function(identification, password, scope = []) {
+  authenticate: function(identification, password) {
     return new Promise((resolve, reject) => {
       const data = { username: identification, password };
       const serverTokenEndpoint = this.get('serverTokenEndpoint');
