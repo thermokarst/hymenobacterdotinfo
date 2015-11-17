@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component } = Ember;
+const { Component, computed: { sort } } = Ember;
 
 export default Component.extend({
   characteristics: null,
@@ -9,6 +9,12 @@ export default Component.extend({
   "on-search": null,
   "update-strains": null,
   "update-characteristics": null,
+
+
+  charSortParams: ['characteristicTypeName', 'sortOrder', 'characteristicName'],
+  sortedCharacteristics: sort('characteristics', 'charSortParams'),
+  strainSortParams: ['sortOrder'],
+  sortedStrains: sort('strains', 'sortParams'),
 
   selectedStrains: [],
   selectedCharacteristics: [],
