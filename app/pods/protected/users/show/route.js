@@ -15,6 +15,8 @@ export default Route.extend({
       if (!user.get('isAdmin') && user.get('id') !== user_id) {
         this.transitionTo('protected.users.index');
       }
+    }, () => {
+      this.transitionTo('protected.users.index');
     });
   },
 
