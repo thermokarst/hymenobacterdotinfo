@@ -38,8 +38,7 @@ export default Route.extend({
 
   setupController: function(controller, model) {
     model.forEach((m, i) => {
-      const c = this.store.peekRecord('characteristic', m[0]);
-      model[i][0] = c.get('characteristicName');
+      model[i][0] = this.store.peekRecord('characteristic', m[0]);
     });
 
     const compare = this.controllerFor('protected.compare');
