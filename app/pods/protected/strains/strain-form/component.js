@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import SetupMetaData from '../../../../mixins/setup-metadata';
 
-const { Component } = Ember;
+const { Component, computed: { sort } } = Ember;
 
 export default Component.extend(SetupMetaData, {
   // Read-only attributes
@@ -18,6 +18,10 @@ export default Component.extend(SetupMetaData, {
   "add-characteristic": null,
   "save-measurement": null,
   "delete-measurement": null,
+
+  // CPs
+  sortParams: ['sortOrder'],
+  sortedSpeciesList: sort('speciesList', 'sortParams'),
 
   // Property mapping
   propertiesList: ['strainName', 'typeStrain', 'species', 'isolatedFrom', 'accessionNumbers', 'genbank', 'wholeGenomeSequence', 'notes'],

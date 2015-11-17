@@ -17,7 +17,7 @@
         <label>Species</label>
         {{
           x-select
-          options=speciesList
+          options=sortedSpeciesList
           nameAttr='speciesName'
           selected=species.id
           update=(action "speciesDidChange")
