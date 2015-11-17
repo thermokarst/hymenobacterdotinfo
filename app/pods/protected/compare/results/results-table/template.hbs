@@ -14,8 +14,16 @@
   <tbody>
     {{#each characteristics as |row|}}
       <tr>
-        {{#each row key="@index" as |col|}}
-          <td>{{col}}</td>
+        {{#each row key="@index" as |col index|}}
+          <td>
+            {{#unless index}}
+              {{#link-to 'protected.characteristics.show' col.id}}
+                {{col.characteristicName}}
+              {{/link-to}}
+            {{else}}
+              {{col}}
+            {{/unless}}
+          </td>
         {{/each}}
       </tr>
     {{/each}}
