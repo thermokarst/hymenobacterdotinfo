@@ -13,8 +13,8 @@
     {{#each sortedStrains as |strain|}}
       <tr>
         <td>
-          {{#link-to 'protected.strains.show' strain classBinding="data.typeStrain:type-strain"}}
-            {{strain.fullNameMU}}
+          {{#link-to 'protected.strains.show' strain classBinding="strain.typeStrain:type-strain"}}
+            {{full-strain-name strain=strain}}
           {{/link-to}}
         </td>
         <td>
