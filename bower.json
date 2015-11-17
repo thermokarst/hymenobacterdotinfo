@@ -14,7 +14,7 @@
     "qunit": "~1.20.0",
     "flakes": "~1.0.0",
     "moment": "~2.10.6",
-    "select2": "3.5.2",
+    "select2": "4.0.1-rc.1",
     "antiscroll": "git://github.com/azirbel/antiscroll.git#90391fb371c7be769bc32e7287c5271981428356",
     "jquery-mousewheel": "~3.1.4",
     "jquery-ui": "~1.11.4",
