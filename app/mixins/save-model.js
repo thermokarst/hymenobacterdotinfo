@@ -23,11 +23,16 @@ export default Mixin.create({
 
     cancel: function() {
       const model = this.get('model');
+      const isNew = model.get('isNew');
 
       model.get('errors').clear();
       model.rollbackAttributes();
 
-      this.transitionToRoute(this.get('fallbackRouteCancel'), model);
+      if (isNew) {
+        this.transitionToRoute(this.get('fallbackRouteCancel'));
+      } else {
+        this.transitionToRoute(this.get('fallbackRouteCancel'), model);
+      }
     },
   },
 });
