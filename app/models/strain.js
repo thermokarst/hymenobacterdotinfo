@@ -23,12 +23,8 @@ export default Model.extend({
   sortOrder          : attr('number'),
   canEdit            : attr('boolean'),
 
-  // Used internally for sorting
-  fullName: computed('species', 'strainName', function() {
-    return `${this.get('species.speciesName')} ${this.get('strainNameMU')}`;
-  }),
-
   fullNameMU: computed('species', 'strainName', function() {
-    return htmlSafe(`<em>${this.get('species.speciesName')}</em> ${this.get('strainName')}`);
+    const type = this.get('typeStrain') ? '<sup>T</sup>' : '';
+    return htmlSafe(`<em>${this.get('species.speciesName')}</em> ${this.get('strainName')}${type}`);
   }),
 });

@@ -6,7 +6,7 @@
           <label>Strains</label>
           {{
             x-select
-            options=strains
+            options=sortedStrains
             nameAttr='fullNameMU'
             multiple=true
             selected=selectedStrains
@@ -26,7 +26,7 @@
           <label>Characteristics</label>
           {{
             x-select
-            options=characteristics
+            options=sortedCharacteristics
             nameAttr='characteristicName'
             multiple=true
             selected=selectedCharacteristics
