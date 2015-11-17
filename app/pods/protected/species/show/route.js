@@ -4,7 +4,7 @@ const { Route } = Ember;
 
 export default Route.extend({
   model: function(params) {
-    return this.store.findRecord('species', params.species_id);
+    return this.store.findRecord('species', params.species_id, { reload: true });
   },
 
 });

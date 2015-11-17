@@ -21,7 +21,7 @@ export default Route.extend({
   },
 
   model: function(params) {
-    return this.store.findRecord('user', params.user_id);
+    return this.store.findRecord('user', params.user_id, { reload: true });
   },
 
 });

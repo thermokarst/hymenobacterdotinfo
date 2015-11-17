@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 const { Component, computed } = Ember;
-const { sort } = computed;
+const { alias, sort } = computed;
 
 export default Component.extend({
   characteristic: null,
@@ -10,10 +10,9 @@ export default Component.extend({
     return this.get('characteristic.measurements.length') > 0;
   }),
 
-  sortParams: ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName'],
-  sortAsc: true,
-  paramsChanged: false,
-  sortedMeasurements: sort('characteristic.measurements', 'sortParams'),
+  measurements: alias('characteristic.measurements'),
+  sortParams: ['strain.sortOrder'],
+  sortedMeasurements: sort('measurements', 'sortParams'),
 
   actions: {
     changeSortParam: function(col) {

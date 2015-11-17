@@ -13,18 +13,18 @@
     </tr>
   </thead>
   <tbody>
-    {{#each sortedMeasurements as |row|}}
+    {{#each sortedMeasurements as |measurement|}}
       <tr>
         <td>
-          {{#link-to 'protected.strains.show' row.strain.id}}
-            {{strain-name strain=row.strain}}
+          {{#link-to 'protected.strains.show' measurement.strain.id classBinding="measurement.strain.typeStrain:type-strain"}}
+            {{measurement.strain.fullNameMU}}
           {{/link-to}}
         </td>
         <td>
-          {{row.value}}
+          {{measurement.value}}
         </td>
         <td>
-          {{row.notes}}
+          {{measurement.notes}}
         </td>
       </tr>
     {{/each}}
