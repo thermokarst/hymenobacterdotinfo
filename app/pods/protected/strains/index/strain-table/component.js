@@ -6,7 +6,7 @@ const { Component, computed: { sort } } = Ember;
 export default Component.extend(SetupMetaData, {
   strains: null,
 
-  sortParams: ['fullName'],
+  sortParams: ['sortOrder'],
   sortedStrains: sort('strains', 'sortParams'),
 
 });
