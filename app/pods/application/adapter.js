@@ -1,9 +1,13 @@
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import Ember from 'ember';
 
+const { inject: { service } } = Ember;
 const { RESTAdapter } = DS;
 
 export default RESTAdapter.extend(DataAdapterMixin, {
+  globals: service(),
+
   authorizer: 'authorizer:application',
 
   namespace: function() {
