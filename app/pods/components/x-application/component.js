@@ -1,10 +1,12 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const { Component, inject: { service } } = Ember;
+
+export default Component.extend({
   classNames: ["flakes-frame"],
 
-  session: Ember.inject.service('session'),
-  currentUser: Ember.inject.service('session-account'),
+  session: service(),
+  currentUser: service('session-account'),
 
   didInsertElement: function() {
     FlakesFrame.init();
