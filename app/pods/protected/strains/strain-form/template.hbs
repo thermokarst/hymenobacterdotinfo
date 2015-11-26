@@ -53,18 +53,24 @@
       </div>
     </div>
   </fieldset>
-  <div>
-    {{
-      protected/strains/measurements-table
-      strain=strain
-      add-characteristic=(action "addCharacteristic")
-      allCharacteristics=allCharacteristics
-      save-measurement=(action "saveMeasurement")
-      delete-measurement=(action "deleteMeasurement")
-      canEdit=strain.canEdit
-      canAdd=metaData.canAdd
-    }}
-  </div>
+  {{#if isNew}}
+    <div>
+      Please save before adding measurements
+    </div>
+  {{else}}
+    <div>
+      {{
+        protected/strains/measurements-table
+        strain=strain
+        add-characteristic=(action "addCharacteristic")
+        allCharacteristics=allCharacteristics
+        save-measurement=(action "saveMeasurement")
+        delete-measurement=(action "deleteMeasurement")
+        canEdit=strain.canEdit
+        canAdd=metaData.canAdd
+      }}
+    </div>
+  {{/if}}
   <br>
   <a class="button-red smaller" {{action 'cancel'}}>
     Cancel

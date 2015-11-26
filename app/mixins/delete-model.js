@@ -8,6 +8,7 @@ export default Mixin.create({
   actions: {
     delete: function() {
       this.get('model').destroyRecord().then(() => {
+        this.get('store').unloadAll();
         this.transitionToRoute(this.get('transitionRoute'));
       });
     },
