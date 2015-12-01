@@ -10,6 +10,7 @@ export default Component.extend(SetupMetaData, {
   isDirty: false,
   speciesList: null,
   allCharacteristics: null,
+  deleteQueue: [],
 
   // Actions
   "on-save": null,
@@ -17,14 +18,13 @@ export default Component.extend(SetupMetaData, {
   "on-update": null,
   "add-characteristic": null,
   "save-measurement": null,
-  "delete-measurement": null,
 
   // CPs
   sortParams: ['sortOrder'],
   sortedSpeciesList: sort('speciesList', 'sortParams'),
 
   // Property mapping
-  propertiesList: ['strainName', 'typeStrain', 'species', 'isolatedFrom', 'accessionNumbers', 'genbank', 'wholeGenomeSequence', 'notes'],
+  propertiesList: ['strainName', 'typeStrain', 'species', 'isolatedFrom', 'accessionNumbers', 'genbank', 'wholeGenomeSequence', 'notes', 'measurements'],
   strainName: null,
   typeStrain: null,
   species: null,
@@ -33,6 +33,7 @@ export default Component.extend(SetupMetaData, {
   genbank: null,
   wholeGenomeSequence: null,
   notes: null,
+  measurements: [],
 
   resetOnInit: Ember.on('init', function() {
     this.get('propertiesList').forEach((field) => {
@@ -55,7 +56,7 @@ export default Component.extend(SetupMetaData, {
 
   actions: {
     save: function() {
-      return this.attrs['on-save'](this.getProperties(this.get('propertiesList')));
+      return this.attrs['on-save'](this.getProperties(this.get('propertiesList')), this.get('deleteQueue'));
     },
 
     cancel: function() {
@@ -70,8 +71,16 @@ export default Component.extend(SetupMetaData, {
       return this.attrs['save-measurement'](measurement, properties);
     },
 
-    deleteMeasurement: function(measurement) {
-      return this.attrs['delete-measurement'](measurement);
+    deleteMeasurement: function(value) {
+      const characteristic = value.get('characteristic');
+      if (characteristic.get('isNew')) {
+        this.get('deleteQueue').pushObject(characteristic);
+      }
+      this.get('deleteQueue').pushObject(value);
+
+      let measurements = this.get('measurements');
+      measurements.removeObject(value);
+      this.set('isDirty', true);
     },
 
     strainNameDidChange: function(value) {
