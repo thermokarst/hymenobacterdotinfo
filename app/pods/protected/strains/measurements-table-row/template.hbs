@@ -15,14 +15,13 @@
   </td>
   {{#if canEdit}}
     <td>
-      {{#if isDirty}}
-      <button class="button-green smaller" {{action 'save'}}>
-        Save
-      </button>
-      {{else}}
-      <button class="button-gray smaller" {{action 'save'}}>
+      <button class="button-gray smaller" {{action 'cancel'}}>
         Cancel
       </button>
+      {{#if isDirty}}
+        <button class="button-green smaller" {{action 'save'}}>
+          Save
+        </button>
       {{/if}}
     </td>
   {{/if}}

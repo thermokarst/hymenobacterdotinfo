@@ -18,7 +18,7 @@ export default Controller.extend(SaveModel, {
 
     saveMeasurement: function(measurement, properties) {
       measurement.setProperties(properties);
-      measurement.save().then(() => {
+      return measurement.save().then(() => {
         this.get('flashMessages').clearMessages();
       }, () => {
         ajaxError(measurement.get('errors'), this.get('flashMessages'));
