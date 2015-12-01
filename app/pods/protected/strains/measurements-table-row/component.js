@@ -11,6 +11,7 @@ export default Component.extend({
   measurement: null,
   isDirty: null,
   isNew: false,
+  isQueued: false,
 
   // Actions
   "save-measurement": null,
@@ -33,9 +34,12 @@ export default Component.extend({
     });
     // Read-only attributes
     this.set('isNew', this.get('measurement.isNew'));
-    if (this.get('isNew')) {
+    if (this.get('isNew') && !this.get('isQueued')) {
       this.set('isEditing', true);
+    } else {
+      this.set('isEditing', false);
     }
+    this.set('isDirty', false);
   },
 
   updateField: function(property, value) {
@@ -54,10 +58,9 @@ export default Component.extend({
     },
 
     save: function() {
-      this.attrs['save-measurement'](this.get('measurement'), this.getProperties(this.get('propertiesList'))).then(() => {
-        this._resetProperties();
-        this.set('isEditing', false);
-      });
+      this.attrs['save-measurement'](this.get('measurement'), this.getProperties(this.get('propertiesList')));
+      this.set('isQueued', true);
+      this._resetProperties();
     },
 
     cancel: function() {

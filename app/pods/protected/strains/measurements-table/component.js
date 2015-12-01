@@ -5,7 +5,7 @@ const { sort } = computed;
 
 export default Component.extend({
   // Passed in
-  strain: null,
+  measurements: null,
   allCharacteristics: null,
   canEdit: false,
   canAdd: false,
@@ -19,15 +19,15 @@ export default Component.extend({
   sortParams: ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName'],
   sortAsc: true,
   paramsChanged: false,
-  sortedMeasurements: sort('strain.measurements', 'sortParams'),
-  measurementsPresent: computed('strain.measurements', function() {
-    return this.get('strain.measurements.length') > 0;
+  sortedMeasurements: sort('measurements', 'sortParams'),
+  measurementsPresent: computed('measurements', function() {
+    return this.get('measurements.length') > 0;
   }),
 
   actions: {
     addCharacteristic: function() {
-      const newChar = this.attrs['add-characteristic']();
-      this.get('strain.measurements').addObject(newChar);
+      const measurement = this.attrs['add-characteristic']();
+      this.get('measurements').addObject(measurement);
     },
 
     changeSortParam: function(col) {

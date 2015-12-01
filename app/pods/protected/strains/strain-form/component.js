@@ -10,6 +10,7 @@ export default Component.extend(SetupMetaData, {
   isDirty: false,
   speciesList: null,
   allCharacteristics: null,
+  updateQueue: [],
   deleteQueue: [],
 
   // Actions
@@ -17,7 +18,6 @@ export default Component.extend(SetupMetaData, {
   "on-cancel": null,
   "on-update": null,
   "add-characteristic": null,
-  "save-measurement": null,
 
   // CPs
   sortParams: ['sortOrder'],
@@ -36,13 +36,38 @@ export default Component.extend(SetupMetaData, {
   measurements: [],
 
   resetOnInit: Ember.on('init', function() {
+    this._resetProperties();
+  }),
+
+  _resetProperties: function() {
+    // Still some coupling going on here because of adding strain to measurement
+    this.get('measurements').forEach((val) => {
+      if (val.get('hasDirtyAttributes')) {
+        val.rollbackAttributes();
+      }
+      if (val.get('isNew')) {
+        this.get('strain.measurements').removeObject(val);
+      }
+    });
     this.get('propertiesList').forEach((field) => {
       const valueInStrain = this.get('strain').get(field);
-      this.set(field, valueInStrain);
+      if (field === 'measurements') {
+        let tempArray = [];
+        valueInStrain.forEach((val) => {
+          if (!val.get('isNew')) {
+            tempArray.push(val);
+          }
+        });
+        this.set(field, tempArray);
+      } else {
+        this.set(field, valueInStrain);
+      }
     });
+    this.set('updateQueue', []);
+    this.set('deleteQueue', []);
     // Read-only attributes
     this.set('isNew', this.get('strain.isNew'));
-  }),
+  },
 
   updateField: function(property, value) {
     this.set(property, value);
@@ -56,10 +81,11 @@ export default Component.extend(SetupMetaData, {
 
   actions: {
     save: function() {
-      return this.attrs['on-save'](this.getProperties(this.get('propertiesList')), this.get('deleteQueue'));
+      return this.attrs['on-save'](this.getProperties(this.get('propertiesList')), this.get('deleteQueue'), this.get('updateQueue'));
     },
 
     cancel: function() {
+      this._resetProperties();
       return this.attrs['on-cancel']();
     },
 
@@ -68,7 +94,12 @@ export default Component.extend(SetupMetaData, {
     },
 
     saveMeasurement: function(measurement, properties) {
-      return this.attrs['save-measurement'](measurement, properties);
+      measurement.setProperties(properties);
+      measurement.set('strain', this.get('strain'));
+      if (!measurement.get('isNew')) {
+        this.get('updateQueue').pushObject(measurement);
+      }
+      this.set('isDirty', true);
     },
 
     deleteMeasurement: function(value) {
@@ -77,9 +108,7 @@ export default Component.extend(SetupMetaData, {
         this.get('deleteQueue').pushObject(characteristic);
       }
       this.get('deleteQueue').pushObject(value);
-
-      let measurements = this.get('measurements');
-      measurements.removeObject(value);
+      this.get('measurements').removeObject(value);
       this.set('isDirty', true);
     },
 
