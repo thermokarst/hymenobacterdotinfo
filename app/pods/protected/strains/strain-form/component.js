@@ -35,9 +35,28 @@ export default Component.extend(SetupMetaData, {
   notes: null,
   measurements: [],
 
+  // Dropdown menu
+  characteristics: [],
+  sortParams: ['characteristicTypeName', 'sortOrder', 'characteristicName'],
+  sortedCharacteristics: sort('characteristics', 'sortParams'),
+  setupCharacteristics: Ember.on('init', function() {
+    const tempArray = this._resetArray(this.get('allCharacteristics'));
+    this.set('characteristics', tempArray);
+  }),
+
   resetOnInit: Ember.on('init', function() {
     this._resetProperties();
   }),
+
+  _resetArray: function(arr) {
+    let tempArray = [];
+    arr.forEach((val) => {
+      if (!val.get('isNew')) {
+        tempArray.push(val);
+      }
+    });
+    return tempArray;
+  },
 
   _resetProperties: function() {
     // Still some coupling going on here because of adding strain to measurement
@@ -52,12 +71,7 @@ export default Component.extend(SetupMetaData, {
     this.get('propertiesList').forEach((field) => {
       const valueInStrain = this.get('strain').get(field);
       if (field === 'measurements') {
-        let tempArray = [];
-        valueInStrain.forEach((val) => {
-          if (!val.get('isNew')) {
-            tempArray.push(val);
-          }
-        });
+        const tempArray = this._resetArray(valueInStrain);
         this.set(field, tempArray);
       } else {
         this.set(field, valueInStrain);

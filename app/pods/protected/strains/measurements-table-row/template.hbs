@@ -1,5 +1,7 @@
 {{#if isEditing}}
-  <td></td>
+  <td>
+    {{{characteristic.characteristicTypeName}}}
+  </td>
   <td>
     <select onchange={{action "characteristicDidChange" value="target.value"}}>
       {{#each allCharacteristics as |characteristicChoice|}}
