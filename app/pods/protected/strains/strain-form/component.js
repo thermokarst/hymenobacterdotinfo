@@ -9,7 +9,7 @@ export default Component.extend(SetupMetaData, {
   isNew: null,
   isDirty: false,
   speciesList: null,
-  allCharacteristics: null,
+  allCharacteristics: [],
   updateQueue: [],
   deleteQueue: [],
 
@@ -37,8 +37,8 @@ export default Component.extend(SetupMetaData, {
 
   // Dropdown menu
   characteristics: [],
-  sortParams: ['characteristicTypeName', 'sortOrder', 'characteristicName'],
-  sortedCharacteristics: sort('characteristics', 'sortParams'),
+  charSortParams: ['characteristicTypeName', 'sortOrder', 'characteristicName'],
+  sortedCharacteristics: sort('characteristics', 'charSortParams'),
   setupCharacteristics: Ember.on('init', function() {
     const tempArray = this._resetArray(this.get('allCharacteristics'));
     this.set('characteristics', tempArray);
