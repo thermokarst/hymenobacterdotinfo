@@ -117,13 +117,9 @@ export default Component.extend(SetupMetaData, {
       this.set('isDirty', true);
     },
 
-    deleteMeasurement: function(value) {
-      const characteristic = value.get('characteristic');
-      if (characteristic.get('isNew')) {
-        this.get('deleteQueue').pushObject(characteristic);
-      }
-      this.get('deleteQueue').pushObject(value);
-      this.get('measurements').removeObject(value);
+    deleteMeasurement: function(measurement) {
+      this.get('deleteQueue').pushObject(measurement);
+      this.get('measurements').removeObject(measurement);
       this.set('isDirty', true);
     },
 
