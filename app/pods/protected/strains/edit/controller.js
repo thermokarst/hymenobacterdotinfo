@@ -1,9 +1,10 @@
 import Ember from 'ember';
-import ajaxError from '../../../../utils/ajax-error';
 
-const { Controller, RSVP } = Ember;
+const { Controller, RSVP, inject: { service } } = Ember;
 
 export default Controller.extend({
+  ajaxError: service('ajax-error'),
+
   fallbackRouteSave: 'protected.strains.show',
   fallbackRouteCancel: 'protected.strains.show',
 
@@ -12,36 +13,31 @@ export default Controller.extend({
       let promises = [];
       properties.measurements.forEach((measurement) => {
         if (measurement.get('isNew')) {
-          promises.push(measurement.save().catch(() => {
-            ajaxError(measurement.get('errors'), this.get('flashMessages'));
-          }));
+          promises.push(measurement.save());
         }
       });
 
       updateQueue.forEach((measurement) => {
-        promises.push(measurement.save().catch(() => {
-          ajaxError(measurement.get('errors'), this.get('flashMessages'));
-        }));
+        promises.push(measurement.save());
       });
 
       deleteQueue.forEach((measurement) => {
-        promises.push(measurement.destroyRecord().catch(() => {
-          ajaxError(measurement.get('errors'), this.get('flashMessages'));
-        }));
+        promises.push(measurement.destroyRecord());
       });
 
       const model = this.get('model');
       const fallbackRoute = this.get('fallbackRouteSave');
 
       RSVP.all(promises).then(() => {
-        // Can't call _super inside promise :-(
+        // Can't call _super inside promise, have to reproduce save-model
+        // mixin here :-(
         model.setProperties(properties);
         model.save().then((model) => {
           this.get('flashMessages').clearMessages();
           this.transitionToRoute(fallbackRoute, model);
-        }, () => {
-          ajaxError(model.get('errors'), this.get('flashMessages'));
         });
+      }, (errors) => {
+        this.get('ajaxError').alert(errors);
       });
     },
 
