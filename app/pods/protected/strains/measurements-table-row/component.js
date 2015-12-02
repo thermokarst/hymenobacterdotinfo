@@ -10,6 +10,8 @@ export default Component.extend({
   allCharacteristics: null,
   measurement: null,
   isDirty: null,
+  isNew: false,
+  isQueued: false,
 
   // Actions
   "save-measurement": null,
@@ -22,11 +24,23 @@ export default Component.extend({
   notes: null,
 
   resetOnInit: Ember.on('init', function() {
+    this._resetProperties();
+  }),
+
+  _resetProperties: function() {
     this.get('propertiesList').forEach((field) => {
       const valueInMeasurement = this.get('measurement').get(field);
       this.set(field, valueInMeasurement);
     });
-  }),
+    // Read-only attributes
+    this.set('isNew', this.get('measurement.isNew'));
+    if (this.get('isNew') && !this.get('isQueued')) {
+      this.set('isEditing', true);
+    } else {
+      this.set('isEditing', false);
+    }
+    this.set('isDirty', false);
+  },
 
   updateField: function(property, value) {
     this.set(property, value);
@@ -40,12 +54,22 @@ export default Component.extend({
 
   actions: {
     edit: function() {
-      this.toggleProperty('isEditing');
+      this.set('isEditing', true);
     },
 
     save: function() {
       this.attrs['save-measurement'](this.get('measurement'), this.getProperties(this.get('propertiesList')));
-      this.toggleProperty('isEditing');
+      this.set('isQueued', true);
+      this._resetProperties();
+    },
+
+    cancel: function() {
+      if (this.get('isNew')) {
+        this.attrs['delete-measurement'](this.get('measurement'));
+      } else {
+        this._resetProperties();
+        this.set('isEditing', false);
+      }
     },
 
     delete: function() {

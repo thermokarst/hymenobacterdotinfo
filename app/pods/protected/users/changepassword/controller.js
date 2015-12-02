@@ -1,11 +1,11 @@
 import Ember from 'ember';
-import ajaxErrorNew from '../../../../utils/ajax-error-new';
 
 const { Controller, inject: { service } } = Ember;
 
 export default Controller.extend({
   session: service(),
   ajax: service(),
+  ajaxError: service('ajax-error'),
   currentUser: service('session-account'),
 
   actions: {
@@ -15,12 +15,13 @@ export default Controller.extend({
       this.get('ajax').post('/users/password', { data: data }).then(() => {
         this.transitionToRoute('protected.users.show', id);
         this.get('flashMessages').information('Your password has been changed.');
-      }, (error) => {
-        ajaxErrorNew(error, this.get('flashMessages'));
+      }, (errors) => {
+        this.get('ajaxError').alert(errors);
       });
     },
 
     cancel: function() {
+      this.get('flashMessages').clearMessages();
       this.transitionToRoute('protected.users.show', this.get('currentUser.account.id'));
     },
   },

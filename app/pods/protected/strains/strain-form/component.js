@@ -9,22 +9,22 @@ export default Component.extend(SetupMetaData, {
   isNew: null,
   isDirty: false,
   speciesList: null,
-  allCharacteristics: null,
+  allCharacteristics: [],
+  updateQueue: [],
+  deleteQueue: [],
 
   // Actions
   "on-save": null,
   "on-cancel": null,
   "on-update": null,
-  "add-characteristic": null,
-  "save-measurement": null,
-  "delete-measurement": null,
+  "add-measurements": null,
 
   // CPs
   sortParams: ['sortOrder'],
   sortedSpeciesList: sort('speciesList', 'sortParams'),
 
   // Property mapping
-  propertiesList: ['strainName', 'typeStrain', 'species', 'isolatedFrom', 'accessionNumbers', 'genbank', 'wholeGenomeSequence', 'notes'],
+  propertiesList: ['strainName', 'typeStrain', 'species', 'isolatedFrom', 'accessionNumbers', 'genbank', 'wholeGenomeSequence', 'notes', 'measurements'],
   strainName: null,
   typeStrain: null,
   species: null,
@@ -33,15 +33,55 @@ export default Component.extend(SetupMetaData, {
   genbank: null,
   wholeGenomeSequence: null,
   notes: null,
+  measurements: [],
+
+  // Dropdown menu
+  characteristics: [],
+  charSortParams: ['characteristicTypeName', 'sortOrder', 'characteristicName'],
+  sortedCharacteristics: sort('characteristics', 'charSortParams'),
+  setupCharacteristics: Ember.on('init', function() {
+    const tempArray = this._resetArray(this.get('allCharacteristics'));
+    this.set('characteristics', tempArray);
+  }),
 
   resetOnInit: Ember.on('init', function() {
+    this._resetProperties();
+  }),
+
+  _resetArray: function(arr) {
+    let tempArray = [];
+    arr.forEach((val) => {
+      if (!val.get('isNew')) {
+        tempArray.push(val);
+      }
+    });
+    return tempArray;
+  },
+
+  _resetProperties: function() {
+    // Still some coupling going on here because of adding strain to measurement
+    this.get('measurements').forEach((val) => {
+      if (val.get('hasDirtyAttributes')) {
+        val.rollbackAttributes();
+      }
+      if (val.get('isNew')) {
+        this.get('strain.measurements').removeObject(val);
+      }
+    });
     this.get('propertiesList').forEach((field) => {
       const valueInStrain = this.get('strain').get(field);
-      this.set(field, valueInStrain);
+      if (field === 'measurements') {
+        const tempArray = this._resetArray(valueInStrain);
+        this.set(field, tempArray);
+      } else {
+        this.set(field, valueInStrain);
+      }
     });
+    this.set('updateQueue', []);
+    this.set('deleteQueue', []);
     // Read-only attributes
     this.set('isNew', this.get('strain.isNew'));
-  }),
+  },
 
   updateField: function(property, value) {
     this.set(property, value);
@@ -55,23 +95,32 @@ export default Component.extend(SetupMetaData, {
 
   actions: {
     save: function() {
-      return this.attrs['on-save'](this.getProperties(this.get('propertiesList')));
+      return this.attrs['on-save'](this.getProperties(this.get('propertiesList')), this.get('deleteQueue'), this.get('updateQueue'));
     },
 
     cancel: function() {
+      this._resetProperties();
       return this.attrs['on-cancel']();
     },
 
-    addCharacteristic: function() {
-      return this.attrs['add-characteristic']();
+    addMeasurement: function() {
+      const measurement = this.attrs['add-measurement']();
+      this.get('measurements').pushObject(measurement);
     },
 
     saveMeasurement: function(measurement, properties) {
-      return this.attrs['save-measurement'](measurement, properties);
+      measurement.setProperties(properties);
+      measurement.set('strain', this.get('strain'));
+      if (!measurement.get('isNew')) {
+        this.get('updateQueue').pushObject(measurement);
+      }
+      this.set('isDirty', true);
     },
 
     deleteMeasurement: function(measurement) {
-      return this.attrs['delete-measurement'](measurement);
+      this.get('deleteQueue').pushObject(measurement);
+      this.get('measurements').removeObject(measurement);
+      this.set('isDirty', true);
     },
 
     strainNameDidChange: function(value) {

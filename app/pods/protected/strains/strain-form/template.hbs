@@ -61,9 +61,9 @@
     <div>
       {{
         protected/strains/measurements-table
-        strain=strain
-        add-characteristic=(action "addCharacteristic")
-        allCharacteristics=allCharacteristics
+        measurements=measurements
+        add-measurement=(action "addMeasurement")
+        allCharacteristics=sortedCharacteristics
         save-measurement=(action "saveMeasurement")
         delete-measurement=(action "deleteMeasurement")
         canEdit=strain.canEdit

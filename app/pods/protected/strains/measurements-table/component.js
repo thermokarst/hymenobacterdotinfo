@@ -5,13 +5,13 @@ const { sort } = computed;
 
 export default Component.extend({
   // Passed in
-  strain: null,
+  measurements: null,
   allCharacteristics: null,
   canEdit: false,
   canAdd: false,
 
   // Actions
-  "add-characteristic": null,
+  "add-measurement": null,
   "save-measurement": null,
   "delete-measurement": null,
 
@@ -19,15 +19,11 @@ export default Component.extend({
   sortParams: ['characteristic.characteristicTypeName', 'characteristic.sortOrder', 'characteristic.characteristicName'],
   sortAsc: true,
   paramsChanged: false,
-  sortedMeasurements: sort('strain.measurements', 'sortParams'),
-  measurementsPresent: computed('strain.measurements', function() {
-    return this.get('strain.measurements.length') > 0;
-  }),
+  sortedMeasurements: sort('measurements', 'sortParams'),
 
   actions: {
-    addCharacteristic: function() {
-      const newChar = this.attrs['add-characteristic']();
-      this.get('strain.measurements').addObject(newChar);
+    addMeasurement: function() {
+      return this.attrs['add-measurement']();
     },
 
     changeSortParam: function(col) {

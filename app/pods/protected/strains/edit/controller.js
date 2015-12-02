@@ -1,36 +1,61 @@
 import Ember from 'ember';
-import SaveModel from '../../../../mixins/save-model';
-import ajaxError from '../../../../utils/ajax-error';
 
-const { Controller } = Ember;
+const { Controller, RSVP, inject: { service } } = Ember;
 
-export default Controller.extend(SaveModel, {
-  // Required for SaveModel mixin
+export default Controller.extend({
+  ajaxError: service('ajax-error'),
+
   fallbackRouteSave: 'protected.strains.show',
   fallbackRouteCancel: 'protected.strains.show',
 
   actions: {
-    addCharacteristic: function() {
-      return this.store.createRecord('measurement', {
-        characteristic: this.store.createRecord('characteristic', { sortOrder: -999 }),
+    save: function(properties, deleteQueue, updateQueue) {
+      let promises = [];
+      properties.measurements.forEach((measurement) => {
+        if (measurement.get('isNew')) {
+          promises.push(measurement.save());
+        }
+      });
+
+      updateQueue.forEach((measurement) => {
+        promises.push(measurement.save());
+      });
+
+      deleteQueue.forEach((measurement) => {
+        promises.push(measurement.destroyRecord());
+      });
+
+      const model = this.get('model');
+      const fallbackRoute = this.get('fallbackRouteSave');
+
+      RSVP.all(promises).then(() => {
+        // Can't call _super inside promise, have to reproduce save-model
+        // mixin here :-(
+        model.setProperties(properties);
+        model.save().then((model) => {
+          this.get('flashMessages').clearMessages();
+          this.transitionToRoute(fallbackRoute, model);
+        });
+      }, (errors) => {
+        this.get('ajaxError').alert(errors);
       });
     },
 
-    saveMeasurement: function(measurement, properties) {
-      measurement.setProperties(properties);
-      measurement.save().then(() => {
-        this.get('flashMessages').clearMessages();
-      }, () => {
-        ajaxError(measurement.get('errors'), this.get('flashMessages'));
-      });
-    },
+    cancel: function() {
+      const model = this.get('model');
 
-    deleteMeasurement: function(measurement) {
-      const characteristic = measurement.get('characteristic');
-      if (characteristic.get('isNew')) {
-        characteristic.destroyRecord();
+      model.get('errors').clear();
+      model.rollbackAttributes();
+
+      if (model.get('isNew')) {
+        this.transitionToRoute(this.get('fallbackRouteCancel'));
+      } else {
+        this.transitionToRoute(this.get('fallbackRouteCancel'), model);
       }
-      measurement.destroyRecord();
+    },
+
+    addMeasurement: function() {
+      return this.store.createRecord('measurement');
     },
 
   },

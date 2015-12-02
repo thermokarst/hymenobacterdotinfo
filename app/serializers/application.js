@@ -5,24 +5,41 @@ const { RESTSerializer } = DS;
 const { isNone } = Ember;
 
 export default RESTSerializer.extend({
-  isNewSerializerAPI: true,
-
   serializeBelongsTo: function(snapshot, json, relationship) {
-    let key = relationship.key;
-    const belongsTo = snapshot.belongsTo(key);
-    key = this.keyForRelationship ? this.keyForRelationship(key, "belongsTo", "serialize") : key;
-    json[key] = isNone(belongsTo) ? belongsTo : +belongsTo.record.id;
+    const key = relationship.key;
+    if (this._canSerialize(key)) {
+      const belongsToId = snapshot.belongsTo(key, { id: true });
+      let payloadKey = this._getMappedKey(key, snapshot.type);
+      if (payloadKey === key && this.keyForRelationship) {
+        payloadKey = this.keyForRelationship(key, "belongsTo", "serialize");
+      }
+      if (isNone(belongsToId)) {
+        json[payloadKey] = null;
+      } else {
+        json[payloadKey] = +belongsToId;
+      }
+
+      if (relationship.options.polymorphic) {
+        this.serializePolymorphicType(snapshot, json, relationship);
+      }
+    }
   },
 
   serializeHasMany: function(snapshot, json, relationship) {
-    let key = relationship.key;
-    const hasMany = snapshot.hasMany(key);
-    key = this.keyForRelationship ? this.keyForRelationship(key, "hasMany", "serialize") : key;
-
-    json[key] = [];
-    hasMany.forEach((item) => {
-      json[key].push(+item.id);
-    });
+    const key = relationship.key;
+    if (this._shouldSerializeHasMany(snapshot, key, relationship)) {
+      const hasMany = snapshot.hasMany(key, { ids: true });
+      if (hasMany !== undefined) {
+        let payloadKey = this._getMappedKey(key, snapshot.type);
+        if (payloadKey === key && this.keyForRelationship) {
+          payloadKey = this.keyForRelationship(key, "hasMany", "serialize");
+        }
+        json[payloadKey] = [];
+        hasMany.forEach((item) => {
+          json[payloadKey].push(+item);
+        });
+      }
+    }
   },
 
 });
