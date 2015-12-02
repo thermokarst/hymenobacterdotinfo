@@ -20,14 +20,10 @@ export default Component.extend({
   sortAsc: true,
   paramsChanged: false,
   sortedMeasurements: sort('measurements', 'sortParams'),
-  measurementsPresent: computed('measurements', function() {
-    return this.get('measurements.length') > 0;
-  }),
 
   actions: {
     addCharacteristic: function() {
-      const measurement = this.attrs['add-characteristic']();
-      this.get('measurements').addObject(measurement);
+      return this.attrs['add-characteristic']();
     },
 
     changeSortParam: function(col) {

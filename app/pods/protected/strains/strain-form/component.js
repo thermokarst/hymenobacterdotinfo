@@ -104,7 +104,8 @@ export default Component.extend(SetupMetaData, {
     },
 
     addCharacteristic: function() {
-      return this.attrs['add-characteristic']();
+      const measurement = this.attrs['add-characteristic']();
+      this.get('measurements').pushObject(measurement);
     },
 
     saveMeasurement: function(measurement, properties) {

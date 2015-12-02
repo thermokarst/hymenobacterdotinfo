@@ -6,12 +6,11 @@
   <br><br>
 {{/if}}
 
-{{#if measurementsPresent}}
-  {{#if paramsChanged}}
-    <button class="button-gray smaller" {{action 'resetSortParam'}}>
-      Reset sort
-    </button>
-  {{/if}}
+{{#if paramsChanged}}
+  <button class="button-gray smaller" {{action 'resetSortParam'}}>
+    Reset sort
+  </button>
+{{/if}}
 <table class="flakes-table">
   <colgroup>
     {{#if canEdit}}
@@ -48,9 +47,10 @@
         allCharacteristics=allCharacteristics
         canEdit=canEdit
       }}
+    {{else}}
+      <tr>
+        <td colspan="5">No Measurements on Record</td>
+      </tr>
     {{/each}}
   </tbody>
 </table>
-{{else}}
-No measurements on record.
-{{/if}}
