@@ -153,7 +153,7 @@ export default Component.extend(SetupMetaData, {
     },
 
     notesDidChange: function(value) {
-      this.updateField('strain.notes', value);
+      this.updateField('notes', value);
     },
   },
 });
