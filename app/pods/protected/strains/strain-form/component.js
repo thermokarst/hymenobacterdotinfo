@@ -17,7 +17,7 @@ export default Component.extend(SetupMetaData, {
   "on-save": null,
   "on-cancel": null,
   "on-update": null,
-  "add-characteristic": null,
+  "add-measurements": null,
 
   // CPs
   sortParams: ['sortOrder'],
@@ -103,8 +103,8 @@ export default Component.extend(SetupMetaData, {
       return this.attrs['on-cancel']();
     },
 
-    addCharacteristic: function() {
-      const measurement = this.attrs['add-characteristic']();
+    addMeasurement: function() {
+      const measurement = this.attrs['add-measurement']();
       this.get('measurements').pushObject(measurement);
     },
 

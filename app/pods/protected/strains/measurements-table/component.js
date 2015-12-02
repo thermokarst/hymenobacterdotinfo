@@ -11,7 +11,7 @@ export default Component.extend({
   canAdd: false,
 
   // Actions
-  "add-characteristic": null,
+  "add-measurement": null,
   "save-measurement": null,
   "delete-measurement": null,
 
@@ -22,8 +22,8 @@ export default Component.extend({
   sortedMeasurements: sort('measurements', 'sortParams'),
 
   actions: {
-    addCharacteristic: function() {
-      return this.attrs['add-characteristic']();
+    addMeasurement: function() {
+      return this.attrs['add-measurement']();
     },
 
     changeSortParam: function(col) {

@@ -54,7 +54,7 @@ export default Controller.extend({
       }
     },
 
-    addCharacteristic: function() {
+    addMeasurement: function() {
       return this.store.createRecord('measurement', {
         characteristic: this.store.createRecord('characteristic', { sortOrder: -999 }),
       });
